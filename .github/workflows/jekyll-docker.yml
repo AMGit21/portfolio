@@ -1,0 +1,37 @@
+name: Jekyll site CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Ruby (for Jekyll dependencies)
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: '3.x' # Or your specific Ruby version, e.g., '3.1'
+        bundler-cache: true # Installs gems with bundle install and caches them
+
+    - name: Install Jekyll and dependencies
+      run: |
+        bundle install
+
+    - name: Build the Jekyll site
+      run: |
+        bundle exec jekyll build --destination _site # --future if you need it
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3 # Using a popular action for deployment
+      if: github.ref == 'refs/heads/main' # Only deploy on pushes to main branch
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./_site # The directory where Jekyll outputs the built site
+        # cname: your-custom-domain.com # Uncomment and set if you use a custom domain
