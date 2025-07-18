@@ -1,0 +1,34 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main # This workflow will run whenever you push to the 'main' branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest # The type of runner that the job will run on
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4 # Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
+
+      - name: Setup GitHub Pages
+        uses: actions/setup-pages@v4 # Configures the GitHub Pages environment
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Uploads the entire repository root as an artifact.
+          # This means your index.html and any other static files in the root
+          # will be available for deployment.
+          path: './'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Deploys the uploaded artifact to GitHub Pages
