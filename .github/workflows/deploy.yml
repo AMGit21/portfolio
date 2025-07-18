@@ -13,6 +13,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest # The type of runner that the job will run on
+    
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repository
