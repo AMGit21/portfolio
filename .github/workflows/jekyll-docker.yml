@@ -1,37 +1,75 @@
+# This is the name of your GitHub Actions workflow.
+# It will appear in the "Actions" tab of your GitHub repository.
 name: Jekyll site CI/CD
 
+# This section defines when the workflow should run.
 on:
+  # Trigger the workflow when code is pushed to the 'main' branch.
   push:
     branches: [ "main" ]
+  # Trigger the workflow when a pull request is opened or updated targeting the 'main' branch.
   pull_request:
     branches: [ "main" ]
 
+# This section defines the jobs (a set of steps) that will run in this workflow.
 jobs:
+  # This is the name of our single job, which will build and deploy the site.
   build_and_deploy:
+    # Specifies the type of virtual machine (runner) to use for this job.
+    # 'ubuntu-latest' means the latest version of Ubuntu Linux.
     runs-on: ubuntu-latest
 
+    # 'steps' is a sequence of tasks that will be executed in the job.
     steps:
+    # Step 1: Checkout your repository code.
+    # This action downloads your repository's code onto the runner, so Jekyll can access your site files.
     - name: Checkout repository
       uses: actions/checkout@v4
 
+    # Step 2: Set up the Ruby environment.
+    # Jekyll is built with Ruby, so this step installs the correct Ruby version.
+    # 'ruby/setup-ruby@v1' is a GitHub Action that handles Ruby installation and setup.
     - name: Set up Ruby (for Jekyll dependencies)
       uses: ruby/setup-ruby@v1
       with:
-        ruby-version: '3.x' # Or your specific Ruby version, e.g., '3.1'
-        bundler-cache: true # Installs gems with bundle install and caches them
+        # Specifies the exact Ruby version to install.
+        # It's important to use a specific version like '3.3.0' rather than '3.x' for stability.
+        # You can find available versions in the error message if you encounter issues.
+        ruby-version: '3.3.0' # Example: Use '3.2.8' or another specific version if '3.3.0' isn't available.
+        # 'bundler-cache: true' automatically installs and caches Ruby gems (dependencies).
+        # This makes subsequent workflow runs much faster by reusing downloaded gems.
+        bundler-cache: true
 
+    # Step 3: Install Jekyll and its dependencies.
+    # 'bundle install' reads your Gemfile (which lists Jekyll and other required gems)
+    # and installs them into the Ruby environment.
     - name: Install Jekyll and dependencies
       run: |
         bundle install
 
+    # Step 4: Build the Jekyll site.
+    # 'bundle exec jekyll build' runs the Jekyll build command using the installed gems.
+    # '--destination _site' tells Jekyll to output the built website files into the '_site' folder.
+    # (Optional: Add '--future' if you want to include posts dated in the future during the build.)
     - name: Build the Jekyll site
       run: |
-        bundle exec jekyll build --destination _site # --future if you need it
+        bundle exec jekyll build --destination _site
 
+    # Step 5: Deploy the built site to GitHub Pages.
+    # This action takes the content of your '_site' folder and pushes it to your GitHub Pages branch.
+    # 'peaceiris/actions-gh-pages@v3' is a popular and reliable action for this purpose.
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3 # Using a popular action for deployment
-      if: github.ref == 'refs/heads/main' # Only deploy on pushes to main branch
+      uses: peaceiris/actions-gh-pages@v3
+      # This condition ensures the deployment only happens when changes are pushed to the 'main' branch.
+      # This prevents accidental deployments from pull requests or other branches.
+      if: github.ref == 'refs/heads/main'
       with:
+        # 'github_token' is a special, automatically generated token provided by GitHub Actions.
+        # It has the necessary permissions to push to your GitHub Pages branch.
+        # You DO NOT need to create this token yourself.
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./_site # The directory where Jekyll outputs the built site
-        # cname: your-custom-domain.com # Uncomment and set if you use a custom domain
+        # Specifies the directory containing the static files to be deployed.
+        # This is the '_site' folder where Jekyll outputs your built website.
+        publish_dir: ./_site
+        # Uncomment the line below and replace with your custom domain if you are using one.
+        # cname: your-custom-domain.com
