@@ -19,7 +19,7 @@ jobs:
         uses: actions/checkout@v4 # Checks out your repository under $GITHUB_WORKSPACE, so your workflow can access it
 
       - name: Setup GitHub Pages
-        uses: actions/setup-pages@v4 # Configures the GitHub Pages environment
+        uses: actions/configure-pages@v4 # Configures the GitHub Pages environment
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
