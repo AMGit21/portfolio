@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ali Mantache | AI Engineer & Futuristic Developer</title>
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'inter': ['Inter', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace'],
+                    },
+                    // Tailwind colors will now reference CSS variables
+                    colors: {
+                        'primary-bg': 'var(--primary-bg)',
+                        'secondary-bg': 'var(--secondary-bg)',
+                        'accent-1': 'var(--accent-1)',
+                        'accent-2': 'var(--accent-2)',
+                        'accent-3': 'var(--accent-3)',
+                        'accent-4': 'var(--accent-4)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'text-muted': 'var(--text-muted)',
+                        'glass-bg': 'var(--glass-bg)',
+                        'glass-border': 'var(--glass-border)',
+                        'glow-1': 'var(--glow-1)',
+                        'glow-2': 'var(--glow-2)',
+                    },
+                    animation: {
+                        'float': 'float 3s ease-in-out infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'pulse-glow': 'pulse-glow 2s ease-in-out infinite',
+                        'typing': 'typing 3.5s steps(40, end), blink-caret .75s step-end infinite',
+                        'matrix': 'matrix 20s linear infinite',
+                        'rotate-3d': 'rotate-3d 10s linear infinite',
+                        'bounce-glow': 'bounce-glow 2s ease-in-out infinite',
+                        'shimmer': 'shimmer 1.5s infinite',
+                        'border-pulse': 'border-pulse 2s infinite alternate',
+                        'spin-slow': 'spin 5s linear infinite',
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
+                        'slide-in-right': 'slideInRight 0.8s ease-out forwards',
+                        'wave': 'wave 1.8s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 20px var(--glow-1)' },
+                            '100%': { boxShadow: '0 0 30px var(--glow-2)' },
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.05)' },
+                        },
+                        typing: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' },
+                        },
+                        'blink-caret': {
+                            '0%, 50%': { borderColor: 'transparent' },
+                            '51%, 100%': { borderColor: 'var(--accent-1)' },
+                        },
+                        matrix: {
+                            '0%': { transform: 'translateY(-100vh)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        },
+                        'rotate-3d': {
+                            '0%': { transform: 'rotateY(0deg)' },
+                            '100%': { transform: 'rotateY(360deg)' },
+                        },
+                        'bounce-glow': {
+                            '0%, 100%': { transform: 'translateY(0)', filter: 'drop-shadow(0 0 20px var(--glow-1))' },
+                            '50%': { transform: 'translateY(-10px)', filter: 'drop-shadow(0 0 30px var(--glow-2))' },
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(100%)' },
+                        },
+                        'border-pulse': {
+                            '0%, 100%': { borderColor: 'var(--glow-1)' },
+                            '50%': { borderColor: 'var(--glow-2)' },
+                        },
+                        spin: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        fadeInUp: {
+                            from: { opacity: '0', transform: 'translateY(40px)' },
+                            to: { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideInLeft: {
+                            from: { opacity: '0', transform: 'translateX(-50px)' },
+                            to: { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        slideInRight: {
+                            from: { opacity: '0', transform: 'translateX(50px)' },
+                            to: { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        wave: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' },
+                        },
+                        holographic: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    },
+                    boxShadow: {
+                        'cyber': '0 0 30px var(--glow-1)',
+                        'neon': '0 0 20px var(--glow-2)',
+                        'glow-lg': '0 0 40px var(--glow-1)',
+                        'inner-glow': 'inset 0 0 20px var(--glow-1)',
+                    },
+                },
+            },
+        };
+    </script>
+
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--primary-bg);
+            overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
+            color: var(--text-primary);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Custom CSS Variables for a futuristic dark theme */
+        :root {
+            /* Default Color Scheme (Deep Ocean) */
+            --primary-bg: #020617; /* Darker background */
+            --secondary-bg: #0f172a; /* Slightly lighter dark for sections */
+            --accent-1: #00f5ff; /* Cyan */
+            --accent-2: #8b5cf6; /* Purple */
+            --accent-3: #ec4899; /* Pink */
+            --accent-4: #00ff88; /* Green */
+            --text-primary: #e2e8f0; /* Light gray for main text */
+            --text-secondary: #94a3b8; /* Muted gray for descriptions */
+            --text-muted: #64748b; /* Even more muted for small text */
+            --glass-bg: rgba(15, 23, 42, 0.7); /* Translucent dark for glass effect */
+            --glass-border: rgba(71, 85, 105, 0.3); /* Subtle border for glass */
+            --glow-1: rgba(0, 245, 255, 0.5); /* Glow effect for accent-1 */
+            --glow-2: rgba(139, 92, 246, 0.8); /* Glow effect for accent-2 */
+        }
+
+        /* Example of an alternative color scheme ( uncomment to use ) */
+        /*
+        body.scheme-crimson-nebula {
+            --primary-bg: #1a051d;
+            --secondary-bg: #2d0a33;
+            --accent-1: #ff0055;
+            --accent-2: #8a00ff;
+            --accent-3: #ff6600;
+            --accent-4: #00ffcc;
+            --text-primary: #f0e6f2;
+            --text-secondary: #c9b8cc;
+            --text-muted: #9e8e9f;
+            --glass-bg: rgba(45, 10, 51, 0.7);
+            --glass-border: rgba(138, 0, 255, 0.3);
+            --glow-1: rgba(255, 0, 85, 0.5);
+            --glow-2: rgba(138, 0, 255, 0.8);
+        }
+        */
+
+        /* Example of another alternative color scheme ( uncomment to use ) */
+        /*
+        body.scheme-emerald-matrix {
+            --primary-bg: #051a0f;
+            --secondary-bg: #0a2d1a;
+            --accent-1: #00ff88;
+            --accent-2: #00ccff;
+            --accent-3: #ffcc00;
+            --accent-4: #cc00ff;
+            --text-primary: #e6f2e9;
+            --text-secondary: #b8ccbf;
+            --text-muted: #8e9f94;
+            --glass-bg: rgba(10, 45, 26, 0.7);
+            --glass-border: rgba(0, 255, 136, 0.3);
+            --glow-1: rgba(0, 255, 136, 0.5);
+            --glow-2: rgba(0, 204, 255, 0.8);
+        }
+        */
+
+
+        /* Glassmorphism effect */
+        .glass-morphism {
+            background: var(--glass-bg);
+            backdrop-filter: blur(15px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+        }
+
+        /* Cyber Grid Background - subtle */
+        .cyber-grid {
+            background-image:
+                linear-gradient(var(--glow-1) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glow-1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: matrix 20s linear infinite;
+        }
+
+        /* Flashlight Effect for cards */
+        .flashlight-effect {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .flashlight-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--glow-1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .flashlight-effect:hover::before {
+            opacity: 1;
+        }
+
+        /* Magic Wand Reveal Effect */
+        .magic-wand-reveal {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .magic-wand-reveal::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .magic-wand-reveal:hover::after {
+            left: 100%;
+        }
+
+        /* Typing Effect */
+        .typing-effect {
+            border-right: 3px solid var(--accent-1);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
+        }
+
+        /* 3D Card Effect */
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.6s ease;
+        }
+
+        .card-3d:hover {
+            transform: rotateY(5deg) rotateX(2deg) translateZ(30px);
+        }
+
+        /* Floating Icons - more subtle */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.08;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Holographic Text */
+        .holographic {
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3), var(--accent-4));
+            background-size: 400% 400%;
+            animation: holographic 4s ease-in-out infinite;
+        }
+
+        /* Particle Background */
+        .particle-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Skill Orbit */
+        .skill-orbit {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+        }
+
+        .orbit-path {
+            position: absolute;
+            border: 2px solid var(--glow-1);
+            border-radius: 50%;
+            animation: rotate-3d 10s linear infinite;
+        }
+
+        .orbit-item {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(var(--accent-1-rgb), 0.15); /* Using RGB for transparency */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: bounce-glow 2s ease-in-out infinite;
+        }
+
+        /* Glitch Text Effect */
+        .glitch-text {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+
+        .glitch-text::before,
+        .glitch-text::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .glitch-text::before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--accent-1);
+            z-index: -1;
+        }
+
+        .glitch-text::after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--accent-3);
+            z-index: -2;
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2), var(--accent-3));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cyber Button */
+        .cyber-button {
+            position: relative;
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+            border: none;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .cyber-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cyber-button:hover::before {
+            left: 100%;
+        }
+
+        .cyber-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px var(--glow-1);
+        }
+
+        /* Timeline Item */
+        .timeline-item {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent-1), var(--accent-2));
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-1);
+            box-shadow: 0 0 10px var(--glow-1);
+        }
+
+        /* Project Card */
+        .project-card {
+            position: relative;
+            background: var(--secondary-bg);
+            border: 1px solid rgba(var(--accent-1-rgb), 0.25);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(var(--accent-1-rgb), 0.08) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(var(--accent-1-rgb), 0.4);
+            box-shadow: 0 15px 30px rgba(var(--accent-1-rgb), 0.15);
+        }
+
+        /* Tech Stack Tags */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 16px;
+        }
+
+        .tech-tag {
+            background: rgba(var(--accent-1-rgb), 0.15);
+            border: 1px solid rgba(var(--accent-1-rgb), 0.4);
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 13px;
+            color: var(--accent-1);
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .tech-tag:hover {
+            background: rgba(var(--accent-1-rgb), 0.25);
+            transform: translateY(-2px);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--primary-bg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(45deg, var(--accent-2), var(--accent-1));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, var(--primary-bg) 0%, var(--secondary-bg) 30%, rgba(var(--accent-2-rgb), 0.7) 70%, rgba(var(--primary-bg-rgb), 0.95) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 1s ease;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px !important;
+            height: 96px;
+            border-radius: 30px;
+            width: 15px;
+            margin: 0 4px;
+            padding: 10px 0;
+            color: white;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Hover effects */
+        .loader:hover {
+            background: linear-gradient(45deg,
+                    var(--accent-3), var(--accent-1), var(--accent-2), var(--accent-4));
+        }
+
+        .wave-text-container span {
+            display: inline-block;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        /* Optional: Add a subtle glow effect */
+        .wave-text-container span {
+            transition: text-shadow 0.3s ease;
+        }
+
+        .wave-text-container span:hover {
+            text-shadow: 0 0 30px rgba(255, 255, 255, 0.8);
+        }
+
+        /* Active navigation link highlighting */
+        .nav-link.active {
+            color: var(--accent-1);
+            text-shadow: 0 0 8px var(--glow-1);
+        }
+
+        .nav-link.active::after {
+            width: 100% !important;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .nav-links-desktop {
+                display: none;
+            }
+
+            #mobile-menu {
+                display: none;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #mobile-menu.flex {
+                display: flex;
+            }
+
+            .hero-content {
+                margin-top: 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body class="text-white min-h-screen">
+    <!-- Color Scheme Selector (for demonstration) -->
+    <div class="fixed top-20 right-4 z-[10001] bg-gray-800 p-2 rounded-lg shadow-lg flex flex-col gap-2">
+        <label for="colorScheme" class="text-sm text-gray-300 mb-1">Color Scheme:</label>
+        <select id="colorScheme" class="bg-gray-700 text-white text-sm rounded-md p-1">
+            <option value="default">Deep Ocean (Default)</option>
+            <option value="crimson-nebula">Crimson Nebula</option>
+            <option value="emerald-matrix">Emerald Matrix</option>
+        </select>
+    </div>
+
+    <!-- Loading Screen for initial page load -->
+    <div class="loading-screen" id="loadingScreen">
+        <!-- Wave animated text loader -->
+        <div class="wave-text-container">
+            <!-- Letters are generated by JavaScript for the wave animation -->
+        </div>
+    </div>
+
+    <!-- Canvas for 3D effects -->
+    <canvas id="cyber-canvas" class="particle-bg"></canvas>
+
+    <!-- Matrix background -->
+    <div class="matrix-bg cyber-grid"></div>
+
+    <!-- Floating icons -->
+    <div class="floating-icons">
+        <div class="floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;">
+            <i data-lucide="cpu" class="w-8 h-8 text-accent-1"></i>
+        </div>
+        <div class="floating-icon" style="top: 20%; right: 10%; animation-delay: 1s;">
+            <i data-lucide="database" class="w-6 h-6 text-accent-2"></i>
+        </div>
+        <div class="floating-icon" style="top: 60%; left: 5%; animation-delay: 2s;">
+            <i data-lucide="code" class="w-7 h-7 text-accent-3"></i>
+        </div>
+        <div class="floating-icon" style="top: 80%; right: 15%; animation-delay: 3s;">
+            <i data-lucide="brain" class="w-5 h-5 text-accent-4"></i>
+        </div>
+        <div class="floating-icon" style="top: 30%; left: 40%; animation-delay: 0.5s;">
+            <i data-lucide="cloud" class="w-7 h-7 text-accent-4"></i>
+        </div>
+        <div class="floating-icon" style="top: 70%; left: 30%; animation-delay: 2.5s;">
+            <i data-lucide="rocket" class="w-6 h-6 text-accent-1"></i>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass-morphism">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="holographic text-transparent bg-clip-text text-xl font-bold">
+                        Ali Mantache
+                    </div>
+                </div>
+                <!-- Desktop Navigation Links -->
+                <div class="hidden md:block nav-links-desktop">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#hero"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#experience"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#projects"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#education"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                        <a href="#contact"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-accent-1">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Navigation Menu (initially hidden, will be toggled by JS) -->
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-16 left-0 w-full bg-gray-900 py-4 flex-col items-center space-y-4">
+            <a href="#hero"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="#about"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">About</a>
+            <a href="#skills"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Skills</a>
+            <a href="#experience"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Experience</a>
+            <a href="#projects"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Projects</a>
+            <a href="#education"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Education</a>
+            <a href="#contact"
+                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center relative">
+        <div class="text-center z-10 max-w-4xl mx-auto px-4">
+            <div class="mb-8">
+                <h1 class="text-4xl md:text-7xl font-bold mb-4">
+                    <span class="glitch-text gradient-text" data-text="Ali Mantache">Ali Mantache</span>
+                </h1>
+                <div class="text-xl md:text-2xl text-text-secondary mb-4">
+                    <span class="typing-effect">AI Engineer & Futuristic Developer</span>
+                </div>
+                <p class="text-lg text-text-secondary max-w-2xl mx-auto mb-8">
+                    Crafting the future of web development with AI-powered solutions and cutting-edge 3D experiences
+                </p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <button class="cyber-button magic-wand-reveal">
+                    <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
+                    Explore My Work
+                </button>
+                <button class="cyber-button magic-wand-reveal">
+                    <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                    Download CV
+                </button>
+            </div>
+
+            <div class="mt-12 flex justify-center space-x-6">
+                <a href="https://github.com/alimantache" target="_blank"
+                    class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="github" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                    class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
+                </a>
+                <a href="mailto:alimantache1994@gmail.com"
+                    class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
+                    <i data-lucide="mail" class="w-6 h-6 text-white"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-8 h-8 text-accent-1"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">About Me</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-lg text-text-secondary leading-relaxed">
+                        I'm Ali Mantache, a passionate AI Engineer and Full Stack Developer with 5+ years of experience
+                        in creating innovative, scalable solutions. Based in Beirut, Lebanon, I specialize in merging
+                        cutting-edge AI technologies with modern web development to build the future of digital
+                        experiences.
+                    </p>
+                    <p class="text-lg text-text-secondary leading-relaxed">
+                        My journey spans from research and development in AI to teaching and mentoring over 300+
+                        students across various institutions. I believe in the power of technology to transform ideas
+                        into reality and create meaningful impact in the digital world.
+                    </p>
+
+                    <div class="flex flex-wrap gap-4 mt-8">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-accent-1"></i>
+                            <span class="text-text-secondary">Beirut, Lebanon</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="phone" class="w-5 h-5 text-accent-1"></i>
+                            <span class="text-text-secondary">(+961) 76 008 743</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="mail" class="w-5 h-5 text-accent-1"></i>
+                            <span class="text-text-secondary">alimantache1994@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative">
+                    <div class="skill-orbit">
+                        <div class="orbit-path" style="width: 100%; height: 100%; top: 0; left: 0;">
+                            <div class="orbit-item" style="top: -20px; left: 50%; transform: translateX(-50%);">
+                                <i data-lucide="brain" class="w-6 h-6 text-accent-1"></i>
+                            </div>
+                        </div>
+                        <div class="orbit-path" style="width: 80%; height: 80%; top: 10%; left: 10%;">
+                            <div class="orbit-item" style="top: -20px; right: -20px;">
+                                <i data-lucide="code" class="w-6 h-6 text-accent-2"></i>
+                            </div>
+                        </div>
+                        <div class="orbit-path" style="width: 60%; height: 60%; top: 20%; left: 20%;">
+                            <div class="orbit-item" style="bottom: -20px; left: 50%; transform: translateX(-50%);">
+                                <i data-lucide="database" class="w-6 h-6 text-accent-3"></i>
+                            </div>
+                        </div>
+                        <div
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center">
+                            <i data-lucide="user" class="w-8 h-8 text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-stats mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div
+                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="award" class="w-10 h-10 text-accent-1 mx-auto mb-3"></i>
+                    <span class="text-3xl font-bold text-accent-1 block">5+</span>
+                    <span class="text-text-secondary">Years Experience</span>
+                </div>
+                <div
+                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="users" class="w-10 h-10 text-accent-2 mx-auto mb-3"></i>
+                    <span class="text-3xl font-bold text-accent-2 block">300+</span>
+                    <span class="text-text-secondary">Students Trained</span>
+                </div>
+                <div
+                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="lightbulb" class="w-10 h-10 text-accent-3 mx-auto mb-3"></i>
+                    <span class="text-3xl font-bold text-accent-3 block">50+</span>
+                    <span class="text-text-secondary">Projects Completed</span>
+                </div>
+                <div
+                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="zap" class="w-10 h-10 text-accent-4 mx-auto mb-3"></i>
+                    <span class="text-3xl font-bold text-accent-4 block">15+</span>
+                    <span class="text-text-secondary">Technologies Mastered</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Core Skills</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="brain" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">AI Engineering</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Advanced machine learning and AI
+                        integration, focusing on practical applications and scalable solutions.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">LLMs</span>
+                        <span class="tech-tag">LoRA</span>
+                        <span class="tech-tag">LangChain</span>
+                        <span class="tech-tag">Transformers</span>
+                        <span class="tech-tag">YOLO</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="code" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Full Stack Development</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">End-to-end web application development,
+                        building robust and high-performing systems.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">TypeScript</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="database" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Database & Cloud</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable database design, optimization, and
+                        cloud deployment strategies for robust applications.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Redis</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">MySQL</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-4 to-accent-1 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="git-branch" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">DevOps & Architecture</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Designing and implementing scalable system
+                        architectures and automated deployment pipelines.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Microservices</span>
+                        <span class="tech-tag">CI/CD</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Socket.io</span>
+                        <span class="tech-tag">Kafka</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="palette" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">UI/UX Design</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Crafting intuitive and visually stunning
+                        user interfaces with a focus on exceptional user experience.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Tailwind CSS</span>
+                        <span class="tech-tag">Shadcn/UI</span>
+                        <span class="tech-tag">Figma</span>
+                        <span class="tech-tag">Bootstrap</span>
+                        <span class="tech-tag">Responsive</span>
+                        <span class="tech-tag">3D Effects</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="users" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold">Leadership & Mentoring</h3>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Leading development teams, fostering growth,
+                        and sharing knowledge to build high-performing talent.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Agile/Scrum</span>
+                        <span class="tech-tag">Teaching</span>
+                        <span class="tech-tag">Mentoring</span>
+                        <span class="tech-tag">Team Lead</span>
+                        <span class="tech-tag">Project Mgmt</span>
+                        <span class="tech-tag">Training</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Experience</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+            </div>
+
+            <div class="space-y-8">
+                <div class="timeline-item">
+                    <div class="project-card magic-wand-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-semibold gradient-text">Research and Development AI Engineer
+                                </h3>
+                                <p class="text-accent-1 text-lg">Intelligencia.fr | Remote</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-2 md:mt-0">
+                                <i data-lucide="calendar" class="w-4 h-4 text-accent-2"></i>
+                                <span class="text-accent-2 font-medium">2024 - Present</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-text-secondary text-base">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="brain" class="w-5 h-5 text-accent-1 mt-0.5"></i>
+                                <p>Contributed to AI research projects, specializing in LLM fine-tuning, system
+                                    integration, and scalable AI-driven solutions.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="users" class="w-5 h-5 text-accent-2 mt-0.5"></i>
+                                <p>Collaborated with cross-functional teams to integrate AI capabilities into product
+                                    offerings.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="code" class="w-5 h-5 text-accent-3 mt-0.5"></i>
+                                <p>Developed responsive frontend web interfaces using React.js, Node.js, and Vanilla
+                                    JavaScript with robust input validation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="project-card magic-wand-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-semibold gradient-text">Technical Instructor & Mentor</h3>
+                                <p class="text-accent-1 text-lg">Various Institutions</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-2 md:mt-0">
+                                <i data-lucide="calendar" class="w-4 h-4 text-accent-2"></i>
+                                <span class="text-accent-2 font-medium">2017 - 2024</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-text-secondary text-base">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="graduation-cap" class="w-5 h-5 text-accent-1 mt-0.5"></i>
+                                <p>Led 6 cycles as Lead Instructor at ESA Coding Lab (partnership with ESIEE-IT France
+                                    and AFD).</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="book-open" class="w-5 h-5 text-accent-2 mt-0.5"></i>
+                                <p>Conducted 3 MERN Stack bootcamps with Tatweer Baladna Organization.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="users" class="w-5 h-5 text-accent-3 mt-0.5"></i>
+                                <p>Trained 300+ students across multiple technologies and locations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="project-card magic-wand-reveal">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-semibold gradient-text">Full Stack Developer | Web Development
+                                    Lead</h3>
+                                <p class="text-accent-1 text-lg">Software Development Company + Freelance</p>
+                            </div>
+                            <div class="flex items-center space-x-2 mt-2 md:mt-0">
+                                <i data-lucide="calendar" class="w-4 h-4 text-accent-2"></i>
+                                <span class="text-accent-2 font-medium">2020 - 2022</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3 text-text-secondary text-base">
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="users" class="w-5 h-5 text-accent-1 mt-0.5"></i>
+                                <p>Led a development team of 15, mentoring and delivering end-to-end web projects.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="shopping-cart" class="w-5 h-5 text-accent-2 mt-0.5"></i>
+                                <p>Built a full-featured POS system with real-time inventory tracking and invoicing.</p>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i data-lucide="globe" class="w-5 h-5 text-accent-3 mt-0.5"></i>
+                                <p>Implemented Agile practices and SEO optimization for improved collaboration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Featured Projects</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="message-circle" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Enterprise AI Chatbot</h3>
+                            <p class="text-accent-1 text-sm">2025</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">AI-powered chatbot with dynamic database
+                        CRUD operations and natural
+                        language processing capabilities.</p>
+                    <div class="space-y-2 text-sm text-text-muted mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-accent-4"></i>
+                            <span>Fine-tuned TinyLlama-1.1B with LoRA techniques</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="shield" class="w-4 h-4 text-accent-4"></i>
+                            <span>Secure JWT authentication & input sanitization</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="chart-bar" class="w-4 h-4 text-accent-3"></i>
+                            <span>Interactive data visualization & CSV export</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">LoRA</span>
+                        <span class="tech-tag">LangChain</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="database" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Dynamic SaaS Database System</h3>
+                            <p class="text-accent-1 text-sm">2024</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Multi-tenant SaaS platform with secure
+                        database isolation and dynamic
+                        schema operations.</p>
+                    <div class="space-y-2 text-sm text-text-muted mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="users" class="w-4 h-4 text-accent-4"></i>
+                            <span>Multi-tenant architecture with data isolation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="settings" class="w-4 h-4 text-accent-4"></i>
+                            <span>Dynamic schema operations & validation</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="container" class="w-4 h-4 text-accent-3"></i>
+                            <span>Containerized deployment with Docker</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Next.js</span>
+                        <span class="tech-tag">Docker</span>
+                        <span class="tech-tag">Shadcn/UI</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="music" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">AI Music Discovery Platform</h3>
+                            <p class="text-accent-1 text-sm">2024</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Full-stack music discovery platform with
+                        Google Gemini AI and Spotify
+                        API integration.</p>
+                    <div class="space-y-2 text-sm text-text-muted mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="brain" class="w-4 h-4 text-accent-4"></i>
+                            <span>Google Gemini AI integration</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="grid-3x3" class="w-4 h-4 text-accent-4"></i>
+                            <span>Responsive grid-based UI design</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="message-square" class="w-4 h-4 text-accent-3"></i>
+                            <span>Intelligent contextual chat system</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">Express.js</span>
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Spotify API</span>
+                        <span class="tech-tag">Gemini AI</span>
+                    </div>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect">
+                    <div class="flex items-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-gradient-to-r from-accent-4 to-accent-1 rounded-full flex items-center justify-center mr-4">
+                            <i data-lucide="activity" class="w-6 h-6 text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-semibold">Real-Time Data Streaming Platform</h3>
+                            <p class="text-accent-1 text-sm">2024</p>
+                        </div>
+                    </div>
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable real-time event correlation system
+                        with computer vision
+                        capabilities.</p>
+                    <div class="space-y-2 text-sm text-text-muted mb-4">
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="zap" class="w-4 h-4 text-accent-4"></i>
+                            <span>Apache Kafka & Spark data processing</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="eye" class="w-4 h-4 text-accent-4"></i>
+                            <span>YOLOv8 & OpenCV object detection</span>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <i data-lucide="bar-chart" class="w-4 h-4 text-accent-3"></i>
+                            <span>Real-time data visualization</span>
+                        </div>
+                    </div>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Kafka</span>
+                        <span class="tech-tag">Spark</span>
+                        <span class="tech-tag">YOLOv8</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">React.js</span>
+                        <span class="tech-tag">FastAPI</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education & Certifications Section -->
+    <section id="education" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Education & Certifications</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div>
+                    <h3 class="text-2xl font-semibold gradient-text mb-8 flex items-center">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 mr-3"></i>
+                        Education
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="book" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">Master's Degree in Computer Science</h4>
+                                    <p class="text-accent-1">Lebanese University | Faculty of Sciences</p>
+                                    <p class="text-text-secondary text-sm">2015 - 2017</p>
+                                    <p class="text-text-secondary text-sm mt-2">Risk Management Specialization</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-start space-x-4">
+                                <div
+                                    class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="computer" class="w-6 h-6 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-semibold">Bachelor's Degree in Computer Science</h4>
+                                    <p class="text-accent-1">Lebanese University | Faculty of Sciences</p>
+                                    <p class="text-text-secondary text-sm">2012 - 2015</p>
+                                    <p class="text-text-secondary text-sm mt-2">Core Computer Science Curriculum</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h3 class="text-2xl font-semibold gradient-text mb-8 flex items-center">
+                        <i data-lucide="award" class="w-8 h-8 mr-3"></i>
+                        Certifications
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 bg-gradient-to-r from-accent-4 to-accent-1 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="brain" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">GenAI, Prompt Engineering, Employability Skills</h4>
+                                    <p class="text-accent-1 text-sm">SE Factory | 2025</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="git-branch" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">DevOps, MLOps, WebFlow, Time Management</h4>
+                                    <p class="text-accent-1 text-sm">SE Factory | 2025</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="code" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Full Stack Web Developer Certification</h4>
+                                    <p class="text-accent-1 text-sm">ESIEE[IT] France | 2022</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="project-card magic-wand-reveal">
+                            <div class="flex items-center space-x-3">
+                                <div
+                                    class="w-8 h-8 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Ethical Hacking Foundation</h4>
+                                    <p class="text-accent-1 text-sm">Semicolon Academy | 2022</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold gradient-text mb-4">Get In Touch</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-accent-1 to-accent-2 mx-auto"></div>
+                <p class="text-text-secondary mt-6 max-w-2xl mx-auto text-base leading-relaxed">
+                    Ready to collaborate on your next AI-powered project? Let's build something amazing together.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div class="project-card card-3d flashlight-effect text-center">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="phone" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Phone</h3>
+                    <p class="text-text-secondary text-base">(+961) 76 008 743</p>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect text-center">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="mail" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Email</h3>
+                    <p class="text-text-secondary text-base">alimantache1994@gmail.com</p>
+                </div>
+
+                <div class="project-card card-3d flashlight-effect text-center">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="map-pin" class="w-8 h-8 text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Location</h3>
+                    <p class="text-text-secondary text-base">Beirut, Lebanon</p>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/alimantache" target="_blank"
+                        class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="github" class="w-6 h-6 text-white"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                        class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
+                    </a>
+                    <a href="mailto:alimantache1994@gmail.com"
+                        class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="mail" class="w-6 h-6 text-white"></i>
+                    </a>
+                </div>
+                <button class="cyber-button magic-wand-reveal">
+                    <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                    Download CV
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="py-12 bg-gradient-to-r from-primary-bg to-secondary-bg border-t border-accent-1/20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 text-center z-10 relative">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <!-- Left: Logo & Slogan -->
+                <div class="mb-6 md:mb-0 text-center md:text-left animate-slide-in-left">
+                    <div class="holographic text-transparent bg-clip-text text-3xl font-extrabold mb-2">
+                        Ali Mantache
+                    </div>
+                    <p class="text-text-secondary text-lg">Innovating at the intersection of AI and Web3.</p>
+                </div>
+
+                <!-- Center: Navigation Links -->
+                <div class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-6 md:mb-0 animate-fade-in-up">
+                    <a href="#hero"
+                        class="text-text-secondary hover:text-accent-1 transition-colors duration-300 text-lg font-medium">Home</a>
+                    <a href="#about"
+                        class="text-text-secondary hover:text-accent-1 transition-colors duration-300 text-lg font-medium">About</a>
+                    <a href="#skills"
+                        class="text-text-secondary hover:text-accent-1 transition-colors duration-300 text-lg font-medium">Skills</a>
+                    <a href="#projects"
+                        class="text-text-secondary hover:text-accent-1 transition-colors duration-300 text-lg font-medium">Projects</a>
+                    <a href="#contact"
+                        class="text-text-secondary hover:text-accent-1 transition-colors duration-300 text-lg font-medium">Contact</a>
+                </div>
+
+                <!-- Right: Social Links -->
+                <div class="flex justify-center space-x-6 animate-slide-in-right">
+                    <a href="https://github.com/alimantache" target="_blank"
+                        class="w-10 h-10 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="github" class="w-5 h-5 text-white"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                        class="w-10 h-10 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
+                    </a>
+                    <a href="mailto:alimantache1994@gmail.com"
+                        class="w-10 h-10 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
+                        <i data-lucide="mail" class="w-5 h-5 text-white"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="border-t border-text-muted/30 pt-8 mt-8">
+                <p class="text-text-muted text-sm">&copy; 2025 Ali Mantache. All rights reserved. | Powered by Galactic AI
+                    Networks</p>
+                <p class="text-text-secondary text-sm mt-2">Crafted with passion and AI magic from the future.</p>
+            </div>
+        </div>
+        <!-- Animated Grid Overlay for Footer -->
+        <div class="absolute inset-0 cyber-grid opacity-10 z-0"></div>
+    </footer>
+
+    <script>
+        // Function to convert hex to RGB
+        function hexToRgb(hex) {
+            let r = 0, g = 0, b = 0;
+            // Handle 3-digit hex
+            if (hex.length === 4) {
+                r = parseInt(hex[1] + hex[1], 16);
+                g = parseInt(hex[2] + hex[2], 16);
+                b = parseInt(hex[3] + hex[3], 16);
+            }
+            // Handle 6-digit hex
+            else if (hex.length === 7) {
+                r = parseInt(hex.substring(1, 3), 16);
+                g = parseInt(hex.substring(3, 5), 16);
+                b = parseInt(hex.substring(5, 7), 16);
+            }
+            return `${r}, ${g}, ${b}`;
+        }
+
+        // Function to apply color scheme
+        function applyColorScheme(schemeName) {
+            const root = document.documentElement;
+            let colors = {};
+
+            switch (schemeName) {
+                case 'crimson-nebula':
+                    colors = {
+                        '--primary-bg': '#1a051d',
+                        '--secondary-bg': '#2d0a33',
+                        '--accent-1': '#ff0055',
+                        '--accent-2': '#8a00ff',
+                        '--accent-3': '#ff6600',
+                        '--accent-4': '#00ffcc',
+                        '--text-primary': '#f0e6f2',
+                        '--text-secondary': '#c9b8cc',
+                        '--text-muted': '#9e8e9f',
+                        '--glass-bg': 'rgba(45, 10, 51, 0.7)',
+                        '--glass-border': 'rgba(138, 0, 255, 0.3)',
+                        '--glow-1': 'rgba(255, 0, 85, 0.5)',
+                        '--glow-2': 'rgba(138, 0, 255, 0.8)',
+                    };
+                    break;
+                case 'emerald-matrix':
+                    colors = {
+                        '--primary-bg': '#051a0f',
+                        '--secondary-bg': '#0a2d1a',
+                        '--accent-1': '#00ff88',
+                        '--accent-2': '#00ccff',
+                        '--accent-3': '#ffcc00',
+                        '--accent-4': '#cc00ff',
+                        '--text-primary': '#e6f2e9',
+                        '--text-secondary': '#b8ccbf',
+                        '--text-muted': '#8e9f94',
+                        '--glass-bg': 'rgba(10, 45, 26, 0.7)',
+                        '--glass-border': 'rgba(0, 255, 136, 0.3)',
+                        '--glow-1': 'rgba(0, 255, 136, 0.5)',
+                        '--glow-2': 'rgba(0, 204, 255, 0.8)',
+                    };
+                    break;
+                case 'default':
+                default:
+                    colors = {
+                        '--primary-bg': '#020617',
+                        '--secondary-bg': '#0f172a',
+                        '--accent-1': '#00f5ff',
+                        '--accent-2': '#8b5cf6',
+                        '--accent-3': '#ec4899',
+                        '--accent-4': '#00ff88',
+                        '--text-primary': '#e2e8f0',
+                        '--text-secondary': '#94a3b8',
+                        '--text-muted': '#64748b',
+                        '--glass-bg': 'rgba(15, 23, 42, 0.7)',
+                        '--glass-border': 'rgba(71, 85, 105, 0.3)',
+                        '--glow-1': 'rgba(0, 245, 255, 0.5)',
+                        '--glow-2': 'rgba(139, 92, 246, 0.8)',
+                    };
+                    break;
+            }
+
+            for (const [key, value] of Object.entries(colors)) {
+                root.style.setProperty(key, value);
+            }
+
+            // Also update RGB values for transparent colors in CSS
+            root.style.setProperty('--accent-1-rgb', hexToRgb(colors['--accent-1']));
+            root.style.setProperty('--accent-2-rgb', hexToRgb(colors['--accent-2']));
+            root.style.setProperty('--accent-3-rgb', hexToRgb(colors['--accent-3']));
+            root.style.setProperty('--accent-4-rgb', hexToRgb(colors['--accent-4']));
+            root.style.setProperty('--primary-bg-rgb', hexToRgb(colors['--primary-bg']));
+
+            // Update Tailwind config colors dynamically (requires re-init or specific handling)
+            // For simplicity, we're relying on CSS variables directly in most places now.
+            // If you need to use Tailwind classes that directly reference these new colors,
+            // you'd need a more complex setup or regenerate Tailwind CSS.
+            // For now, direct CSS variable usage is preferred for dynamic changes.
+
+            // Update the loading screen background based on the new scheme
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.style.background = `linear-gradient(120deg, var(--primary-bg) 0%, var(--secondary-bg) 30%, rgba(${hexToRgb(colors['--accent-2'])}, 0.698) 70%, rgba(${hexToRgb(colors['--primary-bg'])}, 0.95) 100%)`;
+            }
+
+            // Update Three.js particle colors
+            if (typeof scene !== 'undefined' && particlesGeometry && particlesMaterial) {
+                const newAccent1 = new THREE.Color(colors['--accent-1']);
+                const newAccent2 = new THREE.Color(colors['--accent-2']);
+                const newAccent3 = new THREE.Color(colors['--accent-3']);
+                const newAccent4 = new THREE.Color(colors['--accent-4']);
+
+                const colorsArray = particlesGeometry.attributes.color.array;
+                const positionsArray = particlesGeometry.attributes.position.array;
+
+                for (let i = 0; i < particlesCount; i++) {
+                    const color = new THREE.Color();
+                    // Distribute colors based on position or a random factor for variety
+                    const rand = Math.random();
+                    if (rand < 0.25) color.copy(newAccent1);
+                    else if (rand < 0.5) color.copy(newAccent2);
+                    else if (rand < 0.75) color.copy(newAccent3);
+                    else color.copy(newAccent4);
+
+                    colorsArray[i * 3] = color.r;
+                    colorsArray[i * 3 + 1] = color.g;
+                    colorsArray[i * 3 + 2] = color.b;
+                }
+                particlesGeometry.attributes.color.needsUpdate = true;
+
+                // Update line material color
+                lineMaterial.color.set(newAccent1);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const loadingScreen = document.getElementById('loadingScreen');
+            const mainContent = document.getElementById('mainContent'); // Ensure you have a main content wrapper
+            const container = document.querySelector('.wave-text-container');
+            const text = 'Ali Mantache';
+
+            // Initial color scheme application
+            applyColorScheme('default');
+
+            // Color scheme selector event listener
+            const colorSchemeSelector = document.getElementById('colorScheme');
+            if (colorSchemeSelector) {
+                colorSchemeSelector.addEventListener('change', (event) => {
+                    applyColorScheme(event.target.value);
+                });
+            }
+
+            // Clear any hardcoded content and create animated spans
+            if (container) {
+                container.innerHTML = '';
+                text.split('').forEach((char, i) => {
+                    const span = document.createElement('span');
+                    span.style.display = 'inline-block'; // Needed for transforms
+                    span.style.animation = 'wave 1s ease-in-out infinite';
+                    // Stagger the animation delay for each letter to create the wave effect
+                    span.style.animationDelay = `${i * 0.1}s`;
+
+                    if (char === ' ') {
+                        // Use a non-breaking space and give it a specific width to create a gap
+                        span.innerHTML = '&nbsp;';
+                        span.style.width = '1rem';
+                    } else {
+                        span.textContent = char;
+                        span.classList.add('loader', 'holographic', 'font-bold'); // Add classes for styling
+                    }
+                    container.appendChild(span);
+                });
+            }
+
+            // Hide the loading screen after a delay to show the animation
+            setTimeout(() => {
+                if (loadingScreen) {
+                    loadingScreen.classList.add('hidden');
+                    // If you have a main content wrapper, make it visible here
+                    // if (mainContent) {
+                    //     mainContent.classList.add('visible');
+                    // }
+                }
+            }, 3000); // Show animation for 3 seconds
+        });
+
+
+        // Three.js Scene Setup for background particles
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({
+            canvas: document.getElementById('cyber-canvas'),
+            alpha: true, // Enable transparency for background blend
+            antialias: true
+        });
+
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+
+        // Create particle system with varying colors and sizes
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 800; // Reduced particle count for simplicity
+        const positions = new Float32Array(particlesCount * 3);
+        const colors = new Float32Array(particlesCount * 3);
+        const sizes = new Float32Array(particlesCount);
+
+        for (let i = 0; i < particlesCount; i++) {
+            // Random positions within a large cube
+            positions[i * 3] = (Math.random() - 0.5) * 150; // Slightly smaller spread
+            positions[i * 3 + 1] = (Math.random() - 0.5) * 150;
+            positions[i * 3 + 2] = (Math.random() - 0.5) * 150;
+
+            // Assign colors dynamically based on current scheme
+            const color = new THREE.Color();
+            // Initial color set (will be updated by applyColorScheme)
+            color.set(getComputedStyle(document.documentElement).getPropertyValue('--accent-1'));
+            colors[i * 3] = color.r;
+            colors[i * 3 + 1] = color.g;
+            colors[i * 3 + 2] = color.b;
+
+            // Random sizes for particles - smaller
+            sizes[i] = Math.random() * 1 + 0.5; // Sizes between 0.5 and 1.5
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+        particlesGeometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 1.0, // Base size, will be multiplied by attribute
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.6, // Reduced opacity
+            blending: THREE.AdditiveBlending, // For glowing effect
+            sizeAttenuation: true
+        });
+
+        // Custom shader for varying particle sizes and a subtle glow
+        particlesMaterial.onBeforeCompile = (shader) => {
+            shader.vertexShader = `
+                attribute float size;
+                varying vec3 vColor;
+                void main() {
+                    vColor = color;
+                    vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                    gl_PointSize = size * ( 300.0 / -mvPosition.z );
+                    gl_Position = projectionMatrix * mvPosition;
+                }
+            `;
+            shader.fragmentShader = `
+                varying vec3 vColor;
+                void main() {
+                    float r = distance(gl_PointCoord, vec2(0.5));
+                    if (r > 0.5) discard;
+                    gl_FragColor = vec4( vColor, (1.0 - r * 2.0) * 0.7 ); // Fade out towards the edges, more subtle
+                }
+            `;
+        };
+
+        const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesMesh);
+
+        // Lines connecting particles (network effect) - further simplified
+        const lineMaterial = new THREE.LineBasicMaterial({
+            color: new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--accent-1')), // Initial color
+            transparent: true,
+            opacity: 0.02, // Very, very subtle lines
+            blending: THREE.AdditiveBlending
+        });
+
+        const maxDistance = 10; // Max distance for lines to connect - reduced
+        const lineSegments = new Float32Array(particlesCount * particlesCount * 3 * 2);
+        let lineIndex = 0;
+
+        for (let i = 0; i < particlesCount; i++) {
+            const p1 = new THREE.Vector3(positions[i * 3], positions[i * 3 + 1], positions[i * 3 + 2]);
+            for (let j = i + 1; j < particlesCount; j++) {
+                const p2 = new THREE.Vector3(positions[j * 3], positions[j * 3 + 1], positions[j * 3 + 2]);
+                if (p1.distanceTo(p2) < maxDistance) {
+                    lineSegments[lineIndex++] = p1.x;
+                    lineSegments[lineIndex++] = p1.y;
+                    lineSegments[lineIndex++] = p1.z;
+
+                    lineSegments[lineIndex++] = p2.x;
+                    lineSegments[lineIndex++] = p2.y;
+                    lineSegments[lineIndex++] = p2.z;
+                }
+            }
+        }
+
+        const linesGeometry = new THREE.BufferGeometry();
+        linesGeometry.setAttribute('position', new THREE.BufferAttribute(lineSegments.slice(0, lineIndex), 3));
+        const linesMesh = new THREE.LineSegments(linesGeometry, lineMaterial);
+        scene.add(linesMesh);
+
+        camera.position.z = 50;
+
+        // Mouse interaction for camera movement - made less sensitive
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX / window.innerWidth) * 2 - 1;
+            mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
+        });
+
+        // Animation loop for background particles
+        const animate = () => {
+            requestAnimationFrame(animate);
+
+            // Smooth camera movement based on mouse position - less aggressive
+            targetX += (mouseX - targetX) * 0.03;
+            targetY += (mouseY - targetY) * 0.03;
+
+            camera.position.x += (targetX * 3 - camera.position.x) * 0.02; // Reduced sensitivity
+            camera.position.y += (targetY * 3 - camera.position.y) * 0.02;
+            camera.lookAt(scene.position);
+
+            // Rotate particles and lines slowly
+            particlesMesh.rotation.x += 0.0001; // Slower rotation
+            particlesMesh.rotation.y += 0.00015; // Slower rotation
+            linesMesh.rotation.x = particlesMesh.rotation.x;
+            linesMesh.rotation.y = particlesMesh.rotation.y;
+
+            renderer.render(scene, camera);
+        };
+
+        // Start the background particle animation loop and initialize Lucide icons
+        window.onload = function () {
+            animate();
+            lucide.createIcons();
+        }
+
+        // Handle window resize for background particles
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open after clicking a link
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                        // Ensure 'flex' is removed when 'hidden' is added
+                        mobileMenu.classList.remove('flex');
+                    }
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations on scroll
+        const observerOptions = {
+            threshold: 0.15,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Apply different animations based on element type or class
+                    if (entry.target.classList.contains('animate-slide-in-left')) {
+                        entry.target.style.animation = 'slideInLeft 0.8s ease-out forwards';
+                    } else if (entry.target.classList.contains('animate-slide-in-right')) {
+                        entry.target.style.animation = 'slideInRight 0.8s ease-out forwards';
+                    } else {
+                        entry.target.style.animation = 'fadeInUp 0.8s ease-out forwards';
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and cards for animation
+        document.querySelectorAll('section:not(#hero), .project-card, .timeline-item, .stat-item, footer .animate-fade-in-up, footer .animate-slide-in-left, footer .animate-slide-in-right').forEach(el => {
+            el.style.opacity = '0'; // Initially hide elements to prevent FOUC
+            observer.observe(el);
+        });
+
+        // Active navigation link highlighting on scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link'); // For desktop
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link'); // For mobile
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+
+            mobileNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                // Toggle 'flex' class to ensure it displays correctly when not hidden
+                mobileMenu.classList.toggle('flex');
+            });
+        }
+    </script>
+</body>
+
+</html>
