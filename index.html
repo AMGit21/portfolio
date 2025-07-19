@@ -859,6 +859,75 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Added for better mobile responsiveness */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.2rem; /* Smaller font size for very small screens */
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .cyber-button {
+                padding: 10px 20px; /* Slightly smaller buttons */
+                font-size: 0.9rem;
+            }
+
+            .flex-col.sm:flex-row {
+                flex-direction: column; /* Ensure buttons stack on small screens */
+            }
+
+            .space-x-6 > *:not(:last-child) {
+                margin-right: 0; /* Remove horizontal spacing for stacked items */
+                margin-bottom: 1rem; /* Add vertical spacing */
+            }
+
+            .space-x-6 {
+                flex-direction: column; /* Stack social icons vertically */
+                align-items: center;
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr; /* Stack stats vertically on very small screens */
+            }
+
+            .project-card {
+                padding: 16px; /* Reduce padding on project cards */
+            }
+
+            .tech-tag {
+                font-size: 12px; /* Smaller tech tags */
+                padding: 3px 10px;
+            }
+
+            .timeline-item {
+                padding-left: 20px; /* Adjust timeline padding */
+                margin-bottom: 20px;
+            }
+
+            .timeline-item::after {
+                left: -6px; /* Adjust circle position */
+                top: 6px;
+            }
+
+            .footer .flex-wrap {
+                flex-direction: column; /* Stack footer links */
+                gap: 1rem;
+            }
+            
+            .footer .flex-wrap > * {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer .space-x-6 {
+                flex-direction: row; /* Keep social icons horizontal in footer */
+                justify-content: center;
+                margin-top: 1rem;
+            }
+        }
     </style>
 </head>
 
