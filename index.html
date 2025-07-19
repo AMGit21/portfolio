@@ -859,6 +859,99 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
+        /* Added for better mobile responsiveness */
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .cyber-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+
+            /* Ensure hero section buttons stack vertically */
+            .hero-buttons-container {
+                flex-direction: column;
+            }
+
+            .hero-buttons-container > *:not(:last-child) {
+                margin-bottom: 1rem;
+                margin-right: 0;
+            }
+
+            /* Ensure hero social icons remain horizontal */
+            .hero-social-links {
+                flex-direction: row !important; /* Override potential column stacking */
+                justify-content: center;
+                gap: 1.5rem; /* Add some space between icons */
+            }
+
+            .about-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 16px;
+            }
+
+            /* Ensure adequate space between project card content and the "View on GitHub" button */
+            .project-card .space-y-2 {
+                margin-bottom: 1rem; /* Add bottom margin to text block */
+            }
+
+            .tech-tag {
+                font-size: 12px;
+                padding: 3px 10px;
+            }
+
+            .timeline-item {
+                padding-left: 20px;
+                margin-bottom: 20px;
+            }
+
+            .timeline-item::after {
+                left: -6px;
+                top: 6px;
+            }
+
+            .footer .flex-wrap {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .footer .flex-wrap > * {
+                width: 100%;
+                text-align: center;
+            }
+
+            .footer .space-x-6 {
+                flex-direction: row;
+                justify-content: center;
+                margin-top: 1rem;
+            }
+
+            /* Loader text responsiveness */
+            .wave-text-container {
+                white-space: nowrap; /* Prevent text from wrapping */
+                overflow: hidden; /* Hide overflow if it still tries to wrap */
+                text-overflow: ellipsis; /* Add ellipsis if hidden text */
+                max-width: 90%; /* Limit width to prevent overflow on very small screens */
+            }
+
+            .wave-text-container .loader {
+                font-size: 20px !important; /* Smaller font size for loader on very small screens */
+                height: 80px; /* Adjust height if needed */
+                line-height: 80px; /* Adjust line-height to center text vertically */
+                width: 10px; /* Adjust width if needed */
+                margin: 0 8px; /* Adjust margin between characters */
+            }
+        }
     </style>
 </head>
 
@@ -983,7 +1076,7 @@
                     Building intelligent, full-stack solutions that turn ideas into scalable, real-world impact.</p>
             </div>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center hero-buttons-container">
                 <a href="#projects" class="cyber-button magic-wand-reveal">
                     <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
                     Explore My Work
@@ -994,7 +1087,7 @@
                 </a>
             </div>
 
-            <div class="mt-12 flex justify-center space-x-6">
+            <div class="mt-12 flex justify-center space-x-6 hero-social-links">
                 <a href="https://github.com/AMGit21" target="_blank"
                     class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
                     <i data-lucide="github" class="w-6 h-6 text-white"></i>
@@ -1408,7 +1501,7 @@
                         <span class="tech-tag">LangChain</span>
                     </div>
                     <a href="https://github.com/AMGit21" target="_blank"
-                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        class="mt-4 inline-flex items-center mt-4 self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
                         <i data-lucide="github" class="w-5 h-5 mr-2"></i>
                         View on GitHub
                     </a>
@@ -1450,7 +1543,7 @@
                         <span class="tech-tag">Shadcn/UI</span>
                     </div>
                     <a href="https://github.com/AMGit21/Multi-Tenant-Data-Management-System" target="_blank"
-                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        class="mt-4 inline-flex items-center mt-4 self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
                         <i data-lucide="github" class="w-5 h-5 mr-2"></i>
                         View on GitHub
                     </a>
@@ -1494,7 +1587,7 @@
                         <span class="tech-tag">Gemini AI</span>
                     </div>
                     <a href="https://github.com/AMGit21/spotifyGenresArtists-GeminiChat-frontend" target="_blank"
-                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        class="mt-4 inline-flex items-center mt-4 self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
                         <i data-lucide="github" class="w-5 h-5 mr-2"></i>
                         View on GitHub
                     </a>
@@ -1538,7 +1631,7 @@
                         <span class="tech-tag">FastAPI</span>
                     </div>
                     <a href="https://github.com/AMGit21" target="_blank"
-                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        class="mt-4 inline-flex items-center mt-4 self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
                         <i data-lucide="github" class="w-5 h-5 mr-2"></i>
                         View on GitHub
                     </a>
@@ -1700,7 +1793,7 @@
             </div>
 
             <div class="mt-12 text-center">
-                <div class="flex justify-center space-x-6 mb-8">
+                <div class="flex justify-center space-x-6 mb-8 hero-social-links">
                     <a href="https://github.com/AMGit21" target="_blank"
                         class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
                         <i data-lucide="github" class="w-6 h-6 text-white"></i>
