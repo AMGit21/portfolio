@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ali Mantache | AI Engineer & Futuristic Developer</title>
+    <link rel="icon" href="icon.png" type="image/png">
 
     <!-- Fonts -->
     <link
@@ -51,73 +52,8 @@
                         'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
                         'slide-in-left': 'slideInLeft 0.8s ease-out forwards',
                         'slide-in-right': 'slideInRight 0.8s ease-out forwards',
-                        'wave': 'wave 1.8s ease-in-out infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0px)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        glow: {
-                            '0%': { boxShadow: '0 0 20px var(--glow-1)' },
-                            '100%': { boxShadow: '0 0 30px var(--glow-2)' },
-                        },
-                        'pulse-glow': {
-                            '0%, 100%': { opacity: '1', transform: 'scale(1)' },
-                            '50%': { opacity: '0.8', transform: 'scale(1.05)' },
-                        },
-                        typing: {
-                            '0%': { width: '0' },
-                            '100%': { width: '100%' },
-                        },
-                        'blink-caret': {
-                            '0%, 50%': { borderColor: 'transparent' },
-                            '51%, 100%': { borderColor: 'var(--accent-1)' },
-                        },
-                        matrix: {
-                            '0%': { transform: 'translateY(-100vh)' },
-                            '100%': { transform: 'translateY(100vh)' },
-                        },
-                        'rotate-3d': {
-                            '0%': { transform: 'rotateY(0deg)' },
-                            '100%': { transform: 'rotateY(360deg)' },
-                        },
-                        'bounce-glow': {
-                            '0%, 100%': { transform: 'translateY(0)', filter: 'drop-shadow(0 0 20px var(--glow-1))' },
-                            '50%': { transform: 'translateY(-10px)', filter: 'drop-shadow(0 0 30px var(--glow-2))' },
-                        },
-                        shimmer: {
-                            '0%': { transform: 'translateX(-100%)' },
-                            '100%': { transform: 'translateX(100%)' },
-                        },
-                        'border-pulse': {
-                            '0%, 100%': { borderColor: 'var(--glow-1)' },
-                            '50%': { borderColor: 'var(--glow-2)' },
-                        },
-                        spin: {
-                            '0%': { transform: 'rotate(0deg)' },
-                            '100%': { transform: 'rotate(360deg)' },
-                        },
-                        fadeInUp: {
-                            from: { opacity: '0', transform: 'translateY(40px)' },
-                            to: { opacity: '1', transform: 'translateY(0)' },
-                        },
-                        slideInLeft: {
-                            from: { opacity: '0', transform: 'translateX(-50px)' },
-                            to: { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        slideInRight: {
-                            from: { opacity: '0', transform: 'translateX(50px)' },
-                            to: { opacity: '1', transform: 'translateX(0)' },
-                        },
-                        wave: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-15px)' },
-                        },
-                        holographic: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
+                        'wave': 'wave 1.3s ease-in-out infinite',
+                        'holographic': 'holographic 4s ease-in-out infinite',
                     },
                     backdropBlur: {
                         xs: '2px',
@@ -155,23 +91,222 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
-
+        
         /* Custom CSS Variables for a futuristic dark theme */
         :root {
             /* Default Color Scheme (Deep Ocean) */
-            --primary-bg: #020617; /* Darker background */
-            --secondary-bg: #0f172a; /* Slightly lighter dark for sections */
-            --accent-1: #00f5ff; /* Cyan */
-            --accent-2: #8b5cf6; /* Purple */
-            --accent-3: #ec4899; /* Pink */
-            --accent-4: #00ff88; /* Green */
-            --text-primary: #e2e8f0; /* Light gray for main text */
-            --text-secondary: #94a3b8; /* Muted gray for descriptions */
-            --text-muted: #64748b; /* Even more muted for small text */
-            --glass-bg: rgba(15, 23, 42, 0.7); /* Translucent dark for glass effect */
-            --glass-border: rgba(71, 85, 105, 0.3); /* Subtle border for glass */
-            --glow-1: rgba(0, 245, 255, 0.5); /* Glow effect for accent-1 */
-            --glow-2: rgba(139, 92, 246, 0.8); /* Glow effect for accent-2 */
+            --primary-bg: #020617;
+            /* Darker background */
+            --secondary-bg: #0f172a;
+            /* Slightly lighter dark for sections */
+            --accent-1: #00f5ff;
+            /* Cyan */
+            --accent-2: #8b5cf6;
+            /* Purple */
+            --accent-3: #ec4899;
+            /* Pink */
+            --accent-4: #00ff88;
+            /* Green */
+            --text-primary: #e2e8f0;
+            /* Light gray for main text */
+            --text-secondary: #94a3b8;
+            /* Muted gray for descriptions */
+            --text-muted: #64748b;
+            /* Even more muted for small text */
+            --glass-bg: rgba(15, 23, 42, 0.7);
+            /* Translucent dark for glass effect */
+            --glass-border: rgba(71, 85, 105, 0.3);
+            /* Subtle border for glass */
+            --glow-1: rgba(0, 245, 255, 0.5);
+            /* Glow effect for accent-1 */
+            --glow-2: rgba(139, 92, 246, 0.8);
+            /* Glow effect for accent-2 */
+        }
+
+        /* Keyframe Definitions - Consolidated Here for Global Access */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 20px var(--glow-1);
+            }
+
+            100% {
+                box-shadow: 0 0 30px var(--glow-2);
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes typing {
+            0% {
+                width: 0;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+
+            0%,
+            50% {
+                border-color: transparent;
+            }
+
+            51%,
+            100% {
+                border-color: var(--accent-1);
+            }
+        }
+
+        @keyframes matrix {
+            0% {
+                background-position: 0 0;
+            }
+
+            100% {
+                background-position: 0 100vh;
+            }
+        }
+
+        @keyframes rotate-3d {
+            0% {
+                transform: rotateY(0deg);
+            }
+
+            100% {
+                transform: rotateY(360deg);
+            }
+        }
+
+        @keyframes bounce-glow {
+
+            0%,
+            100% {
+                transform: translateY(0);
+                filter: drop-shadow(0 0 20px var(--glow-1));
+            }
+
+            50% {
+                transform: translateY(-10px);
+                filter: drop-shadow(0 0 30px var(--glow-2));
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes border-pulse {
+
+            0%,
+            100% {
+                border-color: var(--glow-1);
+            }
+
+            50% {
+                border-color: var(--glow-2);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes holographic {
+
+            0%,
+            100% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
         }
 
         /* Glassmorphism effect */
@@ -182,6 +317,16 @@
             border-radius: 16px;
         }
 
+        .stat-item{
+            transition: all 0.3s ease-in-out !important;
+        }
+        .stat-item:hover {
+            border: 1px solid var(--accent-1);
+            box-shadow: 0 0 20px var(--glow-1);
+            opacity: 1;
+
+        }
+
         /* Cyber Grid Background - subtle */
         .cyber-grid {
             background-image:
@@ -189,6 +334,13 @@
                 linear-gradient(90deg, var(--glow-1) 1px, transparent 1px);
             background-size: 50px 50px;
             animation: matrix 20s linear infinite;
+        }
+
+        .cyber-grid-fixed {
+            background-image:
+                linear-gradient(var(--glow-1) 1px, transparent 1px),
+                linear-gradient(90deg, var(--glow-1) 1px, transparent 1px);
+            background-size: 50px 50px;
         }
 
         /* Flashlight Effect for cards */
@@ -292,8 +444,8 @@
         /* Skill Orbit */
         .skill-orbit {
             position: relative;
-            width: 200px;
-            height: 200px;
+            width: 250px;
+            height: 250px;
             margin: 0 auto;
         }
 
@@ -301,7 +453,7 @@
             position: absolute;
             border: 2px solid var(--glow-1);
             border-radius: 50%;
-            animation: rotate-3d 10s linear infinite;
+            /* animation: rotate-3d 10s linear infinite; */
         }
 
         .orbit-item {
@@ -309,7 +461,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(var(--accent-1-rgb), 0.15); /* Using RGB for transparency */
+            background: rgba(var(--accent-1-rgb), 0.15);
+            /* Using RGB for transparency */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -342,6 +495,78 @@
             animation: glitch-2 0.5s infinite;
             color: var(--accent-3);
             z-index: -2;
+        }
+
+        @keyframes glitch {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-2px, 2px);
+            }
+
+            40% {
+                transform: translate(-2px, -2px);
+            }
+
+            60% {
+                transform: translate(2px, 2px);
+            }
+
+            80% {
+                transform: translate(2px, -2px);
+            }
+        }
+
+        @keyframes glitch-1 {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(-1px, 1px);
+            }
+
+            40% {
+                transform: translate(-1px, -1px);
+            }
+
+            60% {
+                transform: translate(1px, 1px);
+            }
+
+            80% {
+                transform: translate(1px, -1px);
+            }
+        }
+
+        @keyframes glitch-2 {
+
+            0%,
+            100% {
+                transform: translate(0);
+            }
+
+            20% {
+                transform: translate(1px, -1px);
+            }
+
+            40% {
+                transform: translate(1px, 1px);
+            }
+
+            60% {
+                transform: translate(-1px, -1px);
+            }
+
+            80% {
+                transform: translate(-1px, 1px);
+            }
         }
 
         /* Gradient Text */
@@ -425,6 +650,10 @@
             backdrop-filter: blur(15px);
             transition: all 0.3s ease;
             overflow: hidden;
+            opacity: 0.8 !important;
+            box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
+                rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+            
         }
 
         .project-card::before {
@@ -446,8 +675,9 @@
 
         .project-card:hover {
             transform: translateY(-8px);
-            border-color: rgba(var(--accent-1-rgb), 0.4);
-            box-shadow: 0 15px 30px rgba(var(--accent-1-rgb), 0.15);
+            border-color: rgba(var(--accent-1-rgb), 1);
+            box-shadow: 0 0 20px var(--glow-1);
+            opacity: 1 !important;
         }
 
         /* Tech Stack Tags */
@@ -499,7 +729,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(120deg, var(--primary-bg) 0%, var(--secondary-bg) 30%, rgba(var(--accent-2-rgb), 0.7) 70%, rgba(var(--primary-bg-rgb), 0.95) 100%);
+            background: linear-gradient(120deg, var(--primary-bg) 0%, var(--secondary-bg) 30%, rgba(var(--accent-2-rgb), 1) 70%, rgba(var(--primary-bg-rgb), 1) 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -513,28 +743,30 @@
             opacity: 0;
             pointer-events: none;
         }
+
         .loader {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 32px !important;
-            height: 96px;
+            font-size: 28px !important;
+            height: 100px;
+            line-height: 15rem;
             border-radius: 30px;
-            width: 15px;
-            margin: 0 4px;
+            width: 12px;
+            margin: 0 12px;
             padding: 10px 0;
             color: white;
             border: none;
+            text-shadow: 1px 1px 6px rgba(0, 0, 0, 1);
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
                 rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-
+            background: linear-gradient(45deg, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.8), var(--accent-2), var(--accent-3));
             transition: all 0.3s ease-in-out;
         }
 
-        /* Hover effects */
-        .loader:hover {
-            background: linear-gradient(45deg,
-                    var(--accent-3), var(--accent-1), var(--accent-2), var(--accent-4));
+        .shadow-effect {
+            box-shadow: var(--primary-bg) 0px 2px 4px,
+                var(--accent-1) 0px 7px 13px -3px, var(--primary-bg) 0px -3px 0px inset;
         }
 
         .wave-text-container span {
@@ -642,9 +874,6 @@
     <!-- Canvas for 3D effects -->
     <canvas id="cyber-canvas" class="particle-bg"></canvas>
 
-    <!-- Matrix background -->
-    <div class="matrix-bg cyber-grid"></div>
-
     <!-- Floating icons -->
     <div class="floating-icons">
         <div class="floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;">
@@ -667,64 +896,70 @@
         </div>
     </div>
 
-    <!-- Navigation -->
     <nav class="fixed top-0 w-full z-50 glass-morphism">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="flex items-center">
-                    <div class="holographic text-transparent bg-clip-text text-xl font-bold">
-                        Ali Mantache
-                    </div>
-                </div>
-                <!-- Desktop Navigation Links -->
-                <div class="hidden md:block nav-links-desktop">
-                    <div class="ml-10 flex items-baseline space-x-8">
-                        <a href="#hero"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#about"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#skills"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                        <a href="#experience"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
-                        <a href="#projects"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#education"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Education</a>
-                        <a href="#contact"
-                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
-                </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-white hover:text-accent-1">
-                        <i data-lucide="menu" class="w-6 h-6"></i>
-                    </button>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            <div class="flex items-center">
+                <div class="holographic text-transparent bg-clip-text text-xl font-bold">
+                    Ali Mantache
                 </div>
             </div>
+            <div class="hidden md:block nav-links-desktop">
+                <div class="ml-10 flex items-baseline space-x-8">
+                    <a href="#hero"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                    <a href="#about"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                    <a href="#skills"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                    <a href="#experience"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                    <a href="#projects"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                    <a href="#education"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                    <a href="#contact"
+                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                </div>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-white hover:text-accent-1">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
         </div>
-        <!-- Mobile Navigation Menu (initially hidden, will be toggled by JS) -->
-        <div id="mobile-menu"
-            class="hidden md:hidden absolute top-16 left-0 w-full bg-gray-900 py-4 flex-col items-center space-y-4">
-            <a href="#hero"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="#about"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">About</a>
-            <a href="#skills"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Skills</a>
-            <a href="#experience"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Experience</a>
-            <a href="#projects"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Projects</a>
-            <a href="#education"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Education</a>
-            <a href="#contact"
-                class="mobile-nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-base font-medium">Contact</a>
-        </div>
-    </nav>
-
+    </div>
+    <div id="mobile-menu"
+        class="hidden md:hidden absolute top-16 left-0 w-full glass-morphism bg-secondary-bg py-6 flex-col items-center space-y-4 animate-fade-in-down max-h-[80vh] overflow-y-auto">
+        <a href="#hero"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.1s;">Home</a>
+        <a href="#about"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.2s;">About</a>
+        <a href="#skills"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.3s;">Skills</a>
+        <a href="#experience"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.4s;">Experience</a>
+        <a href="#projects"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.5s;">Projects</a>
+        <a href="#education"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.6s;">Education</a>
+        <a href="#contact"
+            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+            style="animation-delay: 0.7s;">Contact</a>
+        <div class="border-t border-glass-border pt-4 mt-4 w-11/12"></div>
+    </div>
+</nav>
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex items-center justify-center relative">
         <div class="text-center z-10 max-w-4xl mx-auto px-4">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary-bg to-secondary-bg opacity-50 cyber-grid-fixed">
+            </div>
             <div class="mb-8">
                 <h1 class="text-4xl md:text-7xl font-bold mb-4">
                     <span class="glitch-text gradient-text" data-text="Ali Mantache">Ali Mantache</span>
@@ -733,27 +968,27 @@
                     <span class="typing-effect">AI Engineer & Futuristic Developer</span>
                 </div>
                 <p class="text-lg text-text-secondary max-w-2xl mx-auto mb-8">
-                    Crafting the future of web development with AI-powered solutions and cutting-edge 3D experiences
-                </p>
+                    From code to capability. From idea to impact.
+                    Building intelligent, full-stack solutions that turn ideas into scalable, real-world impact.</p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button class="cyber-button magic-wand-reveal">
+                <a href="#projects" class="cyber-button magic-wand-reveal">
                     <i data-lucide="rocket" class="w-5 h-5 inline mr-2"></i>
                     Explore My Work
-                </button>
-                <button class="cyber-button magic-wand-reveal">
+                </a>
+                <a href="ali-mantache-cv.pdf" target="_blank" class="cyber-button magic-wand-reveal">
                     <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
                     Download CV
-                </button>
+                </a>
             </div>
 
             <div class="mt-12 flex justify-center space-x-6">
-                <a href="https://github.com/alimantache" target="_blank"
+                <a href="https://github.com/AMGit21" target="_blank"
                     class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
                     <i data-lucide="github" class="w-6 h-6 text-white"></i>
                 </a>
-                <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                <a href="https://www.linkedin.com/in/ali-mantache" target="_blank"
                     class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300">
                     <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
                 </a>
@@ -778,17 +1013,23 @@
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div class="space-y-6">
-                    <p class="text-lg text-text-secondary leading-relaxed">
-                        I'm Ali Mantache, a passionate AI Engineer and Full Stack Developer with 5+ years of experience
+
+
+                <div class="space-y-6 relative">
+                    <div class="absolute inset-0 flex justify-center items-center -z-10">
+                        <div class="orbit-path animate-ping opacity-50" style="width: 100px; height: 100px;"></div>
+                        <div class="orbit-path animate-ping opacity-50" style="width: 150px; height: 150px;"></div>
+                        <div class="orbit-path animate-ping opacity-50" style="width: 200px; height: 200px;"></div>
+                    </div>
+
+                    <p class="text-lg text-text-secondary leading-relaxed text-justify">
+                        I'm Ali Mantache, a passionate AI Engineer and Full Stack Developer with 6+ years of experience
                         in creating innovative, scalable solutions. Based in Beirut, Lebanon, I specialize in merging
                         cutting-edge AI technologies with modern web development to build the future of digital
                         experiences.
                     </p>
-                    <p class="text-lg text-text-secondary leading-relaxed">
-                        My journey spans from research and development in AI to teaching and mentoring over 300+
-                        students across various institutions. I believe in the power of technology to transform ideas
-                        into reality and create meaningful impact in the digital world.
+                    <p class="text-lg text-text-secondary leading-relaxed text-justify">
+                        With a diverse background spanning from educating over 300 students to driving innovation as a full-stack developer and AI researcher, I am passionate about harnessing technology's transformative power to bring impactful digital ideas to life.
                     </p>
 
                     <div class="flex flex-wrap gap-4 mt-8">
@@ -807,26 +1048,31 @@
                     </div>
                 </div>
 
-                <div class="relative">
+                <div class="relative py-20">
                     <div class="skill-orbit">
-                        <div class="orbit-path" style="width: 100%; height: 100%; top: 0; left: 0;">
-                            <div class="orbit-item" style="top: -20px; left: 50%; transform: translateX(-50%);">
-                                <i data-lucide="brain" class="w-6 h-6 text-accent-1"></i>
-                            </div>
+                        <!-- <div class="orbit-path animate-ping" style="width: 100%; height: 100%; top: 0; left: 0;">
+                        </div> -->
+                        <div class="orbit-item" style="top: -70px; left: 0; transform: translateX(-50%);">
+                            <i data-lucide="brain" class="w-6 h-6 text-accent-1"></i>
                         </div>
-                        <div class="orbit-path" style="width: 80%; height: 80%; top: 10%; left: 10%;">
-                            <div class="orbit-item" style="top: -20px; right: -20px;">
-                                <i data-lucide="code" class="w-6 h-6 text-accent-2"></i>
-                            </div>
+                        <!-- <div class="orbit-path animate-ping" style="width: 80%; height: 80%; top: 10%; left: 10%;">
+                        </div> -->
+                        <div class="orbit-item" style="top: -70px; right: 0;">
+                            <i data-lucide="code" class="w-6 h-6 text-accent-2"></i>
                         </div>
-                        <div class="orbit-path" style="width: 60%; height: 60%; top: 20%; left: 20%;">
-                            <div class="orbit-item" style="bottom: -20px; left: 50%; transform: translateX(-50%);">
-                                <i data-lucide="database" class="w-6 h-6 text-accent-3"></i>
-                            </div>
+                        <!-- <div class="orbit-path animate-ping" style="width: 60%; height: 60%; top: 20%; left: 20%;">
+                        </div> -->
+                        <div class="orbit-item" style="bottom: -90px; left: 0; transform: translateX(-50%);">
+                            <i data-lucide="bot" class="w-6 h-6 text-accent-4"></i>
+                        </div>
+                        <div class="orbit-item" style="bottom: -90px; right: 0; transform: translateX(-50%);">
+                            <i data-lucide="database" class="w-6 h-6 text-accent-3"></i>
                         </div>
                         <div
-                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center">
-                            <i data-lucide="user" class="w-8 h-8 text-white"></i>
+                            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-60 h-96 rounded-full flex items-center justify-center shadow-effect">
+                            <!-- <i data-lucide="user" class="w-8 h-8 text-white"></i> -->
+                            <img src="picture.png" alt="Ali Mantache"
+                                class="w-full h-full rounded-full object-cover opacity-70 hover:opacity-100 transition-opacity duration-300">
                         </div>
                     </div>
                 </div>
@@ -835,7 +1081,7 @@
                 <div
                     class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
                     <i data-lucide="award" class="w-10 h-10 text-accent-1 mx-auto mb-3"></i>
-                    <span class="text-3xl font-bold text-accent-1 block">5+</span>
+                    <span class="text-3xl font-bold text-accent-1 block">6+</span>
                     <span class="text-text-secondary">Years Experience</span>
                 </div>
                 <div
@@ -847,11 +1093,10 @@
                 <div
                     class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
                     <i data-lucide="lightbulb" class="w-10 h-10 text-accent-3 mx-auto mb-3"></i>
-                    <span class="text-3xl font-bold text-accent-3 block">50+</span>
+                    <span class="text-3xl font-bold text-accent-3 block">20+</span>
                     <span class="text-text-secondary">Projects Completed</span>
                 </div>
-                <div
-                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                <div class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
                     <i data-lucide="zap" class="w-10 h-10 text-accent-4 mx-auto mb-3"></i>
                     <span class="text-3xl font-bold text-accent-4 block">15+</span>
                     <span class="text-text-secondary">Technologies Mastered</span>
@@ -897,7 +1142,8 @@
                         </div>
                         <h3 class="text-xl font-semibold">Full Stack Development</h3>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">End-to-end web application development,
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">End-to-end web application
+                        development,
                         building robust and high-performing systems.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">React.js</span>
@@ -917,7 +1163,8 @@
                         </div>
                         <h3 class="text-xl font-semibold">Database & Cloud</h3>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable database design, optimization, and
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable database design,
+                        optimization, and
                         cloud deployment strategies for robust applications.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">PostgreSQL</span>
@@ -937,7 +1184,8 @@
                         </div>
                         <h3 class="text-xl font-semibold">DevOps & Architecture</h3>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Designing and implementing scalable system
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Designing and implementing scalable
+                        system
                         architectures and automated deployment pipelines.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Docker</span>
@@ -957,7 +1205,8 @@
                         </div>
                         <h3 class="text-xl font-semibold">UI/UX Design</h3>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Crafting intuitive and visually stunning
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Crafting intuitive and visually
+                        stunning
                         user interfaces with a focus on exceptional user experience.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Tailwind CSS</span>
@@ -977,7 +1226,8 @@
                         </div>
                         <h3 class="text-xl font-semibold">Leadership & Mentoring</h3>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Leading development teams, fostering growth,
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Leading development teams, fostering
+                        growth,
                         and sharing knowledge to build high-performing talent.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Agile/Scrum</span>
@@ -1106,7 +1356,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
@@ -1117,7 +1367,8 @@
                             <p class="text-accent-1 text-sm">2025</p>
                         </div>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">AI-powered chatbot with dynamic database
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">AI-powered chatbot with dynamic
+                        database
                         CRUD operations and natural
                         language processing capabilities.</p>
                     <div class="space-y-2 text-sm text-text-muted mb-4">
@@ -1144,7 +1395,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
@@ -1181,7 +1432,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center mr-4">
@@ -1192,7 +1443,8 @@
                             <p class="text-accent-1 text-sm">2024</p>
                         </div>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Full-stack music discovery platform with
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Full-stack music discovery platform
+                        with
                         Google Gemini AI and Spotify
                         API integration.</p>
                     <div class="space-y-2 text-sm text-text-muted mb-4">
@@ -1219,7 +1471,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-4 to-accent-1 rounded-full flex items-center justify-center mr-4">
@@ -1230,7 +1482,8 @@
                             <p class="text-accent-1 text-sm">2024</p>
                         </div>
                     </div>
-                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable real-time event correlation system
+                    <p class="text-text-secondary mb-4 text-base leading-relaxed">Scalable real-time event correlation
+                        system
                         with computer vision
                         capabilities.</p>
                     <div class="space-y-2 text-sm text-text-muted mb-4">
@@ -1414,11 +1667,11 @@
 
             <div class="mt-12 text-center">
                 <div class="flex justify-center space-x-6 mb-8">
-                    <a href="https://github.com/alimantache" target="_blank"
+                    <a href="https://github.com/AMGit21" target="_blank"
                         class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
                         <i data-lucide="github" class="w-6 h-6 text-white"></i>
                     </a>
-                    <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                    <a href="https://www.linkedin.com/in/ali-mantache" target="_blank"
                         class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
                         <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
                     </a>
@@ -1427,10 +1680,13 @@
                         <i data-lucide="mail" class="w-6 h-6 text-white"></i>
                     </a>
                 </div>
-                <button class="cyber-button magic-wand-reveal">
+                
+                <div class="flex justify-center">
+                <a href="ali-mantache-cv.pdf" target="_blank" class="cyber-button magic-wand-reveal">
                     <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
                     Download CV
-                </button>
+                </a>
+                </div>
             </div>
         </div>
     </section>
@@ -1464,11 +1720,11 @@
 
                 <!-- Right: Social Links -->
                 <div class="flex justify-center space-x-6 animate-slide-in-right">
-                    <a href="https://github.com/alimantache" target="_blank"
+                    <a href="https://github.com/AMGit21" target="_blank"
                         class="w-10 h-10 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
                         <i data-lucide="github" class="w-5 h-5 text-white"></i>
                     </a>
-                    <a href="https://linkedin.com/in/alixmantache" target="_blank"
+                    <a href="https://www.linkedin.com/in/ali-mantache" target="_blank"
                         class="w-10 h-10 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center hover:scale-110 transition-transform duration-300 shadow-lg hover:shadow-cyber">
                         <i data-lucide="linkedin" class="w-5 h-5 text-white"></i>
                     </a>
@@ -1480,7 +1736,8 @@
             </div>
 
             <div class="border-t border-text-muted/30 pt-8 mt-8">
-                <p class="text-text-muted text-sm">&copy; 2025 Ali Mantache. All rights reserved. | Powered by Galactic AI
+                <p class="text-text-muted text-sm">&copy; 2025 Ali Mantache. All rights reserved. | Powered by Galactic
+                    AI
                     Networks</p>
                 <p class="text-text-secondary text-sm mt-2">Crafted with passion and AI magic from the future.</p>
             </div>
@@ -1605,7 +1862,7 @@
             // Update the loading screen background based on the new scheme
             const loadingScreen = document.getElementById('loadingScreen');
             if (loadingScreen) {
-                loadingScreen.style.background = `linear-gradient(120deg, var(--primary-bg) 0%, var(--secondary-bg) 30%, rgba(${hexToRgb(colors['--accent-2'])}, 0.698) 70%, rgba(${hexToRgb(colors['--primary-bg'])}, 0.95) 100%)`;
+                loadingScreen.style.background = `linear-gradient(120deg, var(--primary-bg) 0% , var(--primary-bg) 30%, rgba(${hexToRgb(colors['--primary-bg'])}, 1) 100%)`;
             }
 
             // Update Three.js particle colors
@@ -1671,7 +1928,7 @@
                         span.style.width = '1rem';
                     } else {
                         span.textContent = char;
-                        span.classList.add('loader', 'holographic', 'font-bold'); // Add classes for styling
+                        span.classList.add('loader', 'font-bold'); // Add classes for styling
                     }
                     container.appendChild(span);
                 });
