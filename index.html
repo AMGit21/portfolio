@@ -91,7 +91,7 @@
             line-height: 1.6;
             scroll-behavior: smooth;
         }
-        
+
         /* Custom CSS Variables for a futuristic dark theme */
         :root {
             /* Default Color Scheme (Deep Ocean) */
@@ -309,6 +309,11 @@
             }
         }
 
+        /* Scroll-to-Top Button visibility */
+        #scrollToTopBtn.show {
+            opacity: 1;
+        }
+
         /* Glassmorphism effect */
         .glass-morphism {
             background: var(--glass-bg);
@@ -317,9 +322,10 @@
             border-radius: 16px;
         }
 
-        .stat-item{
+        .stat-item {
             transition: all 0.3s ease-in-out !important;
         }
+
         .stat-item:hover {
             border: 1px solid var(--accent-1);
             box-shadow: 0 0 20px var(--glow-1);
@@ -653,7 +659,12 @@
             opacity: 0.8 !important;
             box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px,
                 rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-            
+            display: flex;
+            /* Added for flexbox */
+            flex-direction: column;
+            /* Added for flexbox */
+            justify-content: space-between;
+            /* Added for flexbox - pushes content to top, button to bottom */
         }
 
         .project-card::before {
@@ -897,64 +908,64 @@
     </div>
 
     <nav class="fixed top-0 w-full z-50 glass-morphism">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16">
-            <div class="flex items-center">
-                <div class="holographic text-transparent bg-clip-text text-xl font-bold">
-                    Ali Mantache
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <div class="holographic text-transparent bg-clip-text text-xl font-bold">
+                        Ali Mantache
+                    </div>
                 </div>
-            </div>
-            <div class="hidden md:block nav-links-desktop">
-                <div class="ml-10 flex items-baseline space-x-8">
-                    <a href="#hero"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                    <a href="#about"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
-                    <a href="#skills"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                    <a href="#experience"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
-                    <a href="#projects"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                    <a href="#education"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Education</a>
-                    <a href="#contact"
-                        class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                <div class="hidden md:block nav-links-desktop">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#hero"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#about"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                        <a href="#skills"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#experience"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#projects"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#education"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Education</a>
+                        <a href="#contact"
+                            class="nav-link text-white hover:text-accent-1 transition-colors duration-300 px-3 py-2 rounded-md text-sm font-medium">Contact</a>
+                    </div>
                 </div>
-            </div>
-            <div class="md:hidden">
-                <button id="mobile-menu-button" class="text-white hover:text-accent-1">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white hover:text-accent-1">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-    <div id="mobile-menu"
-        class="hidden md:hidden absolute top-16 left-0 w-full glass-morphism bg-secondary-bg py-6 flex-col items-center space-y-4 animate-fade-in-down max-h-[80vh] overflow-y-auto">
-        <a href="#hero"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.1s;">Home</a>
-        <a href="#about"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.2s;">About</a>
-        <a href="#skills"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.3s;">Skills</a>
-        <a href="#experience"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.4s;">Experience</a>
-        <a href="#projects"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.5s;">Projects</a>
-        <a href="#education"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.6s;">Education</a>
-        <a href="#contact"
-            class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
-            style="animation-delay: 0.7s;">Contact</a>
-        <div class="border-t border-glass-border pt-4 mt-4 w-11/12"></div>
-    </div>
-</nav>
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-16 left-0 w-full glass-morphism bg-secondary-bg py-6 flex-col items-center space-y-4 animate-fade-in-down max-h-[80vh] overflow-y-auto">
+            <a href="#hero"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.1s;">Home</a>
+            <a href="#about"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.2s;">About</a>
+            <a href="#skills"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.3s;">Skills</a>
+            <a href="#experience"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.4s;">Experience</a>
+            <a href="#projects"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.5s;">Projects</a>
+            <a href="#education"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.6s;">Education</a>
+            <a href="#contact"
+                class="mobile-nav-link text-white text-lg font-medium px-6 py-3 border rounded-lg bg-secondary-bg/50 w-11/12 text-center transition-all duration-300 hover:text-accent-1 hover:border-accent-1 hover:shadow-neon animate-slide-in-left"
+                style="animation-delay: 0.7s;">Contact</a>
+            <div class="border-t border-glass-border pt-4 mt-4 w-11/12"></div>
+        </div>
+    </nav>
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex items-center justify-center relative">
         <div class="text-center z-10 max-w-4xl mx-auto px-4">
@@ -1029,7 +1040,9 @@
                         experiences.
                     </p>
                     <p class="text-lg text-text-secondary leading-relaxed text-justify">
-                        With a diverse background spanning from educating over 300 students to driving innovation as a full-stack developer and AI researcher, I am passionate about harnessing technology's transformative power to bring impactful digital ideas to life.
+                        With a diverse background spanning from educating over 300 students to driving innovation as a
+                        full-stack developer and AI researcher, I am passionate about harnessing technology's
+                        transformative power to bring impactful digital ideas to life.
                     </p>
 
                     <div class="flex flex-wrap gap-4 mt-8">
@@ -1096,7 +1109,8 @@
                     <span class="text-3xl font-bold text-accent-3 block">20+</span>
                     <span class="text-text-secondary">Projects Completed</span>
                 </div>
-                <div class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
+                <div
+                    class="stat-item glass-morphism p-6 rounded-xl text-center hover:scale-105 transition-transform duration-300">
                     <i data-lucide="zap" class="w-10 h-10 text-accent-4 mx-auto mb-3"></i>
                     <span class="text-3xl font-bold text-accent-4 block">15+</span>
                     <span class="text-text-secondary">Technologies Mastered</span>
@@ -1114,7 +1128,7 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
@@ -1134,7 +1148,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
@@ -1155,7 +1169,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-3 to-accent-4 rounded-full flex items-center justify-center mr-4">
@@ -1176,7 +1190,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-4 to-accent-1 rounded-full flex items-center justify-center mr-4">
@@ -1197,7 +1211,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-1 to-accent-2 rounded-full flex items-center justify-center mr-4">
@@ -1218,7 +1232,7 @@
                     </div>
                 </div>
 
-                <div class="project-card card-3d flashlight-effect">
+                <div class="project-card card-3d flashlight-effect magic-wand-reveal">
                     <div class="flex items-center mb-4">
                         <div
                             class="w-12 h-12 bg-gradient-to-r from-accent-2 to-accent-3 rounded-full flex items-center justify-center mr-4">
@@ -1380,7 +1394,7 @@
                             <i data-lucide="shield" class="w-4 h-4 text-accent-4"></i>
                             <span>Secure JWT authentication & input sanitization</span>
                         </div>
-                        <div class="flex items-center space-x-2">
+                        <div class="flex items-center mt-auto self-end space-x-2">
                             <i data-lucide="chart-bar" class="w-4 h-4 text-accent-3"></i>
                             <span>Interactive data visualization & CSV export</span>
                         </div>
@@ -1393,6 +1407,11 @@
                         <span class="tech-tag">LoRA</span>
                         <span class="tech-tag">LangChain</span>
                     </div>
+                    <a href="https://github.com/AMGit21" target="_blank"
+                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                        View on GitHub
+                    </a>
                 </div>
 
                 <div class="project-card card-3d flashlight-effect magic-wand-reveal">
@@ -1430,6 +1449,11 @@
                         <span class="tech-tag">Docker</span>
                         <span class="tech-tag">Shadcn/UI</span>
                     </div>
+                    <a href="https://github.com/AMGit21/Multi-Tenant-Data-Management-System" target="_blank"
+                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                        View on GitHub
+                    </a>
                 </div>
 
                 <div class="project-card card-3d flashlight-effect magic-wand-reveal">
@@ -1469,6 +1493,11 @@
                         <span class="tech-tag">Spotify API</span>
                         <span class="tech-tag">Gemini AI</span>
                     </div>
+                    <a href="https://github.com/AMGit21/spotifyGenresArtists-GeminiChat-frontend" target="_blank"
+                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                        View on GitHub
+                    </a>
                 </div>
 
                 <div class="project-card card-3d flashlight-effect magic-wand-reveal">
@@ -1508,6 +1537,11 @@
                         <span class="tech-tag">React.js</span>
                         <span class="tech-tag">FastAPI</span>
                     </div>
+                    <a href="https://github.com/AMGit21" target="_blank"
+                        class="mt-4 inline-flex items-center mt-auto self-end px-4 py-2 bg-gray-700 text-white text-sm font-medium rounded-md hover:bg-gray-600 transition-colors duration-300">
+                        <i data-lucide="github" class="w-5 h-5 mr-2"></i>
+                        View on GitHub
+                    </a>
                 </div>
             </div>
         </div>
@@ -1680,12 +1714,12 @@
                         <i data-lucide="mail" class="w-6 h-6 text-white"></i>
                     </a>
                 </div>
-                
+
                 <div class="flex justify-center">
-                <a href="ali-mantache-cv.pdf" target="_blank" class="cyber-button magic-wand-reveal">
-                    <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
-                    Download CV
-                </a>
+                    <a href="ali-mantache-cv.pdf" target="_blank" class="cyber-button magic-wand-reveal">
+                        <i data-lucide="download" class="w-5 h-5 inline mr-2"></i>
+                        Download CV
+                    </a>
                 </div>
             </div>
         </div>
@@ -1701,7 +1735,7 @@
                     <div class="holographic text-transparent bg-clip-text text-3xl font-extrabold mb-2">
                         Ali Mantache
                     </div>
-                    <p class="text-text-secondary text-lg">Innovating at the intersection of AI and Web3.</p>
+                    <p class="text-text-secondary text-lg">Turn your idea into real-world application.</p>
                 </div>
 
                 <!-- Center: Navigation Links -->
@@ -1736,17 +1770,40 @@
             </div>
 
             <div class="border-t border-text-muted/30 pt-8 mt-8">
-                <p class="text-text-muted text-sm">&copy; 2025 Ali Mantache. All rights reserved. | Powered by Galactic
-                    AI
-                    Networks</p>
-                <p class="text-text-secondary text-sm mt-2">Crafted with passion and AI magic from the future.</p>
+                <p class="text-text-secondary text-sm">&copy; 2025 Ali Mantache. All rights reserved.</p>
             </div>
         </div>
         <!-- Animated Grid Overlay for Footer -->
         <div class="absolute inset-0 cyber-grid opacity-10 z-0"></div>
     </footer>
 
+    <button id="scrollToTopBtn"
+        class="fixed bottom-6 right-6 p-3 rounded-full bg-accent-1 text-white shadow-lg opacity-0 transition-opacity duration-300 z-50 hover:bg-accent-2 hover:scale-110 transform">
+        <i data-lucide="chevron-up" class="w-6 h-6"></i>
+    </button>
+
     <script>
+        // Scroll-to-Top Button Logic
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) { // Show button after scrolling 300px
+                scrollToTopBtn.classList.add("show");
+            } else {
+                scrollToTopBtn.classList.remove("show");
+            }
+        });
+
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+
+        // Ensure Lucide icons are rendered after adding the button dynamically
+        lucide.createIcons();
+
         // Function to convert hex to RGB
         function hexToRgb(hex) {
             let r = 0, g = 0, b = 0;
