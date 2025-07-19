@@ -85,10 +85,15 @@
 
     <style>
         /* Base styles */
-        * {
+        /* Reset styles */
+        html,
+        body {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Or content-box, depending on your preference */
+            overflow-x: hidden;
+            /* This will prevent horizontal scrolling for the entire page */
         }
 
         body {
