@@ -101,7 +101,7 @@ function FeaturedProject({
             </div>
           </div>
 
-          <p className="text-sm leading-relaxed text-muted md:text-base">
+          <p className="prose-body text-sm leading-relaxed text-muted md:text-base">
             {project.description}
           </p>
 
@@ -189,7 +189,7 @@ export function Projects() {
                     </div>
                     <span className="chip shrink-0">{project.year}</span>
                   </div>
-                  <p className="text-sm leading-relaxed text-muted">
+                  <p className="prose-body text-sm leading-relaxed text-muted">
                     {project.description}
                   </p>
                   <ul className="mt-auto flex flex-wrap gap-1.5" role="list">

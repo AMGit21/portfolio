@@ -45,20 +45,20 @@ export function About() {
 
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <Reveal className="flex flex-col gap-6">
-            <p className="text-lg leading-relaxed text-muted">
+            <p className="prose-body text-lg leading-relaxed text-muted">
               I&apos;m {profile.name}, an AI engineer and full-stack developer
               based in {profile.location}. I build REST APIs, LLM features, and
               web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js,
               PostgreSQL, Docker, and CI/CD.
             </p>
-            <p className="text-lg leading-relaxed text-muted">
+            <p className="prose-body text-lg leading-relaxed text-muted">
               Right now I work in R&amp;D at Intelligencia.fr on an EU-funded
               identity platform: on-device face authentication, permissioned
               blockchain credential issuance, and zero-knowledge network auth.
               I also build LLM features and a prompt-evaluation pipeline that
               picks prompt styles using precision, recall, and accuracy.
             </p>
-            <p className="text-lg leading-relaxed text-muted">
+            <p className="prose-body text-lg leading-relaxed text-muted">
               Before that I led a team of 10+ developers on client sites, and
               ran nine MERN bootcamps that trained 300+ learners across
               universities and institutions.

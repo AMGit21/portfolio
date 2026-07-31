@@ -1,5 +1,7 @@
 import { Backdrop } from "@/components/backdrop";
 import { BackToTop } from "@/components/back-to-top";
+import { CursorOrb } from "@/components/cursor-orb";
+import { FloatingIcons } from "@/components/floating-icons";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -21,6 +23,7 @@ export default function Home() {
         Skip to content
       </a>
       <Backdrop />
+      <FloatingIcons />
       <ScrollProgress />
       <Navbar />
       <main id="main">
@@ -34,6 +37,7 @@ export default function Home() {
       </main>
       <Footer />
       <BackToTop />
+      <CursorOrb />
     </>
   );
 }

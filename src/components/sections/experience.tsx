@@ -49,7 +49,7 @@ function ExperienceCard({ entry }: { entry: ExperienceEntry }) {
         </span>
       </header>
 
-      <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
+      <p className="prose-body mt-4 text-sm leading-relaxed text-muted md:text-base">
         {entry.summary}
       </p>
 
