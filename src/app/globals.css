@@ -123,15 +123,34 @@
       box-shadow: 0 0 0 6px transparent;
     }
   }
-  @keyframes float-icon {
+  @keyframes float-icon-a {
     0%,
     100% {
-      transform: translateY(0) rotate(-2deg);
-      opacity: 0.4;
+      transform: translate3d(0, 0, 0) rotate(-4deg) scale(1);
     }
     50% {
-      transform: translateY(-14px) rotate(2deg);
-      opacity: 0.7;
+      transform: translate3d(6px, -12px, 0) rotate(4deg) scale(1.04);
+    }
+  }
+  @keyframes float-icon-b {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(3deg) scale(1);
+    }
+    50% {
+      transform: translate3d(-8px, -10px, 0) rotate(-3deg) scale(1.03);
+    }
+  }
+  @keyframes float-icon-c {
+    0%,
+    100% {
+      transform: translate3d(0, 4px, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate3d(5px, -8px, 0) rotate(5deg);
+    }
+    66% {
+      transform: translate3d(-6px, -4px, 0) rotate(-4deg);
     }
   }
 }
@@ -326,19 +345,47 @@ a {
 /* Floating background icons           */
 /* ---------------------------------- */
 
+.float-icons-layer {
+  pointer-events: none;
+  /* Fade toward the center so icons stay out of the text column */
+  mask-image: radial-gradient(
+    ellipse 48% 62% at 50% 45%,
+    transparent 0%,
+    transparent 42%,
+    black 78%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 48% 62% at 50% 45%,
+    transparent 0%,
+    transparent 42%,
+    black 78%
+  );
+}
+
 .float-icon {
-  animation-name: float-icon;
+  will-change: transform;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   border: 1px solid var(--line);
-  background: color-mix(in oklab, var(--surface-strong) 55%, transparent);
+  background: color-mix(in oklab, var(--surface-strong) 40%, transparent);
   box-shadow: var(--shadow-soft);
+  opacity: 0.45;
+}
+
+.float-icon-a {
+  animation-name: float-icon-a;
+}
+.float-icon-b {
+  animation-name: float-icon-b;
+}
+.float-icon-c {
+  animation-name: float-icon-c;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .float-icon {
-    animation: none;
-    opacity: 0.35;
+    animation: none !important;
+    opacity: 0.28;
   }
 }
 
