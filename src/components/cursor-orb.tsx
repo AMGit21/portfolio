@@ -2,6 +2,7 @@
 
 import {
   motion,
+  useMotionTemplate,
   useMotionValue,
   useReducedMotion,
   useSpring,
@@ -9,8 +10,9 @@ import {
 import { useEffect, useState } from "react";
 
 /**
- * Desktop-only custom cursor: core + lagging glass ring (+ soft trail).
- * Snappy springs so it feels responsive. Skipped on touch / reduced motion.
+ * Futuristic dual-ring cursor:
+ * - Core follows the pointer almost instantly
+ * - Outer ring trails a bit for separation / depth
  */
 export function CursorOrb() {
   const reduceMotion = useReducedMotion();
@@ -21,15 +23,20 @@ export function CursorOrb() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
-  // Fast core (almost locked to pointer)
-  const coreX = useSpring(x, { stiffness: 1800, damping: 42, mass: 0.18 });
-  const coreY = useSpring(y, { stiffness: 1800, damping: 42, mass: 0.18 });
-  // Outer circle: slight lag, still quick
-  const ringX = useSpring(x, { stiffness: 650, damping: 34, mass: 0.28 });
-  const ringY = useSpring(y, { stiffness: 650, damping: 34, mass: 0.28 });
-  // Soft glow trail: a bit more lag for depth
-  const trailX = useSpring(x, { stiffness: 320, damping: 28, mass: 0.35 });
-  const trailY = useSpring(y, { stiffness: 320, damping: 28, mass: 0.35 });
+  // Core = raw pointer (no lag)
+  // Outer ring lags for clear separation
+  const ringX = useSpring(x, { stiffness: 260, damping: 22, mass: 0.5 });
+  const ringY = useSpring(y, { stiffness: 260, damping: 22, mass: 0.5 });
+  // Aura lags a bit more
+  const auraX = useSpring(x, { stiffness: 140, damping: 20, mass: 0.6 });
+  const auraY = useSpring(y, { stiffness: 140, damping: 20, mass: 0.6 });
+
+  const coreLeft = useMotionTemplate`${x}px`;
+  const coreTop = useMotionTemplate`${y}px`;
+  const ringLeft = useMotionTemplate`${ringX}px`;
+  const ringTop = useMotionTemplate`${ringY}px`;
+  const auraLeft = useMotionTemplate`${auraX}px`;
+  const auraTop = useMotionTemplate`${auraY}px`;
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -73,38 +80,78 @@ export function CursorOrb() {
     <div
       aria-hidden
       className="pointer-events-none fixed inset-0 z-[90] hidden md:block"
-      style={{ opacity: visible ? 1 : 0 }}
+      style={{ opacity: visible ? 1 : 0, transition: "opacity 0.15s ease" }}
     >
-      {/* Soft trailing glow */}
+      {/* Trailing aura */}
       <motion.div
-        className="absolute size-10 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
-          left: trailX,
-          top: trailY,
+          left: auraLeft,
+          top: auraTop,
+          width: hovering ? 56 : 42,
+          height: hovering ? 56 : 42,
           background:
-            "radial-gradient(circle, color-mix(in oklab, var(--accent) 35%, transparent), transparent 70%)",
-          filter: "blur(2px)",
+            "radial-gradient(circle, color-mix(in oklab, var(--accent) 40%, transparent) 0%, color-mix(in oklab, var(--accent-2) 18%, transparent) 42%, transparent 70%)",
+          filter: "blur(6px)",
+          opacity: hovering ? 0.9 : 0.55,
         }}
       />
 
-      {/* Outer glass circle */}
+      {/* Outer futuristic ring */}
       <motion.div
-        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/40 bg-accent/10 shadow-[0_0_24px_-6px_var(--glow-1)] backdrop-blur-[2px]"
-        style={{ left: ringX, top: ringY }}
-        animate={{
-          width: hovering ? 44 : 28,
-          height: hovering ? 44 : 28,
-          opacity: hovering ? 0.95 : 0.7,
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          left: ringLeft,
+          top: ringTop,
+          width: hovering ? 48 : 34,
+          height: hovering ? 48 : 34,
+          background:
+            "linear-gradient(135deg, color-mix(in oklab, var(--accent) 35%, transparent), color-mix(in oklab, var(--accent-2) 28%, transparent))",
+          padding: 1.5,
+          boxShadow:
+            "0 0 0 1px color-mix(in oklab, var(--accent) 25%, transparent), 0 0 22px -4px var(--glow-1)",
         }}
-        transition={{ type: "spring", stiffness: 420, damping: 28 }}
-      />
+      >
+        <div
+          className="size-full rounded-full"
+          style={{
+            background: "color-mix(in oklab, var(--background) 55%, transparent)",
+            backdropFilter: "blur(4px)",
+            WebkitBackdropFilter: "blur(4px)",
+            border: "1px solid color-mix(in oklab, var(--accent) 35%, transparent)",
+          }}
+        />
+      </motion.div>
 
-      {/* Inner core */}
+      {/* Crosshair ticks on the ring (futuristic detail) */}
       <motion.div
-        className="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground mix-blend-difference"
-        style={{ left: coreX, top: coreY }}
-        animate={{ scale: hovering ? 0.55 : 1 }}
-        transition={{ type: "spring", stiffness: 500, damping: 28 }}
+        className="absolute -translate-x-1/2 -translate-y-1/2"
+        style={{
+          left: ringLeft,
+          top: ringTop,
+          width: hovering ? 48 : 34,
+          height: hovering ? 48 : 34,
+        }}
+      >
+        <span className="absolute top-0 left-1/2 h-1.5 w-px -translate-x-1/2 bg-accent/80" />
+        <span className="absolute bottom-0 left-1/2 h-1.5 w-px -translate-x-1/2 bg-accent/80" />
+        <span className="absolute top-1/2 left-0 h-px w-1.5 -translate-y-1/2 bg-accent/80" />
+        <span className="absolute top-1/2 right-0 h-px w-1.5 -translate-y-1/2 bg-accent/80" />
+      </motion.div>
+
+      {/* Instant core */}
+      <motion.div
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          left: coreLeft,
+          top: coreTop,
+          width: hovering ? 6 : 8,
+          height: hovering ? 6 : 8,
+          background:
+            "linear-gradient(135deg, var(--accent), var(--accent-2))",
+          boxShadow:
+            "0 0 0 2px color-mix(in oklab, var(--background) 70%, transparent), 0 0 14px var(--glow-1)",
+        }}
       />
     </div>
   );
