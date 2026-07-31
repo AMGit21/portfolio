@@ -57,7 +57,7 @@ export function Navbar() {
         className={cn(
           "mx-auto flex h-16 max-w-6xl items-center justify-between px-4 transition-all duration-300 sm:px-6",
           scrolled &&
-            "glass mx-3 mt-3 h-14 max-w-5xl rounded-2xl shadow-lg shadow-black/5 sm:mx-auto",
+            "nav-panel mx-3 mt-3 h-14 max-w-5xl rounded-2xl sm:mx-auto",
         )}
       >
         <a
@@ -66,7 +66,7 @@ export function Navbar() {
           aria-label={`${profile.name} — back to top`}
         >
           <span className="text-gradient">{profile.firstName}</span>
-          <span className="text-faint">.dev</span>
+          <span className={cn(scrolled ? "text-muted" : "text-faint")}>.dev</span>
         </a>
 
         <div className="hidden items-center gap-1 md:flex">
@@ -76,10 +76,12 @@ export function Navbar() {
               href={`#${id}`}
               aria-current={activeSection === id ? "true" : undefined}
               className={cn(
-                "relative rounded-full px-3.5 py-1.5 text-sm font-medium transition-colors",
+                "relative rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
                 activeSection === id
                   ? "text-foreground"
-                  : "text-muted hover:text-foreground",
+                  : scrolled
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-muted hover:text-foreground",
               )}
             >
               {activeSection === id && (
@@ -107,7 +109,7 @@ export function Navbar() {
           </a>
           <button
             type="button"
-            className="glass flex size-9 items-center justify-center rounded-full text-foreground md:hidden"
+            className="nav-panel flex size-9 items-center justify-center rounded-full text-foreground md:hidden"
             aria-expanded={menuOpen}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             onClick={() => setMenuOpen((open) => !open)}
@@ -124,7 +126,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="glass mx-3 mt-2 rounded-2xl p-4 shadow-xl shadow-black/10 md:hidden"
+            className="nav-panel mx-3 mt-2 rounded-2xl p-4 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {site.nav.map(({ id, label }, index) => (
@@ -136,10 +138,10 @@ export function Navbar() {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.04 * index }}
                   className={cn(
-                    "rounded-xl px-4 py-3 text-base font-medium transition-colors",
+                    "rounded-xl px-4 py-3 text-base font-semibold transition-colors",
                     activeSection === id
                       ? "bg-accent-soft text-accent"
-                      : "text-muted hover:bg-surface hover:text-foreground",
+                      : "text-foreground/85 hover:bg-accent-soft hover:text-foreground",
                   )}
                 >
                   {label}

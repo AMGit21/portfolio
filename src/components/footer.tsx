@@ -1,4 +1,5 @@
-import { Mail } from "lucide-react";
+import { ArrowUp, Mail } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
@@ -49,6 +50,17 @@ export function Footer() {
               <Icon className="size-4" />
             </a>
           ))}
+        </div>
+      </div>
+
+      <div className="border-t border-line">
+        <div className="mx-auto flex max-w-6xl justify-center px-4 py-6 sm:px-6">
+          <Button asChild variant="ghost" size="sm">
+            <a href="#hero" className="gap-2 text-muted hover:text-foreground">
+              <ArrowUp className="size-4" />
+              Back to top
+            </a>
+          </Button>
         </div>
       </div>
     </footer>

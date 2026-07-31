@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown, Download, Mail } from "lucide-react";
-import Image from "next/image";
 import { createElement, useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -145,7 +144,7 @@ export function Hero() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.3, ease }}
-          className="relative mx-auto hidden w-full max-w-sm sm:block"
+          className="relative mx-auto w-full max-w-xs sm:max-w-sm"
         >
           <div
             aria-hidden
@@ -156,12 +155,15 @@ export function Hero() {
             }}
           />
           <div className="gradient-ring relative overflow-hidden rounded-[2rem] p-1.5">
-            <Image
-              src={profile.portrait}
+            {/* Plain <img>: next/image skips basePath on static GitHub Pages export */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={assetPath(profile.portrait)}
               alt={`Portrait of ${profile.name}`}
               width={640}
               height={800}
-              priority
+              fetchPriority="high"
+              decoding="async"
               className="h-auto w-full rounded-[1.7rem] object-cover"
             />
           </div>

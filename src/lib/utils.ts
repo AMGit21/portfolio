@@ -7,8 +7,9 @@ export function cn(...inputs: ClassValue[]) {
 
 /**
  * Prefixes public asset URLs with the configured base path
- * (e.g. "/portfolio" on GitHub Pages). next/image and next/link
- * handle this automatically, plain <a href> does not.
+ * (e.g. "/portfolio" on GitHub Pages). Use for plain <img>, <a href>
+ * to files in /public, and similar — static export does not always
+ * inject basePath into next/image the way local next/link does.
  */
 export function assetPath(path: string) {
   return `${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}${path}`;

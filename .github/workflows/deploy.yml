@@ -1,32 +1,43 @@
+# Name shown in the GitHub Actions UI (Actions tab).
 name: Deploy to GitHub Pages
 
+# When this workflow runs:
 on:
+  # Automatically on every push to the main branch.
   push:
     branches: [main]
+  # Also allow manual runs via "Run workflow" in the Actions UI.
   workflow_dispatch:
 
+# Least-privilege tokens for this workflow:
 permissions:
-  contents: read
-  pages: write
-  id-token: write
+  contents: read   # Checkout the repo source code
+  pages: write     # Publish to GitHub Pages
+  id-token: write  # OIDC auth required by actions/deploy-pages
 
+# If two deploys overlap, cancel the older one so only the latest ships.
 concurrency:
   group: pages
   cancel-in-progress: true
 
 jobs:
+  # ---------- Job 1: build the static Next.js site ----------
   build:
+    # Use a GitHub-hosted Ubuntu runner (not a self-hosted runner).
     runs-on: ubuntu-latest
     steps:
+      # Download this repo's code onto the runner.
       - uses: actions/checkout@v7
 
+      # Install Node from .nvmrc and cache npm downloads for faster runs.
       - uses: actions/setup-node@v5
         with:
           node-version-file: ".nvmrc"
           cache: npm
 
-      # Project pages are served under /<repo-name>; user/org pages
-      # (<user>.github.io) are served from the root.
+      # GitHub project sites live at https://user.github.io/<repo-name>/
+      # so Next.js needs basePath="/portfolio". User sites named
+      # <user>.github.io are served from "/", so basePath stays empty.
       - name: Compute base path
         run: |
           if [[ "${{ github.event.repository.name }}" == *.github.io ]]; then
@@ -35,19 +46,26 @@ jobs:
             echo "NEXT_PUBLIC_BASE_PATH=/${{ github.event.repository.name }}" >> "$GITHUB_ENV"
           fi
 
+      # Clean install from package-lock.json (reproducible CI install).
       - run: npm ci
+      # Build static export into the `out/` folder (see next.config.ts output: "export").
       - run: npm run build
 
+      # Package `out/` as a Pages artifact for the deploy job.
       - uses: actions/upload-pages-artifact@v5
         with:
           path: out
 
+  # ---------- Job 2: publish the artifact to GitHub Pages ----------
   deploy:
+    # Wait until build finishes successfully.
     needs: build
     runs-on: ubuntu-latest
+    # Ties this job to the github-pages environment (URL shown after deploy).
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      # Take the uploaded artifact and publish it to amgit21.github.io/portfolio
       - id: deployment
         uses: actions/deploy-pages@v4

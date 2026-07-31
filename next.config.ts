@@ -11,6 +11,10 @@ const nextConfig: NextConfig = {
   output: "export",
   outputFileTracingRoot: process.cwd(),
   basePath,
+  // Ensure client components (e.g. hero portrait) see the same base path.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
   images: {
     unoptimized: true,
   },
