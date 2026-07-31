@@ -2,7 +2,6 @@ import { Backdrop } from "@/components/backdrop";
 import { BackToTop } from "@/components/back-to-top";
 import { CursorOrb } from "@/components/cursor-orb";
 import { FloatingIcons } from "@/components/floating-icons";
-import { GlassSpotlight } from "@/components/glass-spotlight";
 import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import { ScrollProgress } from "@/components/scroll-progress";
@@ -25,7 +24,6 @@ export default function Home() {
       </a>
       <Backdrop />
       <FloatingIcons />
-      <GlassSpotlight />
       <div className="relative z-10">
         <ScrollProgress />
         <Navbar />
