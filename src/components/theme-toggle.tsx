@@ -22,7 +22,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       role="radiogroup"
       aria-label="Color theme"
       className={cn(
-        "glass flex items-center gap-0.5 rounded-full p-1",
+        "glass flex items-center gap-0.5 rounded-full p-1 shadow-sm",
         className,
       )}
     >
@@ -40,8 +40,8 @@ export function ThemeToggle({ className }: { className?: string }) {
             className={cn(
               "flex size-7 items-center justify-center rounded-full transition-colors",
               active
-                ? "bg-accent-soft text-accent"
-                : "text-faint hover:text-foreground",
+                ? "bg-accent-soft text-accent shadow-sm"
+                : "text-faint hover:bg-surface hover:text-foreground",
             )}
           >
             <Icon className="size-4" />

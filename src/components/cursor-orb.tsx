@@ -9,8 +9,8 @@ import {
 import { useEffect, useState } from "react";
 
 /**
- * Desktop-only custom cursor: near-instant core + snappy glass ring.
- * Skipped on touch / reduced motion.
+ * Desktop-only custom cursor: core + lagging glass ring (+ soft trail).
+ * Snappy springs so it feels responsive. Skipped on touch / reduced motion.
  */
 export function CursorOrb() {
   const reduceMotion = useReducedMotion();
@@ -21,12 +21,15 @@ export function CursorOrb() {
   const x = useMotionValue(-100);
   const y = useMotionValue(-100);
 
-  // Core tracks the pointer almost 1:1
-  const coreX = useSpring(x, { stiffness: 2000, damping: 48, mass: 0.15 });
-  const coreY = useSpring(y, { stiffness: 2000, damping: 48, mass: 0.15 });
-  // Ring stays slightly behind, but still responsive
-  const ringX = useSpring(x, { stiffness: 700, damping: 38, mass: 0.25 });
-  const ringY = useSpring(y, { stiffness: 700, damping: 38, mass: 0.25 });
+  // Fast core (almost locked to pointer)
+  const coreX = useSpring(x, { stiffness: 1800, damping: 42, mass: 0.18 });
+  const coreY = useSpring(y, { stiffness: 1800, damping: 42, mass: 0.18 });
+  // Outer circle: slight lag, still quick
+  const ringX = useSpring(x, { stiffness: 650, damping: 34, mass: 0.28 });
+  const ringY = useSpring(y, { stiffness: 650, damping: 34, mass: 0.28 });
+  // Soft glow trail: a bit more lag for depth
+  const trailX = useSpring(x, { stiffness: 320, damping: 28, mass: 0.35 });
+  const trailY = useSpring(y, { stiffness: 320, damping: 28, mass: 0.35 });
 
   useEffect(() => {
     if (reduceMotion) return;
@@ -72,21 +75,35 @@ export function CursorOrb() {
       className="pointer-events-none fixed inset-0 z-[90] hidden md:block"
       style={{ opacity: visible ? 1 : 0 }}
     >
+      {/* Soft trailing glow */}
       <motion.div
-        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/50 bg-accent/15 shadow-[0_0_20px_-4px_var(--glow-1)] backdrop-blur-[2px]"
+        className="absolute size-10 -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          left: trailX,
+          top: trailY,
+          background:
+            "radial-gradient(circle, color-mix(in oklab, var(--accent) 35%, transparent), transparent 70%)",
+          filter: "blur(2px)",
+        }}
+      />
+
+      {/* Outer glass circle */}
+      <motion.div
+        className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full border border-accent/40 bg-accent/10 shadow-[0_0_24px_-6px_var(--glow-1)] backdrop-blur-[2px]"
         style={{ left: ringX, top: ringY }}
         animate={{
-          width: hovering ? 40 : 26,
-          height: hovering ? 40 : 26,
-          opacity: hovering ? 1 : 0.75,
+          width: hovering ? 44 : 28,
+          height: hovering ? 44 : 28,
+          opacity: hovering ? 0.95 : 0.7,
         }}
         transition={{ type: "spring", stiffness: 420, damping: 28 }}
       />
 
+      {/* Inner core */}
       <motion.div
         className="absolute size-2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-foreground mix-blend-difference"
         style={{ left: coreX, top: coreY }}
-        animate={{ scale: hovering ? 0.5 : 1 }}
+        animate={{ scale: hovering ? 0.55 : 1 }}
         transition={{ type: "spring", stiffness: 500, damping: 28 }}
       />
     </div>

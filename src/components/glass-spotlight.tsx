@@ -2,9 +2,7 @@
 
 import { useEffect } from "react";
 
-/**
- * Drives a glassy spotlight on .card-hover via --spot-x / --spot-y.
- */
+/** Drives the glassy spotlight on .card-hover via --spot-x / --spot-y. */
 export function GlassSpotlight() {
   useEffect(() => {
     const onMove = (event: MouseEvent) => {

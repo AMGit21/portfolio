@@ -5,17 +5,17 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold whitespace-nowrap transition-all outline-none focus-visible:ring-2 focus-visible:ring-accent/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-sm font-semibold whitespace-nowrap outline-none transition-[transform,box-shadow,background-color,border-color,color,opacity] duration-200 focus-visible:ring-2 focus-visible:ring-accent/50 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
         default:
-          "bg-gradient-to-r from-accent to-accent-2 text-white shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/30",
+          "bg-gradient-to-r from-accent to-accent-2 text-white shadow-lg shadow-accent/20 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-accent/30",
         secondary:
-          "glass border border-line text-foreground hover:border-line-strong",
+          "glass border border-line text-foreground hover:-translate-y-0.5 hover:border-accent/35 hover:bg-accent-soft/40",
         outline:
-          "border border-line bg-transparent text-foreground hover:border-line-strong hover:bg-surface",
-        ghost: "text-muted hover:bg-surface hover:text-foreground",
+          "border border-line bg-transparent text-foreground hover:-translate-y-0.5 hover:border-accent/35 hover:bg-surface",
+        ghost: "text-muted hover:bg-accent-soft/50 hover:text-foreground",
         link: "rounded-none text-accent underline-offset-4 hover:underline",
       },
       size: {

@@ -21,14 +21,14 @@ export function SectionHeading({
         align === "center" ? "items-center text-center" : "items-start",
       )}
     >
-      <span className="chip !text-accent border-accent/30 uppercase tracking-widest">
+      <span className="chip border-accent/25 !text-accent uppercase tracking-[0.18em]">
         {eyebrow}
       </span>
-      <h2 className="font-display text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+      <h2 className="font-display text-3xl font-bold tracking-tight text-balance text-foreground sm:text-4xl md:text-5xl">
         {title}
       </h2>
       {description ? (
-        <p className="max-w-2xl text-base leading-relaxed text-muted md:text-lg">
+        <p className="max-w-2xl text-pretty text-base leading-relaxed text-muted md:text-lg">
           {description}
         </p>
       ) : null}

@@ -105,7 +105,7 @@ export function Navbar() {
             href={assetPath(profile.cvFile)}
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden items-center gap-2 rounded-full bg-foreground px-4 py-1.5 text-sm font-semibold text-background transition-transform hover:scale-[1.03] md:inline-flex"
+            className="hidden items-center gap-2 rounded-full bg-foreground px-4 py-1.5 text-sm font-semibold text-background shadow-sm hover:-translate-y-0.5 hover:shadow-md md:inline-flex"
           >
             <Download className="size-3.5" />
             CV
