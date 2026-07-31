@@ -55,9 +55,12 @@ export function Navbar() {
       <nav
         aria-label="Primary"
         className={cn(
-          "mx-auto flex h-16 max-w-6xl items-center justify-between px-4 transition-all duration-300 sm:px-6",
-          scrolled &&
-            "nav-panel mx-3 mt-3 h-14 max-w-5xl rounded-2xl sm:mx-auto",
+          "mx-auto flex h-16 max-w-6xl items-center justify-between border border-transparent px-4 sm:px-6",
+          // Only animate layout/surface props — not "all" (avoids black border flash)
+          "transition-[background-color,box-shadow,backdrop-filter,margin,height,max-width,border-radius] duration-300 ease-out",
+          scrolled
+            ? "nav-panel mx-3 mt-3 h-14 max-w-5xl rounded-2xl sm:mx-auto"
+            : "bg-transparent shadow-none",
         )}
       >
         <a
@@ -126,7 +129,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="nav-panel mx-3 mt-2 rounded-2xl p-4 md:hidden"
+            className="nav-panel mx-4 mt-2 rounded-xl p-4 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {site.nav.map(({ id, label }, index) => (

@@ -188,24 +188,19 @@ body {
   -webkit-backdrop-filter: blur(16px);
 }
 
-/* Navbar / mobile menu: denser frosted panel so links stay readable over text.
-   Soft shadow edge only — no hard border (avoids a black outline on scroll). */
+/* Floating navbar / mobile menu panel.
+   No solid border — a hard border + transition-all causes a black flash on scroll. */
 .nav-panel {
   background: rgb(246 248 253 / 0.94);
-  border: 1px solid transparent;
+  border-color: transparent;
   backdrop-filter: blur(22px) saturate(1.4);
   -webkit-backdrop-filter: blur(22px) saturate(1.4);
-  box-shadow:
-    0 0 0 1px rgb(11 18 32 / 0.045),
-    0 8px 28px -14px rgb(11 18 32 / 0.12);
+  box-shadow: 0 10px 30px -18px rgb(11 18 32 / 0.16);
 }
 
 .dark .nav-panel {
   background: rgb(8 12 22 / 0.92);
-  border: 1px solid transparent;
-  box-shadow:
-    0 0 0 1px rgb(255 255 255 / 0.06),
-    0 12px 32px -16px rgb(0 0 0 / 0.4);
+  box-shadow: 0 12px 32px -18px rgb(0 0 0 / 0.45);
 }
 
 .card {
