@@ -7,7 +7,7 @@ export function Backdrop() {
   return (
     <div
       aria-hidden
-      className="noise pointer-events-none fixed inset-0 -z-10 overflow-hidden"
+      className="noise pointer-events-none fixed inset-0 z-0 overflow-hidden"
     >
       <div className="bg-grid absolute inset-0 [mask-image:radial-gradient(ellipse_75%_60%_at_50%_0%,black_35%,transparent_100%)]" />
       <div

@@ -204,20 +204,35 @@ body {
 }
 
 .card {
+  --spot-x: 50%;
+  --spot-y: 50%;
   position: relative;
   isolation: isolate;
-  background: color-mix(in oklab, var(--surface) 88%, transparent);
-  border: 1px solid var(--line);
+  background: rgb(255 255 255 / 0.55);
+  border: 1px solid rgb(255 255 255 / 0.45);
   border-radius: 1.25rem;
-  backdrop-filter: blur(14px) saturate(1.2);
-  -webkit-backdrop-filter: blur(14px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.35);
+  -webkit-backdrop-filter: blur(18px) saturate(1.35);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.5) inset,
+    0 10px 30px -18px rgb(11 18 32 / 0.12);
   transition:
     border-color 0.35s ease,
     box-shadow 0.35s ease,
     transform 0.35s ease,
-    background-color 0.35s ease;
+    background 0.35s ease,
+    backdrop-filter 0.35s ease;
 }
 
+.dark .card {
+  background: rgb(12 18 32 / 0.55);
+  border: 1px solid rgb(148 163 184 / 0.16);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.05) inset,
+    0 12px 36px -18px rgb(0 0 0 / 0.45);
+}
+
+/* Static glass sheen */
 .card::before {
   content: "";
   pointer-events: none;
@@ -225,24 +240,49 @@ body {
   inset: 0;
   z-index: 0;
   border-radius: inherit;
-  opacity: 0;
   background: linear-gradient(
-    135deg,
-    rgb(255 255 255 / 0.22) 0%,
-    transparent 42%,
-    transparent 58%,
-    rgb(255 255 255 / 0.08) 100%
+    145deg,
+    rgb(255 255 255 / 0.35) 0%,
+    rgb(255 255 255 / 0.05) 38%,
+    transparent 62%
   );
+  opacity: 0.55;
   transition: opacity 0.35s ease;
 }
 
 .dark .card::before {
   background: linear-gradient(
-    135deg,
-    rgb(255 255 255 / 0.1) 0%,
-    transparent 40%,
-    transparent 60%,
-    rgb(56 189 248 / 0.08) 100%
+    145deg,
+    rgb(255 255 255 / 0.12) 0%,
+    transparent 45%
+  );
+  opacity: 0.7;
+}
+
+/* Cursor-following glass spotlight */
+.card-hover::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(
+    320px circle at var(--spot-x) var(--spot-y),
+    rgb(255 255 255 / 0.42),
+    rgb(56 189 248 / 0.12) 28%,
+    transparent 55%
+  );
+  transition: opacity 0.25s ease;
+}
+
+.dark .card-hover::after {
+  background: radial-gradient(
+    340px circle at var(--spot-x) var(--spot-y),
+    rgb(56 189 248 / 0.22),
+    rgb(167 139 250 / 0.12) 30%,
+    transparent 58%
   );
 }
 
@@ -252,26 +292,60 @@ body {
 }
 
 .card-hover:hover {
-  border-color: color-mix(in oklab, var(--accent) 35%, var(--line-strong));
-  background: color-mix(in oklab, var(--surface-strong) 72%, transparent);
+  border-color: rgb(56 189 248 / 0.45);
+  background: rgb(255 255 255 / 0.72);
+  backdrop-filter: blur(26px) saturate(1.55);
+  -webkit-backdrop-filter: blur(26px) saturate(1.55);
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.35) inset,
-    0 0 0 1px color-mix(in oklab, var(--accent) 18%, transparent),
-    0 18px 50px -18px var(--glow-1),
-    0 22px 56px -24px var(--glow-2);
-  transform: translateY(-5px);
+    0 1px 0 rgb(255 255 255 / 0.75) inset,
+    0 0 0 1px rgb(56 189 248 / 0.18),
+    0 20px 50px -16px var(--glow-1),
+    0 28px 60px -22px var(--glow-2);
+  transform: translateY(-6px) scale(1.01);
 }
 
 .card-hover:hover::before {
+  opacity: 0.85;
+}
+
+.card-hover:hover::after {
   opacity: 1;
 }
 
 .dark .card-hover:hover {
+  border-color: rgb(56 189 248 / 0.4);
+  background: rgb(14 20 36 / 0.78);
   box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.06) inset,
-    0 0 0 1px color-mix(in oklab, var(--accent) 28%, transparent),
-    0 20px 54px -16px var(--glow-1),
-    0 24px 60px -22px var(--glow-2);
+    0 1px 0 rgb(255 255 255 / 0.08) inset,
+    0 0 0 1px rgb(56 189 248 / 0.22),
+    0 22px 56px -14px var(--glow-1),
+    0 28px 64px -20px var(--glow-2);
+}
+
+/* Floating background icons */
+@keyframes float-icon {
+  0%,
+  100% {
+    transform: translateY(0) rotate(-2deg);
+    opacity: 0.55;
+  }
+  50% {
+    transform: translateY(-18px) rotate(3deg);
+    opacity: 0.9;
+  }
+}
+
+.float-icon {
+  animation-name: float-icon;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .float-icon {
+    animation: none;
+    opacity: 0.45;
+  }
 }
 
 /* Long prose: justify only on wide screens (mobile left-align reads cleaner) */
