@@ -261,7 +261,11 @@ a {
 /* ---------------------------------- */
 
 .card {
+  --glow-x: 50%;
+  --glow-y: 50%;
   position: relative;
+  isolation: isolate;
+  overflow: hidden;
   background: var(--surface-strong);
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
@@ -276,12 +280,40 @@ a {
   background: color-mix(in oklab, var(--surface-strong) 88%, transparent);
 }
 
+/* Soft blurred accent that follows the cursor */
+.card-hover::after {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  opacity: 0;
+  background: radial-gradient(
+    180px circle at var(--glow-x) var(--glow-y),
+    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+    color-mix(in oklab, var(--accent-2) 10%, transparent) 35%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  transition: opacity 0.25s ease;
+}
+
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+
 .card-hover:hover {
   border-color: color-mix(in oklab, var(--accent) 35%, var(--line));
   box-shadow:
     0 1px 0 color-mix(in oklab, var(--surface-strong) 40%, transparent) inset,
     0 14px 30px -16px rgb(15 23 42 / 0.14);
   transform: translateY(-3px);
+}
+
+.card-hover:hover::after {
+  opacity: 1;
 }
 
 .dark .card-hover:hover {

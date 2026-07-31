@@ -1,5 +1,6 @@
 import { Backdrop } from "@/components/backdrop";
 import { BackToTop } from "@/components/back-to-top";
+import { CardGlow } from "@/components/card-glow";
 import { CursorOrb } from "@/components/cursor-orb";
 import { FloatingIcons } from "@/components/floating-icons";
 import { Footer } from "@/components/footer";
@@ -24,6 +25,7 @@ export default function Home() {
       </a>
       <Backdrop />
       <FloatingIcons />
+      <CardGlow />
       <div className="relative z-10">
         <ScrollProgress />
         <Navbar />
