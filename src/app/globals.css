@@ -123,36 +123,6 @@
       box-shadow: 0 0 0 6px transparent;
     }
   }
-  @keyframes float-icon-a {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) rotate(-4deg) scale(1);
-    }
-    50% {
-      transform: translate3d(6px, -12px, 0) rotate(4deg) scale(1.04);
-    }
-  }
-  @keyframes float-icon-b {
-    0%,
-    100% {
-      transform: translate3d(0, 0, 0) rotate(3deg) scale(1);
-    }
-    50% {
-      transform: translate3d(-8px, -10px, 0) rotate(-3deg) scale(1.03);
-    }
-  }
-  @keyframes float-icon-c {
-    0%,
-    100% {
-      transform: translate3d(0, 4px, 0) rotate(0deg);
-    }
-    33% {
-      transform: translate3d(5px, -8px, 0) rotate(5deg);
-    }
-    66% {
-      transform: translate3d(-6px, -4px, 0) rotate(-4deg);
-    }
-  }
 }
 
 /* ---------------------------------- */
@@ -343,33 +313,74 @@ a {
 
 /* ---------------------------------- */
 /* Floating background icons           */
+/* Keyframes live outside @theme so they actually run. */
 /* ---------------------------------- */
+
+@keyframes float-icon-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-4deg);
+  }
+  50% {
+    transform: translate3d(8px, -14px, 0) rotate(4deg);
+  }
+}
+
+@keyframes float-icon-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(3deg);
+  }
+  50% {
+    transform: translate3d(-10px, -12px, 0) rotate(-3deg);
+  }
+}
+
+@keyframes float-icon-c {
+  0%,
+  100% {
+    transform: translate3d(0, 6px, 0) rotate(0deg);
+  }
+  33% {
+    transform: translate3d(6px, -10px, 0) rotate(5deg);
+  }
+  66% {
+    transform: translate3d(-8px, -2px, 0) rotate(-4deg);
+  }
+}
+
+@keyframes float-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
 .float-icons-layer {
   pointer-events: none;
   /* Fade toward the center so icons stay out of the text column */
   mask-image: radial-gradient(
-    ellipse 48% 62% at 50% 45%,
+    ellipse 52% 65% at 50% 45%,
     transparent 0%,
-    transparent 42%,
-    black 78%
+    transparent 38%,
+    black 82%
   );
   -webkit-mask-image: radial-gradient(
-    ellipse 48% 62% at 50% 45%,
+    ellipse 52% 65% at 50% 45%,
     transparent 0%,
-    transparent 42%,
-    black 78%
+    transparent 38%,
+    black 82%
   );
 }
 
 .float-icon {
   will-change: transform;
+  border: 1px solid var(--line);
+  background: color-mix(in oklab, var(--surface-strong) 45%, transparent);
+  box-shadow: var(--shadow-soft);
+  opacity: 0.55;
+  animation-duration: 12s;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
-  border: 1px solid var(--line);
-  background: color-mix(in oklab, var(--surface-strong) 40%, transparent);
-  box-shadow: var(--shadow-soft);
-  opacity: 0.45;
 }
 
 .float-icon-a {
@@ -382,10 +393,23 @@ a {
   animation-name: float-icon-c;
 }
 
+.cursor-spin {
+  animation: float-spin 8s linear infinite;
+}
+
+.cursor-spin-fast {
+  animation: float-spin 4s linear infinite reverse;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .float-icon {
+  .float-icon,
+  .cursor-spin,
+  .cursor-spin-fast {
     animation: none !important;
-    opacity: 0.28;
+  }
+
+  .float-icon {
+    opacity: 0.3;
   }
 }
 
