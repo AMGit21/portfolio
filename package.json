@@ -2,7 +2,7 @@
   "name": "web-portfolio-v2",
   "version": "2.0.0",
   "private": true,
-  "description": "Ali Mantache — AI Engineer & Full-Stack Developer portfolio",
+  "description": "Ali Mantache - AI Engineer & Full-Stack Developer portfolio",
   "engines": {
     "node": ">=20.9.0",
     "npm": ">=10.0.0"

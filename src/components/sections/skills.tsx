@@ -40,8 +40,8 @@ export function Skills() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Skills"
-          title="A full-stack toolkit, tuned for AI"
-          description="Every layer of a production AI system — from the model call to the database index to the deploy pipeline."
+          title="Tools I use day to day"
+          description="From the model call and API layer through the database and deploy pipeline."
         />
 
         <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">

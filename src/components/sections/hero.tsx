@@ -87,7 +87,7 @@ export function Hero() {
             {profile.tagline.replace(".", "")}
             <span className="text-gradient text-gradient-animated">.</span>
             <span className="mt-4 block text-xl font-medium text-muted sm:text-2xl lg:text-[1.65rem]">
-              {profile.name} — <RoleRotator />
+              {profile.name} - <RoleRotator />
             </span>
           </motion.h1>
 

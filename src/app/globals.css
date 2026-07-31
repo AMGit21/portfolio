@@ -189,7 +189,7 @@ body {
 }
 
 /* Floating navbar / mobile menu panel.
-   No solid border — a hard border + transition-all causes a black flash on scroll. */
+   No solid border: a hard border + transition-all causes a black flash on scroll. */
 .nav-panel {
   background: rgb(246 248 253 / 0.94);
   border-color: transparent;

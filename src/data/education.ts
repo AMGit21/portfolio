@@ -20,14 +20,14 @@ export const education: Education[] = [
     degree: "Master's Degree",
     field: "Computer Science & Risk Management",
     institution: "Lebanese University, Faculty of Sciences",
-    period: "2015 — 2017",
+    period: "2015 - 2017",
   },
   {
     id: "bachelors",
     degree: "Bachelor's Degree",
     field: "Computer Science",
     institution: "Lebanese University, Faculty of Sciences",
-    period: "2012 — 2015",
+    period: "2012 - 2015",
   },
 ];
 

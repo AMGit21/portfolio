@@ -1,8 +1,8 @@
 export const site = {
   url: "https://amgit21.github.io/portfolio",
-  title: "Ali Mantache — AI Engineer & Full-Stack Developer",
+  title: "Ali Mantache - AI Engineer & Full-Stack Developer",
   description:
-    "AI engineer and full-stack developer with 5+ years delivering software and 2+ years shipping production AI systems. LLM-powered workflows, secure REST APIs, and scalable web platforms.",
+    "AI engineer and full-stack developer based in Beirut. 5+ years in software, 2+ years shipping production AI, REST APIs, and full-stack web platforms.",
   keywords: [
     "Ali Mantache",
     "AI Engineer",

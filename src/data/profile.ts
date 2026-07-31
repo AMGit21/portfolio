@@ -9,11 +9,11 @@ export const profile = {
     "R&D Engineer",
     "Technical Instructor",
   ],
-  tagline: "I build enterprise AI systems.",
+  tagline: "I build production AI systems.",
   intro:
-    "From LLM-powered workflows and agentic pipelines to real-time data platforms — I turn R&D and product requirements into tested, reliable systems.",
+    "I work on LLM workflows, agent pipelines, and real-time data platforms. My job is to turn product and R&D requirements into systems that hold up in production.",
   summary:
-    "AI engineer and full-stack developer with 5+ years delivering software and 2+ years shipping production AI systems. I build secure REST APIs, LLM-powered workflows, and scalable web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js, PostgreSQL, Docker, and CI/CD.",
+    "AI engineer and full-stack developer with 5+ years building software and 2+ years shipping production AI. I build REST APIs, LLM features, and web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js, PostgreSQL, Docker, and CI/CD.",
   location: "Beirut, Lebanon",
   email: "alimantache1994@gmail.com",
   phone: "(+961) 76 008 743",
@@ -27,7 +27,7 @@ export const profile = {
   },
   stats: [
     { value: 5, suffix: "+", label: "Years in software" },
-    { value: 2, suffix: "+", label: "Years shipping production AI" },
+    { value: 2, suffix: "+", label: "Years in production AI" },
     { value: 300, suffix: "+", label: "Learners trained" },
     { value: 9, suffix: "", label: "Bootcamps delivered" },
   ],

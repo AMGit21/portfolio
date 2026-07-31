@@ -23,7 +23,7 @@ const icons: Record<Project["icon"], LucideIcon> = {
 };
 
 const statusStyles: Record<Project["status"], string> = {
-  "Production-grade": "border-success/30 !text-success",
+  Production: "border-success/30 !text-success",
   "R&D": "border-accent-2/30 !text-accent-2",
   Shipped: "border-accent/30 !text-accent",
 };
@@ -37,7 +37,7 @@ function TerminalPanel({ project }: { project: Project }) {
           <span className="size-2.5 rounded-full bg-amber-400/80" />
           <span className="size-2.5 rounded-full bg-emerald-400/80" />
           <span className="ml-3 truncate text-xs text-faint">
-            {project.id} — live
+            {project.id} - live
           </span>
         </div>
         <div className="flex flex-col gap-2 px-5 py-5">
@@ -154,7 +154,7 @@ export function Projects() {
         <SectionHeading
           eyebrow="Projects"
           title="Selected work"
-          description="Systems I've architected and shipped — agentic AI intake, natural-language data access, and real-time computer vision."
+          description="AI intake tooling, natural-language data access, and a real-time computer vision pipeline."
         />
 
         <div className="flex flex-col gap-8 md:gap-10">

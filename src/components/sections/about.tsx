@@ -13,23 +13,23 @@ import { profile } from "@/data/profile";
 const principles = [
   {
     icon: Wrench,
-    title: "Engineering philosophy",
-    body: "Reliable beats clever. I design APIs, data models, and pipelines that are tested, observable, and boring to operate — so the interesting parts can move fast.",
+    title: "How I engineer",
+    body: "I prefer reliable over clever. APIs, data models, and pipelines should be tested and easy to operate, so the hard parts can move without drama.",
   },
   {
     icon: Brain,
-    title: "AI philosophy",
-    body: "LLMs are components, not magic. I treat prompts like code: versioned, evaluated against ground truth, and measured with precision, recall, and accuracy before they ship.",
+    title: "How I use AI",
+    body: "I treat LLMs as components. Prompts get versioned, checked against ground truth, and measured with precision, recall, and accuracy before they ship.",
   },
   {
     icon: Compass,
     title: "How I work",
-    body: "From requirements to runbooks — I own the full lifecycle, collaborate across functions, and document what I build so teams can run it without me.",
+    body: "I take work from requirements through runbooks: design, build, document, and hand over something the team can run without me.",
   },
   {
     icon: GraduationCap,
-    title: "Giving back",
-    body: "Nine bootcamps and 300+ learners taught me that explaining a system well is the best test of understanding it. Mentoring keeps my fundamentals sharp.",
+    title: "Teaching",
+    body: "Nine bootcamps and 300+ learners taught me that if I can explain a system clearly, I understand it. Mentoring also keeps the basics sharp.",
   },
 ];
 
@@ -39,31 +39,29 @@ export function About() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="About"
-          title="Systems thinker, builder, teacher"
-          description="Five-plus years across the stack — the last two spent shipping AI that survives contact with production."
+          title="Builder, engineer, instructor"
+          description="Five-plus years across the stack. The last two focused on shipping AI that holds up in production."
         />
 
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <Reveal className="flex flex-col gap-6">
             <p className="text-lg leading-relaxed text-muted">
               I&apos;m {profile.name}, an AI engineer and full-stack developer
-              based in {profile.location}. My work spans secure REST APIs,
-              LLM-powered workflows, and scalable web platforms — built with
-              Python/FastAPI, Node.js/NestJS, React/Next.js, PostgreSQL,
-              Docker, and CI/CD.
+              based in {profile.location}. I build REST APIs, LLM features, and
+              web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js,
+              PostgreSQL, Docker, and CI/CD.
             </p>
             <p className="text-lg leading-relaxed text-muted">
-              Today I work in R&amp;D at Intelligencia.fr on an EU-funded
+              Right now I work in R&amp;D at Intelligencia.fr on an EU-funded
               identity platform: on-device face authentication, permissioned
-              blockchain credential issuance, and zero-knowledge network
-              authentication — alongside LLM features and an autonomous
-              prompt-evaluation pipeline that picks the best prompt style with
-              data, not vibes.
+              blockchain credential issuance, and zero-knowledge network auth.
+              I also build LLM features and a prompt-evaluation pipeline that
+              picks prompt styles using precision, recall, and accuracy.
             </p>
             <p className="text-lg leading-relaxed text-muted">
-              Before that I led a team of 10+ developers shipping client sites
-              end-to-end, and delivered nine MERN bootcamps that trained 300+
-              learners across universities and institutions.
+              Before that I led a team of 10+ developers on client sites, and
+              ran nine MERN bootcamps that trained 300+ learners across
+              universities and institutions.
             </p>
             <div className="mt-2 flex flex-wrap gap-3">
               <span className="chip">

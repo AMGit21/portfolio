@@ -1,6 +1,6 @@
 /**
  * Fixed, lightweight page backdrop: subtle grid, two slow aurora
- * gradient blobs, and a faint noise texture. Pure CSS animations —
+ * gradient blobs, and a faint noise texture. Pure CSS animations -
  * disabled automatically for prefers-reduced-motion.
  */
 export function Backdrop() {

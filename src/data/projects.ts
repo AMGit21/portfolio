@@ -8,7 +8,7 @@ export interface Project {
   title: string;
   subtitle: string;
   year: string;
-  status: "Production-grade" | "R&D" | "Shipped";
+  status: "Production" | "R&D" | "Shipped";
   role: string;
   description: string;
   highlights: string[];
@@ -24,16 +24,16 @@ export const projects: Project[] = [
   {
     id: "ai-triage",
     title: "AI Triage System",
-    subtitle: "Agentic B2B Support Intake",
+    subtitle: "B2B Support Intake",
     year: "2026",
-    status: "Production-grade",
+    status: "Production",
     role: "Solo Engineer",
     description:
-      "An AI support-intake system that classifies, routes, and enriches incoming B2B requests using FastAPI, n8n, Gmail, and LLMs — turning unstructured email into structured, actionable tickets.",
+      "Classifies, routes, and enriches incoming B2B support requests with FastAPI, n8n, Gmail, and LLMs. Unstructured email becomes structured tickets the team can act on.",
     highlights: [
-      "Dual ingestion: concurrent batch processing with retries plus Gmail/webhook n8n flows, producing structured JSON outputs",
-      "Schema validation and deterministic routing so every request lands in the right queue",
-      "Regression tests and Google Sheets fallback logging for failed runs — no silent losses",
+      "Dual ingestion: batch processing with retries, plus Gmail/webhook n8n flows that output structured JSON",
+      "Schema validation and deterministic routing so requests land in the right queue",
+      "Regression tests and Google Sheets fallback logging so failed runs are not silent",
     ],
     tech: [
       "Python",
@@ -48,25 +48,25 @@ export const projects: Project[] = [
     featured: true,
     icon: "bot",
     terminal: [
-      "$ POST /intake  ← gmail webhook",
-      "→ classify: billing_dispute (0.97)",
-      "→ enrich: account, priority, sentiment",
-      "→ route: finance-queue  ✓ schema valid",
-      "✓ 42 regression tests passed",
+      "$ POST /intake  <- gmail webhook",
+      "-> classify: billing_dispute (0.97)",
+      "-> enrich: account, priority, sentiment",
+      "-> route: finance-queue  OK schema valid",
+      "OK 42 regression tests passed",
     ],
   },
   {
     id: "nl-sql-chatbot",
     title: "AI Chatbot",
-    subtitle: "Natural Language → Dynamic Database CRUD",
+    subtitle: "Natural Language to Database CRUD",
     year: "2025",
     status: "Shipped",
     role: "Solo Engineer",
     description:
-      "A natural-language-to-SQL system that lets users query and mutate a live database conversationally — with a locally fine-tuned model, hardened auth, and a full analytics UI.",
+      "Lets users query and update a live database in plain language. Uses a locally fine-tuned model, JWT auth, query sanitization, and a Next.js analytics UI.",
     highlights: [
-      "Fine-tuned TinyLlama with LoRA for CPU-efficient local inference — no GPU required",
-      "JWT authentication and query sanitization guarding every generated statement",
+      "Fine-tuned TinyLlama with LoRA for local CPU inference (no GPU required)",
+      "JWT auth and query sanitization on every generated statement",
       "Next.js analytics UI with filter, search, sort, and CSV export",
     ],
     tech: [
@@ -83,26 +83,26 @@ export const projects: Project[] = [
     featured: true,
     icon: "message",
     terminal: [
-      "> \"show revenue by client since March\"",
-      "→ SELECT client, SUM(amount) ...",
-      "→ sanitize ✓  auth ✓  execute ✓",
-      "← 14 rows · rendered as chart",
+      '> "show revenue by client since March"',
+      "-> SELECT client, SUM(amount) ...",
+      "-> sanitize OK  auth OK  execute OK",
+      "<- 14 rows · rendered as chart",
       "model: TinyLlama-1.1B + LoRA (CPU)",
     ],
   },
   {
     id: "streaming-platform",
     title: "Real-Time Data Streaming Platform",
-    subtitle: "Intelligent Computer-Vision Pipeline",
+    subtitle: "Computer Vision Pipeline",
     year: "2024",
     status: "R&D",
     role: "Architect & Engineer",
     description:
-      "A computer-vision streaming pipeline for concurrent RTSP detection — Kafka and Spark Structured Streaming feeding Delta Lake, with event fusion raising confirmed alerts on a live dashboard.",
+      "Computer-vision pipeline for concurrent RTSP detection. Kafka and Spark Structured Streaming write to Delta Lake; event fusion raises confirmed alerts on a live dashboard.",
     highlights: [
-      "Trained YOLOv8 on target industrial objects via manual Roboflow labeling plus dynamic ontology-based labeling with Autodistill / zero-shot models (Grounding DINO)",
-      "Microservice-per-source inputs (camera, web scraping, dummy data; IoT-ready) with event fusion — e.g. smoke + high temperature → confirmed alert",
-      "React dashboard with WebSocket push alerts, sound notifications, real-time telemetry, and detection heatmaps",
+      "Trained YOLOv8 on industrial objects with Roboflow labeling, plus Autodistill / Grounding DINO for ontology-based labels",
+      "Per-source microservices (camera, scraping, dummy data; IoT-ready) with event fusion, e.g. smoke + high temperature = confirmed alert",
+      "React dashboard with WebSocket alerts, sound notifications, telemetry, and detection heatmaps",
     ],
     tech: [
       "Apache Kafka",
@@ -120,11 +120,11 @@ export const projects: Project[] = [
     featured: true,
     icon: "activity",
     terminal: [
-      "kafka › frames in: 4 rtsp streams",
-      "spark › yolo v8 inference @ 24fps",
-      "fusion › smoke + temp>80°C",
-      "⚠ ALERT confirmed → ws push",
-      "delta › sink: detections, alerts",
+      "kafka > frames in: 4 rtsp streams",
+      "spark > yolo v8 inference @ 24fps",
+      "fusion > smoke + temp>80C",
+      "ALERT confirmed -> ws push",
+      "delta > sink: detections, alerts",
     ],
   },
   {
@@ -135,7 +135,7 @@ export const projects: Project[] = [
     status: "Shipped",
     role: "Full-Stack Engineer",
     description:
-      "Multi-tenant SaaS platform with secure per-tenant database isolation and dynamic schema operations, containerized for repeatable deployment.",
+      "Multi-tenant SaaS platform with per-tenant database isolation and dynamic schema operations, packaged with Docker for repeatable deploys.",
     highlights: [
       "Multi-tenant architecture with strict data isolation",
       "Dynamic schema operations with validation",
@@ -155,11 +155,11 @@ export const projects: Project[] = [
     status: "Shipped",
     role: "Full-Stack Engineer",
     description:
-      "Full-stack music discovery platform combining Google Gemini with the Spotify API — genre and artist exploration through an intelligent contextual chat.",
+      "Music discovery app that combines Google Gemini with the Spotify API so users can explore genres and artists through chat.",
     highlights: [
-      "Google Gemini AI integration for contextual recommendations",
+      "Google Gemini integration for contextual recommendations",
       "Responsive grid-based discovery UI",
-      "Intelligent contextual chat system",
+      "Chat flow for genre and artist exploration",
     ],
     tech: ["Node.js", "React.js", "Express.js", "MongoDB", "Spotify API", "Gemini AI"],
     github: "https://github.com/AMGit21/spotifyGenresArtists-GeminiChat-frontend",

@@ -72,7 +72,7 @@ function CopyButton({ text, label }: { text: string; label: string }) {
       setCopied(true);
       setTimeout(() => setCopied(false), 1800);
     } catch {
-      // Clipboard unavailable (e.g. insecure context) — ignore.
+      // Clipboard unavailable (e.g. insecure context); ignore.
     }
   }
 
@@ -99,8 +99,8 @@ export function Contact() {
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Contact"
-          title="Let's build something intelligent"
-          description="Have an AI product to ship, a platform to scale, or a team to level up? I'd love to hear about it."
+          title="Get in touch"
+          description="If you have an AI product, a platform to grow, or a team that needs help shipping, feel free to reach out."
         />
 
         <Reveal>
@@ -119,8 +119,8 @@ export function Contact() {
                 {profile.availability}
               </Badge>
               <h3 className="font-display max-w-xl text-2xl font-bold tracking-tight md:text-4xl">
-                From idea to production —{" "}
-                <span className="text-gradient">let&apos;s talk.</span>
+                From idea to production.{" "}
+                <span className="text-gradient">Let&apos;s talk.</span>
               </h3>
               <p className="max-w-lg text-sm text-muted md:text-base">
                 Based in {profile.location}, working remotely worldwide.

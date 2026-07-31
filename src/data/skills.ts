@@ -22,7 +22,7 @@ export const skillCategories: SkillCategory[] = [
     id: "ai",
     title: "AI & LLM Engineering",
     blurb:
-      "LLM-powered features, agentic workflows, fine-tuning, and rigorous prompt evaluation in production.",
+      "LLM features, agent workflows, fine-tuning, and prompt evaluation against real metrics.",
     icon: "brain",
     accent: "violet",
     skills: [
@@ -39,8 +39,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "backend",
     title: "Backend Engineering",
-    blurb:
-      "Secure, well-tested APIs and event-driven services designed for scale and maintainability.",
+    blurb: "APIs and services with auth, tests, and clear ownership boundaries.",
     icon: "server",
     accent: "sky",
     skills: [
@@ -57,8 +56,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "frontend",
     title: "Frontend Engineering",
-    blurb:
-      "Modern, responsive interfaces with real-time capabilities and thoughtful UX.",
+    blurb: "React and Next.js UIs, including real-time views when the product needs them.",
     icon: "layout",
     accent: "cyan",
     skills: ["React.js", "Next.js", "TypeScript", "WebSockets", "Tailwind CSS"],
@@ -67,7 +65,7 @@ export const skillCategories: SkillCategory[] = [
     id: "data",
     title: "Data & Computer Vision",
     blurb:
-      "Streaming pipelines and vision models — from labeling and training to real-time inference.",
+      "Streaming pipelines and vision models, from labeling through training to inference.",
     icon: "activity",
     accent: "emerald",
     skills: [
@@ -83,8 +81,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "databases",
     title: "Databases",
-    blurb:
-      "Relational and document stores, caching layers, and schema design that holds up under change.",
+    blurb: "Postgres, document stores, Redis, and schemas that can change without breaking.",
     icon: "database",
     accent: "amber",
     skills: ["PostgreSQL", "MongoDB", "MySQL", "SQL Server", "Redis"],
@@ -92,8 +89,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "devops",
     title: "DevOps & Tooling",
-    blurb:
-      "Containerized deployments, automated testing, and CI/CD pipelines that ship with confidence.",
+    blurb: "Docker, GitHub Actions, tests, and CI/CD that make releases repeatable.",
     icon: "workflow",
     accent: "rose",
     skills: [
@@ -109,7 +105,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "languages",
     title: "Programming Languages",
-    blurb: "Polyglot by necessity, pragmatic by choice.",
+    blurb: "Python and TypeScript day to day, plus Go, Kotlin, SQL, and PHP when needed.",
     icon: "code",
     accent: "sky",
     skills: ["Python", "TypeScript", "JavaScript", "SQL", "PHP", "Go", "Kotlin"],
@@ -117,8 +113,7 @@ export const skillCategories: SkillCategory[] = [
   {
     id: "other",
     title: "Architecture & Practices",
-    blurb:
-      "Distributed systems thinking, security awareness, and disciplined delivery.",
+    blurb: "Clear design docs, security-aware defaults, and delivery that other people can run.",
     icon: "shield",
     accent: "violet",
     skills: [

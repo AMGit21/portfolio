@@ -100,8 +100,8 @@ export function Experience() {
       <div className="mx-auto max-w-4xl px-4 sm:px-6">
         <SectionHeading
           eyebrow="Experience"
-          title="Where I've shipped"
-          description="R&D, production systems, and 300+ engineers-in-training along the way."
+          title="Work history"
+          description="R&D AI work, client delivery, and 300+ learners trained along the way."
         />
 
         <div className="relative flex flex-col gap-10">
@@ -130,8 +130,8 @@ export function Experience() {
             />
             <p className="flex items-center gap-3 text-sm text-faint">
               <Briefcase className="size-4" />
-              Started building for the web professionally in 2020 — teaching it
-              since 2021.
+              Started building for the web professionally in 2020, and teaching
+              it since 2021.
             </p>
           </Reveal>
         </div>

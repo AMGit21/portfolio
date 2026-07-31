@@ -1,7 +1,7 @@
-# Ali Mantache — Portfolio v2
+# Ali Mantache - Portfolio v2
 
-Personal portfolio for a Senior AI & Software Engineer. Fully static, fast,
-accessible, themed (light / dark / system), and deployable to GitHub Pages.
+Personal portfolio for an AI engineer and full-stack developer. Static site,
+light/dark theme, deployable to GitHub Pages.
 
 ## Stack (current stable)
 
@@ -35,8 +35,7 @@ Requires **Node ≥ 20.9** and **npm ≥ 10** (see `engines` in `package.json`).
 
 ## Editing content
 
-All portfolio content lives in typed data files — no component changes needed
-to update the CV:
+All portfolio content lives in typed data files. Update these to refresh the CV:
 
 | File | Contents |
 | --- | --- |
@@ -52,10 +51,10 @@ CV download and portrait.
 
 ## Architecture
 
-- `src/app/` — layout (fonts, metadata, JSON-LD), page, sitemap, robots, manifest
-- `src/components/sections/` — hero, about, skills, experience, projects, education, contact
-- `src/components/ui/` — shadcn primitives + motion helpers (`Reveal`, `Stagger`, `Magnetic`, `Counter`), tech icon map
-- `components.json` — shadcn/ui config (add more with `npx shadcn@latest add <name>`)
+- `src/app/` - layout (fonts, metadata, JSON-LD), page, sitemap, robots, manifest
+- `src/components/sections/` - hero, about, skills, experience, projects, education, contact
+- `src/components/ui/` - shadcn primitives + motion helpers (`Reveal`, `Stagger`, `Magnetic`, `Counter`), tech icon map
+- `components.json` - shadcn/ui config (add more with `npx shadcn@latest add <name>`)
 
 Animations respect `prefers-reduced-motion` via `MotionConfig reducedMotion="user"`
 plus a CSS fallback for keyframe animations.

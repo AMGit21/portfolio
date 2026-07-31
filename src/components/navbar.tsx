@@ -56,7 +56,7 @@ export function Navbar() {
         aria-label="Primary"
         className={cn(
           "mx-auto flex h-16 max-w-6xl items-center justify-between border border-transparent px-4 sm:px-6",
-          // Only animate layout/surface props — not "all" (avoids black border flash)
+          // Only animate layout/surface props, not "all" (avoids black border flash)
           "transition-[background-color,box-shadow,backdrop-filter,margin,height,max-width,border-radius] duration-300 ease-out",
           scrolled
             ? "nav-panel mx-3 mt-3 h-14 max-w-5xl rounded-2xl sm:mx-auto"
@@ -66,7 +66,7 @@ export function Navbar() {
         <a
           href="#hero"
           className="font-display text-lg font-bold tracking-tight"
-          aria-label={`${profile.name} — back to top`}
+          aria-label={`${profile.name} - back to top`}
         >
           <span className="text-gradient">{profile.firstName}</span>
           <span className={cn(scrolled ? "text-muted" : "text-faint")}>.dev</span>

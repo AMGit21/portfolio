@@ -23,7 +23,7 @@ export function Education() {
         <SectionHeading
           eyebrow="Background"
           title="Education & certifications"
-          description="Formal foundations in computer science, kept current with hands-on certification."
+          description="Computer science degrees, plus certifications I picked up while shipping real work."
         />
 
         <div className="grid gap-10 lg:grid-cols-2">
@@ -41,7 +41,7 @@ export function Education() {
                     </span>
                     <div>
                       <h4 className="font-display text-base font-semibold">
-                        {item.degree} — {item.field}
+                        {item.degree} - {item.field}
                       </h4>
                       <p className="mt-1 text-sm text-accent">
                         {item.institution}
