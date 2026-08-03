@@ -28,7 +28,16 @@
   --grid-line: rgba(15, 23, 42, 0.055);
   --radius-card: 1.25rem;
   --radius-control: 9999px;
-  --shadow-soft: 0 12px 32px -18px rgb(15 23 42 / 0.16);
+  /* Layered card depth: tight + soft + mild bottom inset (slate-tinted) */
+  --shadow-soft:
+    rgb(15 23 42 / 0.12) 0 1px 2px,
+    rgb(15 23 42 / 0.1) 0 6px 14px -4px,
+    rgb(15 23 42 / 0.06) 0 -2px 0 inset;
+  --shadow-hover:
+    rgb(15 23 42 / 0.14) 0 2px 4px,
+    rgb(15 23 42 / 0.12) 0 10px 22px -6px,
+    rgb(2 132 199 / 0.08) 0 16px 28px -12px,
+    rgb(15 23 42 / 0.05) 0 -2px 0 inset;
 }
 
 /* Softer elevated dark (not near-black) */
@@ -51,7 +60,17 @@
   --glow-1: rgba(56, 189, 248, 0.24);
   --glow-2: rgba(196, 181, 253, 0.18);
   --grid-line: rgba(226, 232, 240, 0.07);
-  --shadow-soft: 0 16px 40px -18px rgb(0 0 0 / 0.4);
+  --shadow-soft:
+    rgb(0 0 0 / 0.22) 0 1px 2px,
+    rgb(0 0 0 / 0.28) 0 8px 18px -6px,
+    rgb(255 255 255 / 0.04) 0 1px 0 inset,
+    rgb(0 0 0 / 0.18) 0 -2px 0 inset;
+  --shadow-hover:
+    rgb(0 0 0 / 0.28) 0 2px 4px,
+    rgb(0 0 0 / 0.32) 0 12px 26px -6px,
+    rgb(56 189 248 / 0.12) 0 16px 30px -12px,
+    rgb(255 255 255 / 0.05) 0 1px 0 inset,
+    rgb(0 0 0 / 0.2) 0 -2px 0 inset;
 }
 
 @theme inline {
@@ -295,20 +314,12 @@ a {
 
 .card-hover:hover {
   border-color: color-mix(in oklab, var(--accent) 35%, var(--line));
-  box-shadow:
-    0 1px 0 color-mix(in oklab, var(--surface-strong) 40%, transparent) inset,
-    0 14px 30px -16px rgb(15 23 42 / 0.14);
+  box-shadow: var(--shadow-hover);
   transform: translateY(-3px);
 }
 
 .card-hover:hover::after {
   opacity: 1;
-}
-
-.dark .card-hover:hover {
-  box-shadow:
-    0 1px 0 rgb(255 255 255 / 0.04) inset,
-    0 16px 34px -16px rgb(0 0 0 / 0.35);
 }
 
 /* ---------------------------------- */
