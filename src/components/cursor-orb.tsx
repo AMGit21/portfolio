@@ -28,13 +28,11 @@ export function CursorOrb() {
   useEffect(() => {
     if (reduceMotion) return;
 
-    const finePointer = window.matchMedia("(pointer: fine)").matches;
-    if (!finePointer) return;
-
-    setEnabled(true);
-    document.documentElement.classList.add("has-cursor-orb");
-
+    // Enable for mouse/trackpad only — not viewport width.
+    // Touch phones report pointer: coarse; a resized laptop still has pointer: fine.
+    const media = window.matchMedia("(pointer: fine)");
     let shown = false;
+    let attached = false;
 
     const onMove = (event: MouseEvent) => {
       x.set(event.clientX);
@@ -57,13 +55,37 @@ export function CursorOrb() {
       setVisible(false);
     };
 
-    window.addEventListener("mousemove", onMove, { passive: true });
-    document.documentElement.addEventListener("mouseleave", onLeave);
+    const enable = () => {
+      if (attached) return;
+      attached = true;
+      setEnabled(true);
+      document.documentElement.classList.add("has-cursor-orb");
+      window.addEventListener("mousemove", onMove, { passive: true });
+      document.documentElement.addEventListener("mouseleave", onLeave);
+    };
 
-    return () => {
+    const disable = () => {
+      if (!attached) return;
+      attached = false;
+      shown = false;
+      setEnabled(false);
+      setVisible(false);
       document.documentElement.classList.remove("has-cursor-orb");
       window.removeEventListener("mousemove", onMove);
       document.documentElement.removeEventListener("mouseleave", onLeave);
+    };
+
+    const sync = () => {
+      if (media.matches) enable();
+      else disable();
+    };
+
+    sync();
+    media.addEventListener("change", sync);
+
+    return () => {
+      media.removeEventListener("change", sync);
+      disable();
     };
   }, [reduceMotion, x, y]);
 
@@ -72,7 +94,7 @@ export function CursorOrb() {
   return (
     <div
       aria-hidden
-      className="pointer-events-none fixed inset-0 z-[90] hidden md:block"
+      className="pointer-events-none fixed inset-0 z-[90]"
       style={{ opacity: visible ? 1 : 0, transition: "opacity 120ms linear" }}
     >
       <motion.div

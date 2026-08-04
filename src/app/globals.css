@@ -269,6 +269,24 @@ main > section:not(#hero) {
     var(--shadow-soft);
 }
 
+/* Mobile hamburger sheet — near-opaque so page content doesn't show through */
+.nav-menu {
+  background: rgb(255 255 255 / 0.98);
+  border: 1px solid var(--line);
+  backdrop-filter: blur(24px) saturate(1.35);
+  -webkit-backdrop-filter: blur(24px) saturate(1.35);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.85) inset,
+    0 20px 48px -14px rgb(15 23 42 / 0.35);
+}
+
+.dark .nav-menu {
+  background: rgb(21 27 43 / 0.98);
+  box-shadow:
+    0 1px 0 rgb(255 255 255 / 0.07) inset,
+    0 20px 48px -12px rgb(0 0 0 / 0.65);
+}
+
 /* ---------------------------------- */
 /* Cards                               */
 /* ---------------------------------- */

@@ -129,7 +129,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="nav-panel mx-4 mt-2 rounded-xl p-4 md:hidden"
+            className="nav-menu mx-4 mt-2 rounded-xl p-4 md:hidden"
           >
             <div className="flex flex-col gap-1">
               {site.nav.map(({ id, label }, index) => (
