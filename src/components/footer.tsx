@@ -45,7 +45,7 @@ export function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="glass flex size-9 items-center justify-center rounded-full text-muted hover:-translate-y-0.5 hover:border-accent/35 hover:text-accent hover:shadow-md hover:shadow-accent/10"
+              className="glass flex size-9 items-center justify-center rounded-full text-muted transition-[color,transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-0.5 hover:border-accent/35 hover:text-accent hover:shadow-md hover:shadow-accent/10"
             >
               <Icon className="size-4" />
             </a>

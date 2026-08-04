@@ -148,7 +148,7 @@ export function Hero() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="glass flex size-11 items-center justify-center rounded-full text-muted transition-all hover:-translate-y-1 hover:text-accent"
+                  className="glass flex size-11 items-center justify-center rounded-full text-muted transition-[color,transform,border-color,box-shadow] duration-200 ease-out hover:-translate-y-1 hover:border-accent/35 hover:text-accent hover:shadow-md hover:shadow-accent/10"
                 >
                   <Icon className="size-5" />
                 </a>
