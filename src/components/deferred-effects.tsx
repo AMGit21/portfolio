@@ -25,23 +25,30 @@ const CardGlow = dynamic(
 /**
  * Mount decorative client effects after first paint / idle so hard refresh
  * isn't blocked by cursor, floating icons, and card glow listeners.
+ * Cursor (Framer) loads last — only after the page is already usable.
  */
 export function DeferredEffects() {
   const [ready, setReady] = useState(false);
+  const [cursorReady, setCursorReady] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     let idleId: number | undefined;
     let timeoutId: ReturnType<typeof setTimeout> | undefined;
+    let cursorTimeout: ReturnType<typeof setTimeout> | undefined;
 
     const enable = () => {
-      if (!cancelled) setReady(true);
+      if (cancelled) return;
+      setReady(true);
+      cursorTimeout = setTimeout(() => {
+        if (!cancelled) setCursorReady(true);
+      }, 800);
     };
 
     if (typeof window.requestIdleCallback === "function") {
-      idleId = window.requestIdleCallback(enable, { timeout: 1200 });
+      idleId = window.requestIdleCallback(enable, { timeout: 900 });
     } else {
-      timeoutId = setTimeout(enable, 200);
+      timeoutId = setTimeout(enable, 150);
     }
 
     return () => {
@@ -50,6 +57,7 @@ export function DeferredEffects() {
         window.cancelIdleCallback(idleId);
       }
       if (timeoutId !== undefined) clearTimeout(timeoutId);
+      if (cursorTimeout !== undefined) clearTimeout(cursorTimeout);
     };
   }, []);
 
@@ -59,7 +67,7 @@ export function DeferredEffects() {
     <>
       <FloatingIcons />
       <CardGlow />
-      <CursorOrb />
+      {cursorReady ? <CursorOrb /> : null}
     </>
   );
 }

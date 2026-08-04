@@ -1,7 +1,7 @@
 "use client";
 
-import { animate, useInView, useReducedMotion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "@/lib/utils";
 
 interface CounterProps {
   value: number;
@@ -9,35 +9,58 @@ interface CounterProps {
   className?: string;
 }
 
-/** Animated count-up that starts when scrolled into view. */
+/** Count-up when visible. SSR shows the final value so hard refresh isn't blank. */
 export function Counter({ value, suffix = "", className }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: "-40px" });
-  const reduceMotion = useReducedMotion();
+  const [display, setDisplay] = useState(`${value}${suffix}`);
+  const started = useRef(false);
 
   useEffect(() => {
-    if (!inView || !ref.current) return;
-    const node = ref.current;
+    const el = ref.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
 
     if (reduceMotion) {
-      node.textContent = `${value}${suffix}`;
+      setDisplay(`${value}${suffix}`);
       return;
     }
 
-    const controls = animate(0, value, {
-      duration: 1.6,
-      ease: [0.16, 1, 0.3, 1],
-      onUpdate: (latest) => {
-        node.textContent = `${Math.round(latest)}${suffix}`;
-      },
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started.current) return;
+        started.current = true;
+        observer.disconnect();
 
-    return () => controls.stop();
-  }, [inView, value, suffix, reduceMotion]);
+        const duration = 1200;
+        const start = performance.now();
+        setDisplay(`0${suffix}`);
+
+        const tick = (now: number) => {
+          const t = Math.min(1, (now - start) / duration);
+          const eased = 1 - Math.pow(1 - t, 3);
+          setDisplay(`${Math.round(value * eased)}${suffix}`);
+          if (t < 1) requestAnimationFrame(tick);
+        };
+
+        requestAnimationFrame(tick);
+      },
+      { rootMargin: "-40px", threshold: 0.2 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value, suffix]);
 
   return (
-    <span ref={ref} className={className} aria-label={`${value}${suffix}`}>
-      0{suffix}
+    <span
+      ref={ref}
+      className={cn(className)}
+      aria-label={`${value}${suffix}`}
+    >
+      {display}
     </span>
   );
 }

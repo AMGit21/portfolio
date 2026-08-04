@@ -1,7 +1,13 @@
 "use client";
 
-import { motion, type Variants } from "framer-motion";
-import type { ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type CSSProperties,
+  type ReactNode,
+} from "react";
+import { cn } from "@/lib/utils";
 
 interface RevealProps {
   children: ReactNode;
@@ -11,44 +17,66 @@ interface RevealProps {
   once?: boolean;
 }
 
-/** Fade-and-rise reveal when the element scrolls into view. */
+/**
+ * Scroll reveal that stays visible in SSR/HTML.
+ * Only fades after mount for off-screen elements — so hard refresh
+ * never waits on JS to show content.
+ */
 export function Reveal({
   children,
   className,
   delay = 0,
-  y = 28,
   once = true,
 }: RevealProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"ssr" | "pending" | "in">("ssr");
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reduceMotion) {
+      setPhase("in");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPhase("in");
+          if (once) observer.disconnect();
+          return;
+        }
+        setPhase((prev) => (prev === "in" ? "in" : "pending"));
+      },
+      { rootMargin: "-64px 0px", threshold: 0.08 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once]);
+
   return (
-    <motion.div
-      className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, margin: "-80px" }}
-      transition={{ duration: 0.7, delay, ease: [0.21, 0.47, 0.32, 0.98] }}
+    <div
+      ref={ref}
+      className={cn(
+        "reveal-base",
+        phase === "pending" && "reveal-pending",
+        phase === "in" && "reveal-in",
+        className,
+      )}
+      style={{ "--reveal-delay": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
-const containerVariants: Variants = {
-  hidden: {},
-  visible: {
-    transition: { staggerChildren: 0.09, delayChildren: 0.1 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] },
-  },
-};
-
-/** Parent that staggers its <StaggerItem> children into view. */
+/** Parent that staggers its direct children into view. */
 export function Stagger({
   children,
   className,
@@ -58,16 +86,50 @@ export function Stagger({
   className?: string;
   once?: boolean;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [phase, setPhase] = useState<"ssr" | "pending" | "in">("ssr");
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (reduceMotion) {
+      setPhase("in");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setPhase("in");
+          if (once) observer.disconnect();
+          return;
+        }
+        setPhase((prev) => (prev === "in" ? "in" : "pending"));
+      },
+      { rootMargin: "-48px 0px", threshold: 0.06 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [once]);
+
   return (
-    <motion.div
-      className={className}
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once, margin: "-60px" }}
+    <div
+      ref={ref}
+      className={cn(
+        "reveal-base",
+        phase === "pending" && "reveal-pending",
+        phase === "in" && "reveal-in reveal-stagger",
+        className,
+      )}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
 
@@ -78,9 +140,5 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
-  return (
-    <motion.div className={className} variants={itemVariants}>
-      {children}
-    </motion.div>
-  );
+  return <div className={className}>{children}</div>;
 }
