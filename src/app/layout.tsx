@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     siteName: site.title,
-    modifiedTime: "2026-08-05T01:08:00.000Z",
     images: [
       {
         url: site.ogImage,
@@ -63,9 +62,6 @@ export const metadata: Metadata = {
     title: site.title,
     description: site.description,
     images: [site.ogImage],
-  },
-  other: {
-    "og:updated_time": "2026-08-05T01:08:00.000Z",
   },
   robots: {
     index: true,
