@@ -3,6 +3,8 @@ export const site = {
   title: "Ali Mantache - AI Engineer & Full-Stack Developer",
   description:
     "AI engineer and full-stack developer based in Beirut. 5+ years in software, 2+ years shipping production AI, REST APIs, and full-stack web platforms.",
+  /** Social / link-preview image (1200×630 Open Graph). */
+  ogImage: "/og.jpg",
   keywords: [
     "Ali Mantache",
     "AI Engineer",

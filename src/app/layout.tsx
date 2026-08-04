@@ -48,10 +48,11 @@ export const metadata: Metadata = {
     siteName: site.title,
     images: [
       {
-        url: profile.portrait,
+        url: site.ogImage,
         width: 1200,
         height: 630,
-        alt: profile.name,
+        type: "image/jpeg",
+        alt: `${profile.name} - ${profile.title}`,
       },
     ],
   },
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
-    images: [profile.portrait],
+    images: [site.ogImage],
   },
   robots: {
     index: true,
