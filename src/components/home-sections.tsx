@@ -1,9 +1,8 @@
 "use client";
 
 import { LazyWhenVisible } from "@/components/lazy-when-visible";
+import { About } from "@/components/sections/about";
 
-const loadAbout = () =>
-  import("@/components/sections/about").then((m) => ({ default: m.About }));
 const loadSkills = () =>
   import("@/components/sections/skills").then((m) => ({ default: m.Skills }));
 const loadExperience = () =>
@@ -23,24 +22,27 @@ const loadContact = () =>
     default: m.Contact,
   }));
 
-/** Below-fold sections — each Framer Motion bundle loads near the viewport. */
+/**
+ * About stays eager (sits right under the hero).
+ * Later sections still lazy-load near the viewport.
+ */
 export function HomeSections() {
   return (
     <>
-      <LazyWhenVisible id="about" loader={loadAbout} minHeight="32rem" />
-      <LazyWhenVisible id="skills" loader={loadSkills} minHeight="40rem" />
+      <About />
+      <LazyWhenVisible id="skills" loader={loadSkills} minHeight="24rem" />
       <LazyWhenVisible
         id="experience"
         loader={loadExperience}
-        minHeight="48rem"
+        minHeight="28rem"
       />
-      <LazyWhenVisible id="projects" loader={loadProjects} minHeight="56rem" />
+      <LazyWhenVisible id="projects" loader={loadProjects} minHeight="32rem" />
       <LazyWhenVisible
         id="education"
         loader={loadEducation}
-        minHeight="32rem"
+        minHeight="20rem"
       />
-      <LazyWhenVisible id="contact" loader={loadContact} minHeight="36rem" />
+      <LazyWhenVisible id="contact" loader={loadContact} minHeight="22rem" />
     </>
   );
 }
