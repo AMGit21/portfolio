@@ -105,21 +105,21 @@ export function Contact() {
         />
 
         <Reveal>
-          <div className="card noise relative overflow-hidden p-8 text-center md:p-14">
+          <div className="card noise relative overflow-hidden px-6 py-8 text-center sm:px-10 md:px-12 md:py-10">
             <div
               aria-hidden
-              className="absolute inset-x-0 -top-32 mx-auto h-64 w-2/3 rounded-full blur-3xl"
+              className="absolute inset-x-0 -top-20 mx-auto h-40 w-1/2 rounded-full blur-3xl"
               style={{
                 background:
                   "linear-gradient(120deg, var(--glow-1), var(--glow-2))",
               }}
             />
-            <div className="relative flex flex-col items-center gap-6">
+            <div className="relative flex flex-col items-center gap-4 md:gap-5">
               <Badge variant="success">
                 <span className="animate-pulse-dot size-1.5 rounded-full bg-success" />
                 {profile.availability}
               </Badge>
-              <h3 className="font-display max-w-xl text-2xl font-bold tracking-tight md:text-4xl">
+              <h3 className="font-display max-w-xl text-2xl font-bold tracking-tight md:text-3xl">
                 From idea to production.{" "}
                 <span className="text-gradient">Let&apos;s talk.</span>
               </h3>
