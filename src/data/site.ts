@@ -3,11 +3,8 @@ export const site = {
   title: "Ali Mantache - AI Engineer & Full-Stack Developer",
   description:
     "AI engineer and full-stack developer based in Beirut. 5+ years in software, 2+ years shipping production AI, REST APIs, and full-stack web platforms.",
-  /**
-   * Absolute Open Graph image URL (WhatsApp/LinkedIn need a public absolute URL).
-   * Bump ?v= when the artwork changes so caches refresh.
-   */
-  ogImage: "https://amgit21.github.io/portfolio/og.jpg?v=20260805",
+  /** Absolute Open Graph image URL (WhatsApp/LinkedIn need a public absolute URL). */
+  ogImage: "https://amgit21.github.io/portfolio/og.jpg",
   keywords: [
     "Ali Mantache",
     "AI Engineer",
