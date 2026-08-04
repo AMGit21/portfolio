@@ -13,6 +13,7 @@ import type { ComponentType, SVGProps } from "react";
 import { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Magnetic } from "@/components/ui/magnetic";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
@@ -126,12 +127,14 @@ export function Contact() {
                 Based in {profile.location}, working remotely worldwide.
                 Usually replies within a day.
               </p>
-              <Button asChild size="lg">
-                <a href={`mailto:${profile.email}`} className="group">
-                  Say hello
-                  <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                </a>
-              </Button>
+              <Magnetic>
+                <Button asChild size="lg">
+                  <a href={`mailto:${profile.email}`} className="group">
+                    Say hello
+                    <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </a>
+                </Button>
+              </Magnetic>
             </div>
           </div>
         </Reveal>

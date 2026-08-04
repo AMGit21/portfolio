@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
@@ -45,11 +46,17 @@ export function Navbar() {
   }, [menuOpen]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50">
+    <motion.header
+      initial={{ y: -64, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
+      className="fixed inset-x-0 top-0 z-50"
+    >
       <nav
         aria-label="Primary"
         className={cn(
           "mx-auto flex h-16 max-w-6xl items-center justify-between border border-transparent px-4 sm:px-6",
+          // Only animate layout/surface props, not "all" (avoids black border flash)
           "transition-[background-color,box-shadow,backdrop-filter,margin,height,max-width,border-radius] duration-300 ease-out",
           scrolled
             ? "nav-panel mx-3 mt-3 h-14 max-w-5xl rounded-2xl sm:mx-auto"
@@ -72,15 +79,22 @@ export function Navbar() {
               href={`#${id}`}
               aria-current={activeSection === id ? "true" : undefined}
               className={cn(
-                "rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
+                "relative rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
                 activeSection === id
-                  ? "bg-accent-soft text-foreground"
+                  ? "text-foreground"
                   : scrolled
                     ? "text-foreground/80 hover:text-foreground"
                     : "text-muted hover:text-foreground",
               )}
             >
-              {label}
+              {activeSection === id && (
+                <motion.span
+                  layoutId="nav-active"
+                  className="absolute inset-0 rounded-full bg-accent-soft"
+                  transition={{ type: "spring", stiffness: 380, damping: 32 }}
+                />
+              )}
+              <span className="relative">{label}</span>
             </a>
           ))}
         </div>
@@ -108,39 +122,50 @@ export function Navbar() {
         </div>
       </nav>
 
-      {menuOpen ? (
-        <div className="nav-panel mx-4 mt-2 rounded-xl p-4 md:hidden">
-          <div className="flex flex-col gap-1">
-            {site.nav.map(({ id, label }) => (
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            className="nav-panel mx-4 mt-2 rounded-xl p-4 md:hidden"
+          >
+            <div className="flex flex-col gap-1">
+              {site.nav.map(({ id, label }, index) => (
+                <motion.a
+                  key={id}
+                  href={`#${id}`}
+                  onClick={() => setMenuOpen(false)}
+                  initial={{ opacity: 0, x: -12 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.04 * index }}
+                  className={cn(
+                    "rounded-xl px-4 py-3 text-base font-semibold transition-colors",
+                    activeSection === id
+                      ? "bg-accent-soft text-accent"
+                      : "text-foreground/85 hover:bg-accent-soft hover:text-foreground",
+                  )}
+                >
+                  {label}
+                </motion.a>
+              ))}
+            </div>
+            <div className="mt-3 flex items-center justify-between border-t border-line pt-3">
+              <ThemeToggle />
               <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setMenuOpen(false)}
-                className={cn(
-                  "rounded-xl px-4 py-3 text-base font-semibold transition-colors",
-                  activeSection === id
-                    ? "bg-accent-soft text-accent"
-                    : "text-foreground/85 hover:bg-accent-soft hover:text-foreground",
-                )}
+                href={assetPath(profile.cvFile)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background"
               >
-                {label}
+                <Download className="size-4" />
+                Download CV
               </a>
-            ))}
-          </div>
-          <div className="mt-3 flex items-center justify-between border-t border-line pt-3">
-            <ThemeToggle />
-            <a
-              href={assetPath(profile.cvFile)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-foreground px-4 py-2 text-sm font-semibold text-background"
-            >
-              <Download className="size-4" />
-              Download CV
-            </a>
-          </div>
-        </div>
-      ) : null}
-    </header>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.header>
   );
 }
