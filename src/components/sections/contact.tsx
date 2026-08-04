@@ -105,14 +105,13 @@ export function Contact() {
         />
 
         <Reveal>
-          <div className="card noise relative overflow-hidden px-6 py-7 text-center sm:px-10 md:px-12 md:py-9">
-            {/* Soft wash behind the CTA — not a tall empty band above the badge */}
+          <div className="card noise relative overflow-hidden px-6 pt-5 pb-7 text-center sm:px-10 md:px-12 md:pt-6 md:pb-9">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-70"
               style={{
                 background:
-                  "radial-gradient(ellipse 70% 55% at 50% 35%, color-mix(in oklab, var(--glow-1) 55%, transparent), transparent 70%)",
+                  "radial-gradient(ellipse 70% 55% at 50% 40%, color-mix(in oklab, var(--glow-1) 55%, transparent), transparent 70%)",
               }}
             />
             <div className="relative flex flex-col items-center gap-3.5 md:gap-4">
