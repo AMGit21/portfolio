@@ -6,6 +6,8 @@ interface SectionHeadingProps {
   title: string;
   description?: string;
   align?: "center" | "left";
+  /** Tighter spacing for short sections like Contact */
+  compact?: boolean;
 }
 
 export function SectionHeading({
@@ -13,11 +15,13 @@ export function SectionHeading({
   title,
   description,
   align = "center",
+  compact = false,
 }: SectionHeadingProps) {
   return (
     <Reveal
       className={cn(
-        "mb-14 flex flex-col gap-4 md:mb-20",
+        "flex flex-col gap-4",
+        compact ? "mb-8 md:mb-10" : "mb-14 md:mb-20",
         align === "center" ? "items-center text-center" : "items-start",
       )}
     >

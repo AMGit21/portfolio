@@ -101,6 +101,7 @@ export function Contact() {
           eyebrow="Contact"
           title="Get in touch"
           description="If you have an AI product, a platform to grow, or a team that needs help shipping, feel free to reach out."
+          compact
         />
 
         <Reveal>
