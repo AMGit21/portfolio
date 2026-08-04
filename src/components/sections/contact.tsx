@@ -105,16 +105,17 @@ export function Contact() {
         />
 
         <Reveal>
-          <div className="card noise relative overflow-hidden px-6 py-8 text-center sm:px-10 md:px-12 md:py-10">
+          <div className="card noise relative overflow-hidden px-6 py-7 text-center sm:px-10 md:px-12 md:py-9">
+            {/* Soft wash behind the CTA — not a tall empty band above the badge */}
             <div
               aria-hidden
-              className="absolute inset-x-0 -top-20 mx-auto h-40 w-1/2 rounded-full blur-3xl"
+              className="pointer-events-none absolute inset-0 opacity-70"
               style={{
                 background:
-                  "linear-gradient(120deg, var(--glow-1), var(--glow-2))",
+                  "radial-gradient(ellipse 70% 55% at 50% 35%, color-mix(in oklab, var(--glow-1) 55%, transparent), transparent 70%)",
               }}
             />
-            <div className="relative flex flex-col items-center gap-4 md:gap-5">
+            <div className="relative flex flex-col items-center gap-3.5 md:gap-4">
               <Badge variant="success">
                 <span className="animate-pulse-dot size-1.5 rounded-full bg-success" />
                 {profile.availability}
