@@ -8,11 +8,18 @@ import {
 } from "framer-motion";
 import { useEffect, useState } from "react";
 
+/** Native scrollbars sit outside the layout viewport and don't emit reliable mousemove. */
+function isOnNativeScrollbar(event: MouseEvent) {
+  const doc = document.documentElement;
+  return event.clientX >= doc.clientWidth || event.clientY >= doc.clientHeight;
+}
+
 /**
  * Performant futuristic cursor:
  * - GPU transforms (not left/top layout)
  * - One spring for the trailing ring
  * - CSS spin instead of JS infinite rotate
+ * - Yields to the system cursor on native scrollbar drag
  */
 export function CursorOrb() {
   const reduceMotion = useReducedMotion();
@@ -29,12 +36,37 @@ export function CursorOrb() {
     if (reduceMotion) return;
 
     // Enable for mouse/trackpad only — not viewport width.
-    // Touch phones report pointer: coarse; a resized laptop still has pointer: fine.
     const media = window.matchMedia("(pointer: fine)");
     let shown = false;
     let attached = false;
+    let nativeScrollUi = false;
+
+    const setCustomCursorActive = (active: boolean) => {
+      document.documentElement.classList.toggle("has-cursor-orb", active);
+    };
+
+    const enterNativeScrollUi = () => {
+      if (nativeScrollUi) return;
+      nativeScrollUi = true;
+      shown = false;
+      setVisible(false);
+      setCustomCursorActive(false);
+    };
+
+    const leaveNativeScrollUi = () => {
+      if (!nativeScrollUi) return;
+      nativeScrollUi = false;
+      if (attached) setCustomCursorActive(true);
+    };
 
     const onMove = (event: MouseEvent) => {
+      if (isOnNativeScrollbar(event)) {
+        enterNativeScrollUi();
+        return;
+      }
+
+      leaveNativeScrollUi();
+
       x.set(event.clientX);
       y.set(event.clientY);
 
@@ -50,6 +82,14 @@ export function CursorOrb() {
       setHovering((prev) => (prev === next ? prev : next));
     };
 
+    const onDown = (event: MouseEvent) => {
+      if (isOnNativeScrollbar(event)) enterNativeScrollUi();
+    };
+
+    const onUp = (event: MouseEvent) => {
+      if (!isOnNativeScrollbar(event)) leaveNativeScrollUi();
+    };
+
     const onLeave = () => {
       shown = false;
       setVisible(false);
@@ -59,8 +99,10 @@ export function CursorOrb() {
       if (attached) return;
       attached = true;
       setEnabled(true);
-      document.documentElement.classList.add("has-cursor-orb");
+      setCustomCursorActive(true);
       window.addEventListener("mousemove", onMove, { passive: true });
+      window.addEventListener("mousedown", onDown, { passive: true });
+      window.addEventListener("mouseup", onUp, { passive: true });
       document.documentElement.addEventListener("mouseleave", onLeave);
     };
 
@@ -68,10 +110,13 @@ export function CursorOrb() {
       if (!attached) return;
       attached = false;
       shown = false;
+      nativeScrollUi = false;
       setEnabled(false);
       setVisible(false);
-      document.documentElement.classList.remove("has-cursor-orb");
+      setCustomCursorActive(false);
       window.removeEventListener("mousemove", onMove);
+      window.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mouseup", onUp);
       document.documentElement.removeEventListener("mouseleave", onLeave);
     };
 
