@@ -30,22 +30,22 @@ const statusStyles: Record<Project["status"], string> = {
 
 function TerminalPanel({ project }: { project: Project }) {
   return (
-    <div className="gradient-ring overflow-hidden rounded-2xl font-mono text-[13px] leading-relaxed shadow-2xl shadow-black/10">
-      <div className="rounded-2xl bg-surface-strong">
-        <div className="flex items-center gap-1.5 border-b border-line px-4 py-3">
-          <span className="size-2.5 rounded-full bg-rose-400/80" />
-          <span className="size-2.5 rounded-full bg-amber-400/80" />
-          <span className="size-2.5 rounded-full bg-emerald-400/80" />
-          <span className="ml-3 truncate text-xs text-faint">
+    <div className="gradient-ring min-w-0 overflow-hidden rounded-2xl font-mono text-[11px] leading-relaxed shadow-2xl shadow-black/10 sm:text-[12px] md:text-[13px]">
+      <div className="min-w-0 rounded-2xl bg-surface-strong">
+        <div className="flex min-w-0 items-center gap-1.5 border-b border-line px-3 py-2.5 sm:px-4 sm:py-3">
+          <span className="size-2.5 shrink-0 rounded-full bg-rose-400/80" />
+          <span className="size-2.5 shrink-0 rounded-full bg-amber-400/80" />
+          <span className="size-2.5 shrink-0 rounded-full bg-emerald-400/80" />
+          <span className="ml-2 min-w-0 truncate text-[10px] text-faint sm:ml-3 sm:text-xs">
             {project.id} - live
           </span>
         </div>
-        <div className="flex flex-col gap-2 px-5 py-5">
+        <div className="flex min-w-0 flex-col gap-1.5 overflow-x-auto px-3 py-4 sm:gap-2 sm:px-5 sm:py-5">
           {project.terminal.map((line) => (
             <p
               key={line}
               className={cn(
-                "truncate",
+                "max-w-full whitespace-pre-wrap break-words [overflow-wrap:anywhere]",
                 line.startsWith("✓")
                   ? "text-success"
                   : line.startsWith("⚠")
@@ -79,8 +79,13 @@ function FeaturedProject({
 
   return (
     <Reveal>
-      <article className="card card-hover grid items-center gap-8 p-6 md:p-10 lg:grid-cols-2 lg:gap-12">
-        <div className={cn("flex flex-col gap-4", reversed && "lg:order-2")}>
+      <article className="card card-hover grid min-w-0 items-center gap-8 p-5 sm:p-6 md:p-10 lg:grid-cols-2 lg:gap-12">
+        <div
+          className={cn(
+            "flex min-w-0 flex-col gap-4",
+            reversed && "lg:order-2",
+          )}
+        >
           <div className="flex flex-wrap items-center gap-2">
             <span className={cn("chip", statusStyles[project.status])}>
               {project.status}
@@ -139,7 +144,7 @@ function FeaturedProject({
           )}
         </div>
 
-        <div className={cn(reversed && "lg:order-1")}>
+        <div className={cn("min-w-0", reversed && "lg:order-1")}>
           <TerminalPanel project={project} />
         </div>
       </article>
