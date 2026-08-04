@@ -59,7 +59,14 @@ export const skillCategories: SkillCategory[] = [
     blurb: "React and Next.js UIs, including real-time views when the product needs them.",
     icon: "layout",
     accent: "cyan",
-    skills: ["React.js", "Next.js", "TypeScript", "WebSockets", "Tailwind CSS"],
+    skills: [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "WebSockets",
+      "Tailwind CSS",
+      "shadcn/ui",
+    ],
   },
   {
     id: "data",
