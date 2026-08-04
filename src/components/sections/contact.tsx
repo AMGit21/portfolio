@@ -105,7 +105,7 @@ export function Contact() {
         />
 
         <Reveal>
-          <div className="card noise relative overflow-hidden px-6 pt-5 pb-7 text-center sm:px-10 md:px-12 md:pt-6 md:pb-9">
+          <div className="card relative overflow-hidden px-6 pt-5 pb-7 text-center sm:px-10 md:px-12 md:pt-6 md:pb-9">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 opacity-70"

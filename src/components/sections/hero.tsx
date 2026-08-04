@@ -2,13 +2,18 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, ChevronDown, Download, Mail } from "lucide-react";
-import { createElement, useEffect, useState } from "react";
+import { useEffect, useState, type ComponentType } from "react";
+import {
+  SiFastapi,
+  SiLangchain,
+  SiNextdotjs,
+  SiPython,
+} from "react-icons/si";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Counter } from "@/components/ui/counter";
 import { Magnetic } from "@/components/ui/magnetic";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/social-icons";
-import { getTechIcon } from "@/components/ui/tech-icon";
 import { profile } from "@/data/profile";
 import { assetPath } from "@/lib/utils";
 
@@ -18,11 +23,24 @@ const heroSocials = [
   { href: `mailto:${profile.email}`, label: "Email", icon: Mail },
 ];
 
-const floatingTechs = [
-  { name: "Python", className: "-left-4 top-8 lg:-left-10" },
-  { name: "FastAPI", className: "-right-2 top-20 lg:-right-8" },
-  { name: "LangChain", className: "-left-6 bottom-24 lg:-left-14" },
-  { name: "Next.js", className: "-right-4 bottom-10 lg:-right-10" },
+/** Only the four hero chips — avoid pulling the full tech-icon map into the hero chunk. */
+const floatingTechs: {
+  name: string;
+  className: string;
+  Icon: ComponentType<{ className?: string }>;
+}[] = [
+  { name: "Python", className: "-left-4 top-8 lg:-left-10", Icon: SiPython },
+  { name: "FastAPI", className: "-right-2 top-20 lg:-right-8", Icon: SiFastapi },
+  {
+    name: "LangChain",
+    className: "-left-6 bottom-24 lg:-left-14",
+    Icon: SiLangchain,
+  },
+  {
+    name: "Next.js",
+    className: "-right-4 bottom-10 lg:-right-10",
+    Icon: SiNextdotjs,
+  },
 ];
 
 const ease = [0.21, 0.47, 0.32, 0.98] as const;
@@ -167,30 +185,23 @@ export function Hero() {
               className="h-auto w-full rounded-[1.7rem] object-cover"
             />
           </div>
-          {floatingTechs.map(({ name, className }, i) => {
-            const Icon = getTechIcon(name);
-            return (
-              <motion.span
-                key={name}
-                aria-hidden
-                animate={{ y: [0, -10, 0] }}
-                transition={{
-                  duration: 4 + i,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                  delay: i * 0.7,
-                }}
-                className={`glass absolute flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs text-foreground shadow-lg ${className}`}
-              >
-                {Icon
-                  ? createElement(Icon, {
-                      className: "size-3.5 text-accent",
-                    })
-                  : null}
-                {name}
-              </motion.span>
-            );
-          })}
+          {floatingTechs.map(({ name, className, Icon }, i) => (
+            <motion.span
+              key={name}
+              aria-hidden
+              animate={{ y: [0, -10, 0] }}
+              transition={{
+                duration: 4 + i,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.7,
+              }}
+              className={`glass absolute flex items-center gap-1.5 rounded-full px-3 py-1.5 font-mono text-xs text-foreground shadow-lg ${className}`}
+            >
+              <Icon className="size-3.5 text-accent" />
+              {name}
+            </motion.span>
+          ))}
         </motion.div>
       </div>
 
