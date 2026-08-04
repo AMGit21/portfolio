@@ -123,9 +123,8 @@ export function Contact() {
                 From idea to production.{" "}
                 <span className="text-gradient">Let&apos;s talk.</span>
               </h3>
-              <p className="max-w-lg text-sm text-muted md:text-base">
-                Based in {profile.location}, working remotely worldwide.
-                Usually replies within a day.
+              <p className="max-w-3xl text-sm text-muted whitespace-nowrap max-[420px]:whitespace-normal max-[420px]:text-pretty md:text-base">
+                {`Based in ${profile.location}, working remotely worldwide. Usually replies within a day.`}
               </p>
               <Magnetic>
                 <Button asChild size="lg">
