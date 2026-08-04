@@ -131,7 +131,7 @@ export function Experience() {
             <p className="flex items-center gap-3 text-sm text-faint">
               <Briefcase className="size-4" />
               Started building for the web professionally in 2020, and teaching
-              it since 2021.
+              since 2017.
             </p>
           </Reveal>
         </div>

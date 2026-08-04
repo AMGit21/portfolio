@@ -55,10 +55,10 @@ export const experience: Experience[] = [
     period: "2021 - 2024",
     current: false,
     summary:
-      "Ran 9 full-stack bootcamps while working as a developer, training 300+ learners across universities and institutions.",
+      "Ran 9 full-stack bootcamps while working as a developer, alongside teaching across universities and other institutions.",
     achievements: [
       "Delivered 9 MERN bootcamps: 6 with ESIEE-IT/France via the AFD-funded ESA Coding Lab, and 3 with Tatweer Baladna (U.S. Embassy-funded, hybrid cohorts)",
-      "Taught full-stack development, Python, REST APIs, Git, debugging, code review, and Agile practices to 300+ learners",
+      "Taught full-stack development, Python, REST APIs, Git, debugging, code review, and Agile practices to 300+ learners across bootcamps, universities, and other institutions",
     ],
     tech: ["MongoDB", "Express.js", "React.js", "Node.js", "Python", "Git", "REST APIs"],
   },
@@ -70,7 +70,7 @@ export const experience: Experience[] = [
     period: "2020 - 2022",
     current: false,
     summary:
-      "Led a team delivering client web projects end to end, while also teaching from 2021.",
+      "Led a team delivering client web projects end to end, while continuing to teach (teaching since 2017).",
     achievements: [
       "Led 10+ developers shipping client WordPress sites with SEO-aware structure",
       "Owned projects from requirements through deployment",

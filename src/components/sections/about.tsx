@@ -29,7 +29,7 @@ const principles = [
   {
     icon: GraduationCap,
     title: "Teaching",
-    body: "Nine bootcamps and 300+ learners taught me that if I can explain a system clearly, I understand it. Mentoring also keeps the basics sharp.",
+    body: "Teaching since 2017 - across universities, institutions, and nine bootcamps - taught me that if I can explain a system clearly, I understand it. Mentoring also keeps the basics sharp.",
   },
 ];
 
@@ -59,9 +59,9 @@ export function About() {
               picks prompt styles using precision, recall, and accuracy.
             </p>
             <p className="prose-body text-lg leading-relaxed text-muted">
-              Before that I led a team of 10+ developers on client sites, and
-              ran nine MERN bootcamps that trained 300+ learners across
-              universities and institutions.
+              Before that I led a team of 10+ developers on client sites, ran
+              nine MERN bootcamps, and taught 300+ learners across universities
+              and other institutions.
             </p>
             <div className="mt-2 flex flex-wrap gap-3">
               <span className="chip">
