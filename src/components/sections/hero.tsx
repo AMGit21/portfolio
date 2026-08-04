@@ -86,7 +86,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col justify-start overflow-hidden pt-24 pb-12 sm:pb-16 [@media(min-height:840px)]:min-h-svh [@media(min-height:840px)]:justify-center"
+      className="hero-shell relative flex flex-col justify-start overflow-hidden pt-24 pb-12 sm:pb-16"
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-10 px-4 sm:gap-12 sm:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:gap-14">
         {/* Copy */}
@@ -208,7 +208,7 @@ export function Hero() {
       {/* Stats */}
       <motion.div
         {...enter(0.55)}
-        className="mx-auto mt-10 w-full max-w-6xl px-4 sm:mt-14 sm:px-6 [@media(min-height:840px)]:mt-16"
+        className="mx-auto mt-10 w-full max-w-6xl px-4 sm:mt-12 sm:px-6 lg:mt-14"
       >
         <dl className="card grid grid-cols-2 divide-line max-md:gap-y-6 md:grid-cols-4 md:divide-x">
           {profile.stats.map(({ value, suffix, label }) => (
@@ -231,7 +231,7 @@ export function Hero() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.4, duration: 0.8 }}
-        className="absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-faint transition-colors hover:text-accent [@media(min-height:840px)]:lg:block"
+        className="hero-scroll-hint absolute bottom-5 left-1/2 hidden -translate-x-1/2 text-faint transition-colors hover:text-accent"
       >
         <motion.span
           animate={{ y: [0, 8, 0] }}

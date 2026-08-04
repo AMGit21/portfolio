@@ -235,6 +235,27 @@ main > section:not(#hero) {
   contain-intrinsic-size: auto 720px;
 }
 
+/*
+ * Full-viewport centered hero only on real desktop pointers.
+ * Mobile "Desktop site" still reports pointer: coarse / no hover, so it
+ * won't get min-height: 100svh (that was causing the huge empty bands).
+ */
+.hero-shell {
+  min-height: auto;
+  justify-content: flex-start;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .hero-shell {
+    min-height: 100svh;
+    justify-content: center;
+  }
+
+  .hero-scroll-hint {
+    display: block;
+  }
+}
+
 /* ---------------------------------- */
 /* Surfaces                            */
 /* ---------------------------------- */
