@@ -9,6 +9,7 @@ export const site = {
     "Ali Mantache",
     "AI Engineer",
     "Full-Stack Developer",
+    "Data Engineer",
     "LLM",
     "LangChain",
     "FastAPI",

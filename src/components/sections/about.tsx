@@ -46,9 +46,10 @@ export function About() {
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16">
           <Reveal className="flex flex-col gap-6">
             <p className="prose-body text-lg leading-relaxed text-muted">
-              I&apos;m {profile.name}, an AI engineer and full-stack developer
-              based in {profile.location}. I build REST APIs, LLM features, and
-              web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js,
+              I&apos;m {profile.name}, an AI engineer, data engineer, and
+              full-stack developer based in {profile.location}. I build REST
+              APIs, LLM features, data pipelines, and web platforms with
+              Python/FastAPI, Kafka, Spark, Node.js/NestJS, React/Next.js,
               PostgreSQL, Docker, and CI/CD.
             </p>
             <p className="prose-body text-lg leading-relaxed text-muted">

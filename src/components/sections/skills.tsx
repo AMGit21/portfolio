@@ -3,6 +3,7 @@ import {
   Brain,
   Code2,
   Database,
+  Eye,
   LayoutTemplate,
   Server,
   ShieldCheck,
@@ -23,6 +24,7 @@ const icons: Record<SkillCategory["icon"], LucideIcon> = {
   workflow: Workflow,
   code: Code2,
   shield: ShieldCheck,
+  eye: Eye,
 };
 
 const accentStyles: Record<Accent, string> = {
@@ -41,10 +43,10 @@ export function Skills() {
         <SectionHeading
           eyebrow="Skills"
           title="Tools I use day to day"
-          description="From the model call and API layer through the database and deploy pipeline."
+          description="From the model call and data pipeline through the API, database, and deploy."
         />
 
-        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <Stagger className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {skillCategories.map((category) => {
             const Icon = icons[category.icon];
             return (

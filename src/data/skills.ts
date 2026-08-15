@@ -12,7 +12,8 @@ export interface SkillCategory {
     | "database"
     | "workflow"
     | "code"
-    | "shield";
+    | "shield"
+    | "eye";
   accent: Accent;
   skills: string[];
 }
@@ -54,6 +55,33 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
+    id: "data-eng",
+    title: "Data Engineering",
+    blurb:
+      "ETL/ELT, streaming, and data services that ingest SQL, files, APIs, and live events.",
+    icon: "activity",
+    accent: "emerald",
+    skills: [
+      "ETL / ELT",
+      "Data Pipelines",
+      "Apache Kafka",
+      "Apache Spark",
+      "Spark Structured Streaming",
+      "Delta Lake",
+      "Data Integration",
+      "Power BI",
+    ],
+  },
+  {
+    id: "vision",
+    title: "Computer Vision",
+    blurb:
+      "Detection models in the pipeline, from labeling through training to inference.",
+    icon: "eye",
+    accent: "cyan",
+    skills: ["YOLOv8", "OpenCV", "Roboflow", "Autodistill"],
+  },
+  {
     id: "frontend",
     title: "Frontend Engineering",
     blurb: "React and Next.js UIs, including real-time views when the product needs them.",
@@ -69,25 +97,7 @@ export const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    id: "data",
-    title: "Data & Computer Vision",
-    blurb:
-      "Streaming pipelines and vision models, from labeling through training to inference.",
-    icon: "activity",
-    accent: "emerald",
-    skills: [
-      "Apache Kafka",
-      "Apache Spark",
-      "Delta Lake",
-      "YOLOv8",
-      "OpenCV",
-      "Roboflow",
-      "Autodistill",
-    ],
-  },
-  {
     id: "databases",
-    title: "Databases",
     blurb: "Postgres, document stores, Redis, and schemas that can change without breaking.",
     icon: "database",
     accent: "amber",

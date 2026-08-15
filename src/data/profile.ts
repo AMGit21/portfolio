@@ -4,6 +4,7 @@ export const profile = {
   title: "AI Engineer & Full-Stack Developer",
   roles: [
     "AI Engineer",
+    "Data Engineer",
     "Full-Stack Developer",
     "LLM Systems Builder",
     "R&D Engineer",
@@ -11,7 +12,7 @@ export const profile = {
   ],
   tagline: "I build production AI systems.",
   intro:
-    "I work on LLM workflows, agent pipelines, and real-time data platforms. My job is to turn product and R&D requirements into systems that hold up in production.",
+    "I work on LLM workflows, agent pipelines, and data platforms - SQL systems, ETL, and real-time streaming. My job is to turn product and R&D requirements into systems that hold up in production.",
   summary:
     "AI engineer and full-stack developer with 5+ years building software and 2+ years shipping production AI. I build REST APIs, LLM features, and web platforms with Python/FastAPI, Node.js/NestJS, React/Next.js, PostgreSQL, Docker, and CI/CD.",
   location: "Beirut, Lebanon",

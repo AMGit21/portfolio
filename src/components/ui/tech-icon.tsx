@@ -29,6 +29,7 @@ import {
   SiOpencv,
   SiPhp,
   SiPostgresql,
+  SiPowerbi,
   SiPydantic,
   SiPytest,
   SiPython,
@@ -115,9 +116,15 @@ const iconMap: Record<string, IconComponent> = {
   "gemini ai": SiGooglegemini,
 
   // Data & CV
+  "etl / elt": Workflow,
+  etl: Workflow,
+  "data pipelines": Workflow,
+  "data integration": Boxes,
   "apache kafka": SiApachekafka,
   "apache spark": SiApachespark,
+  "spark structured streaming": SiApachespark,
   "delta lake": Database,
+  "power bi": SiPowerbi,
   yolov8: SiYolo,
   opencv: SiOpencv,
   roboflow: SiRoboflow,
