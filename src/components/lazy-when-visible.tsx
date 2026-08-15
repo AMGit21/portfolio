@@ -7,6 +7,11 @@ import {
   type ComponentType,
   type ReactNode,
 } from "react";
+import {
+  markSectionMounted,
+  registerSectionLoader,
+  unregisterSectionLoader,
+} from "@/lib/section-load";
 
 interface LazyWhenVisibleProps {
   /** Section anchor id (for nav / hash links before the chunk mounts). */
@@ -21,7 +26,7 @@ interface LazyWhenVisibleProps {
 }
 
 /**
- * Loads a section chunk only when it nears the viewport (or is targeted by hash).
+ * Loads a section chunk only when it nears the viewport (or is targeted by hash / nav).
  * Framer Motion stays inside each section — it just isn't downloaded early.
  */
 export function LazyWhenVisible({
@@ -50,14 +55,10 @@ export function LazyWhenVisible({
       loader().then((mod) => {
         if (cancelled) return;
         setComponent(() => mod.default);
-
-        if (window.location.hash === `#${id}`) {
-          requestAnimationFrame(() => {
-            document.getElementById(id)?.scrollIntoView();
-          });
-        }
       });
     };
+
+    registerSectionLoader(id, load);
 
     const loadIfHash = () => {
       if (window.location.hash === `#${id}`) load();
@@ -70,6 +71,7 @@ export function LazyWhenVisible({
       load();
       return () => {
         cancelled = true;
+        unregisterSectionLoader(id);
         window.removeEventListener("hashchange", loadIfHash);
       };
     }
@@ -86,9 +88,16 @@ export function LazyWhenVisible({
     return () => {
       cancelled = true;
       observer?.disconnect();
+      unregisterSectionLoader(id);
       window.removeEventListener("hashchange", loadIfHash);
     };
   }, [id, loader, rootMargin]);
+
+  useEffect(() => {
+    if (!Component) return;
+    const frame = requestAnimationFrame(() => markSectionMounted(id));
+    return () => cancelAnimationFrame(frame);
+  }, [Component, id]);
 
   return (
     <div ref={ref}>

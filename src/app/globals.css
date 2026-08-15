@@ -229,12 +229,6 @@ a {
   }
 }
 
-/* Skip painting offscreen sections until near viewport */
-main > section:not(#hero) {
-  content-visibility: auto;
-  contain-intrinsic-size: auto 720px;
-}
-
 /*
  * Full-viewport centered hero only on real desktop pointers.
  * Mobile "Desktop site" still reports pointer: coarse / no hover, so it

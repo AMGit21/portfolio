@@ -2,11 +2,41 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
+import { ensureSectionsThrough } from "@/lib/section-load";
 import { assetPath, cn } from "@/lib/utils";
+
+const navIds = site.nav.map(({ id }) => id);
+
+function syncActiveSection(setActive: (id: string) => void) {
+  const marker = Math.min(140, window.innerHeight * 0.22);
+  let current = "";
+
+  for (const id of navIds) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (el.getBoundingClientRect().top <= marker) current = id;
+  }
+
+  const doc = document.documentElement;
+  if (window.scrollY + window.innerHeight >= doc.scrollHeight - 48) {
+    current = navIds[navIds.length - 1] ?? current;
+  }
+
+  if (current) setActive(current);
+}
+
+async function goToSection(id: string) {
+  await ensureSectionsThrough(id, navIds);
+  await new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  });
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  history.replaceState(null, "", `#${id}`);
+}
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
@@ -21,22 +51,22 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const sections = site.nav
-      .map(({ id }) => document.getElementById(id))
-      .filter((el): el is HTMLElement => el !== null);
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        }
-      },
-      { rootMargin: "-40% 0px -55% 0px" },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    const onScroll = () => syncActiveSection(setActiveSection);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
   }, []);
+
+  async function onNavClick(event: MouseEvent<HTMLAnchorElement>, id: string) {
+    event.preventDefault();
+    setMenuOpen(false);
+    setActiveSection(id);
+    await goToSection(id);
+  }
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
@@ -77,6 +107,7 @@ export function Navbar() {
             <a
               key={id}
               href={`#${id}`}
+              onClick={(event) => onNavClick(event, id)}
               aria-current={activeSection === id ? "true" : undefined}
               className={cn(
                 "relative rounded-full px-3.5 py-1.5 text-sm font-semibold transition-colors",
@@ -136,7 +167,7 @@ export function Navbar() {
                 <motion.a
                   key={id}
                   href={`#${id}`}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={(event) => onNavClick(event, id)}
                   initial={{ opacity: 0, x: -12 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.04 * index }}
