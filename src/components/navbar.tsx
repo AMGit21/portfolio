@@ -2,7 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { Download, Menu, X } from "lucide-react";
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { ThemeToggle } from "@/components/theme-toggle";
 import { profile } from "@/data/profile";
 import { site } from "@/data/site";
@@ -11,9 +11,10 @@ import { assetPath, cn } from "@/lib/utils";
 
 const navIds = site.nav.map(({ id }) => id);
 
-function syncActiveSection(setActive: (id: string) => void) {
-  const marker = Math.min(140, window.innerHeight * 0.22);
-  let current = "";
+function readActiveSection() {
+  // Line sits below the floating nav so a hash jump with scroll-mt counts as active.
+  const marker = Math.min(220, window.innerHeight * 0.32);
+  let current = navIds[0] ?? "";
 
   for (const id of navIds) {
     const el = document.getElementById(id);
@@ -26,22 +27,14 @@ function syncActiveSection(setActive: (id: string) => void) {
     current = navIds[navIds.length - 1] ?? current;
   }
 
-  if (current) setActive(current);
-}
-
-async function goToSection(id: string) {
-  await ensureSectionsThrough(id, navIds);
-  await new Promise<void>((resolve) => {
-    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
-  });
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-  history.replaceState(null, "", `#${id}`);
+  return current;
 }
 
 export function Navbar() {
   const [activeSection, setActiveSection] = useState<string>("");
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const lockActiveRef = useRef<string | null>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -51,7 +44,11 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    const onScroll = () => syncActiveSection(setActiveSection);
+    const onScroll = () => {
+      if (lockActiveRef.current) return;
+      const next = readActiveSection();
+      if (next) setActiveSection(next);
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
@@ -64,8 +61,28 @@ export function Navbar() {
   async function onNavClick(event: MouseEvent<HTMLAnchorElement>, id: string) {
     event.preventDefault();
     setMenuOpen(false);
+    lockActiveRef.current = id;
     setActiveSection(id);
-    await goToSection(id);
+
+    await ensureSectionsThrough(id, navIds);
+    await new Promise<void>((resolve) => {
+      requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+    });
+
+    document
+      .getElementById(id)
+      ?.scrollIntoView({ behavior: "smooth", block: "start" });
+    history.replaceState(null, "", `#${id}`);
+
+    const unlock = () => {
+      if (lockActiveRef.current !== id) return;
+      lockActiveRef.current = null;
+      const next = readActiveSection();
+      if (next) setActiveSection(next);
+    };
+
+    window.addEventListener("scrollend", unlock, { once: true });
+    window.setTimeout(unlock, 900);
   }
 
   useEffect(() => {
