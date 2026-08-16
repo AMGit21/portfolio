@@ -98,6 +98,7 @@ export const skillCategories: SkillCategory[] = [
   },
   {
     id: "databases",
+    title: "Databases",
     blurb: "Postgres, document stores, Redis, and schemas that can change without breaking.",
     icon: "database",
     accent: "amber",
